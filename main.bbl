@@ -1,0 +1,15 @@
+\begin{thebibliography}{1}
+
+\bibitem{DRAGON}
+Moju Zhao, Tomoki Anzai, Fan Shi, Xiangyu Chen, Kei Okada, and Masayuki Inaba.
+\newblock Design, modeling, and control of an aerial robot dragon: A
+  dual-rotor-embedded multilink robot with the ability of
+  multi-degree-of-freedom aerial transformation.
+\newblock {\em IEEE Robotics and Automation Letters}, 3(2):1176--1183, 2018.
+
+\bibitem{stevens}
+Stanley~Smith Stevens.
+\newblock The psychophysics of sensory function.
+\newblock {\em Scientific American}, 226(6):377--386, 1957.
+
+\end{thebibliography}

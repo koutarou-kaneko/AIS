@@ -11,6 +11,17 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{here}
+\usepackage{multicol}
+\usepackage{siunitx}
+\usepackage[noadjust]{cite}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{hypernat}
+
+
 \RaggedRight
 
 \renewcommand{\maketitle}{
