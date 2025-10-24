@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.6.27)  20 OCT 2025 20:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.6.27)  24 OCT 2025 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -597,40 +597,10 @@ ten-tion for their work in high places and haz-ardous lo-ca-tions. While au-ton
 omous 
  []
 
-<figs/device_design.png, id=44, 4263.93pt x 2484.28125pt>
-File: figs/device_design.png Graphic file (type png)
-<use figs/device_design.png>
-Package pdftex.def Info: figs/device_design.png  used on input line 73.
-(pdftex.def)             Requested size: 487.8192pt x 284.18901pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 74--74
-[]\OT1/cmr/m/n/10 Figure 1: |Hard-ware de-sign of pro-posed tele-op-er-a-tion d
-e-vice. Left:Whole view. Right:Thrust vec-tor-ing mech-a-nism. The red
- []
-
-
-LaTeX Warning: Reference `sec:intro' on page 1 undefined on input line 78.
-
-
-Overfull \hbox (7.31616pt too wide) in paragraph at lines 93--96
-\OT1/cmr/m/n/12 nate sys-tem of the han-dle, and $\OML/cmm/m/it/12 skew\OT1/cmr
-/m/n/12 (\OML/cmm/b/it/12 p\OT1/cmr/m/n/12 )$ is skew-symmetric ma-trix of $\OM
-L/cmm/b/it/12 p$\OT1/cmr/m/n/12 . The vir-tual thrust $\OML/cmm/b/it/12 f[] \OT
-1/cmr/m/n/12 = [\OML/cmm/b/it/12 f[]\OML/cmm/m/it/12 ; \OML/cmm/b/it/12 f[]\OT1
-/cmr/m/n/12 ][]$ 
- []
-
-
-Overfull \hbox (38.84212pt too wide) in paragraph at lines 93--96
-\OT1/cmr/m/n/12 is cal-cu-lated from the de-sired wrench af-ter re-mov-ing torq
-ue around x-axis $\OML/cmm/b/it/12 W[] \OT1/cmr/m/n/12 = [\OML/cmm/m/it/12 F[];
- F[]; F[]; T[]; T[]\OT1/cmr/m/n/12 ][]$ 
- []
-
-<vch-logo.png, id=50, 71.0655pt x 21.1992pt>
+<vch-logo.png, id=60, 71.0655pt x 21.1992pt>
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 96.
+Package pdftex.def Info: vch-logo.png  used on input line 64.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -643,26 +613,68 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./VCH-logo.png>]
-<figs/control_line_graph.png, id=73, 729.47531pt x 682.04813pt>
+<figs/device_design.png, id=74, 4263.93pt x 2484.28125pt>
+File: figs/device_design.png Graphic file (type png)
+<use figs/device_design.png>
+Package pdftex.def Info: figs/device_design.png  used on input line 83.
+(pdftex.def)             Requested size: 487.8192pt x 284.18901pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--84
+[]\OT1/cmr/m/n/10 Figure 1: |Hard-ware de-sign of pro-posed tele-op-er-a-tion d
+e-vice. Left:Whole view. Right:Thrust vec-tor-ing mech-a-nism. The red
+ []
+
+
+LaTeX Warning: Reference `sec:intro' on page 2 undefined on input line 88.
+
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 103.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[2]
+Overfull \hbox (7.31616pt too wide) in paragraph at lines 103--106
+\OT1/cmr/m/n/12 nate sys-tem of the han-dle, and $\OML/cmm/m/it/12 skew\OT1/cmr
+/m/n/12 (\OML/cmm/b/it/12 p\OT1/cmr/m/n/12 )$ is skew-symmetric ma-trix of $\OM
+L/cmm/b/it/12 p$\OT1/cmr/m/n/12 . The vir-tual thrust $\OML/cmm/b/it/12 f[] \OT
+1/cmr/m/n/12 = [\OML/cmm/b/it/12 f[]\OML/cmm/m/it/12 ; \OML/cmm/b/it/12 f[]\OT1
+/cmr/m/n/12 ][]$ 
+ []
+
+
+Overfull \hbox (38.84212pt too wide) in paragraph at lines 103--106
+\OT1/cmr/m/n/12 is cal-cu-lated from the de-sired wrench af-ter re-mov-ing torq
+ue around x-axis $\OML/cmm/b/it/12 W[] \OT1/cmr/m/n/12 = [\OML/cmm/m/it/12 F[];
+ F[]; F[]; T[]; T[]\OT1/cmr/m/n/12 ][]$ 
+ []
+
+<figs/control_line_graph.png, id=87, 729.47531pt x 682.04813pt>
 File: figs/control_line_graph.png Graphic file (type png)
 <use figs/control_line_graph.png>
-Package pdftex.def Info: figs/control_line_graph.png  used on input line 116.
+Package pdftex.def Info: figs/control_line_graph.png  used on input line 126.
 (pdftex.def)             Requested size: 379.41585pt x 354.73991pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--117
+Underfull \hbox (badness 10000) in paragraph at lines 127--127
 []\OT1/cmr/m/n/10 Figure 2: |Top:Control DoF of the pro-posed de-vice. The blac
 k al-lows shows the ha-dle co-or-di-nate sys-tem fixed on the de-
  []
 
 
-Overfull \hbox (0.42769pt too wide) in paragraph at lines 121--122
+Overfull \hbox (0.42769pt too wide) in paragraph at lines 131--132
 []\OT1/cmr/m/n/12 The al-lo-ca-tion ma-trix from vir-tual thrust and torque aro
 und x-axis to the ac-tual thrust can be ex-pressed 
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 133.
+Package pdftex.def Info: vch-logo.png  used on input line 139.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -672,10 +684,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[2 <./figs/device_design.png>]
+[3 <./figs/device_design.png>]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 153.
+Package pdftex.def Info: vch-logo.png  used on input line 160.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -686,10 +698,71 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[3 <./figs/control_line_graph.png>] (./main.bbl)
+[4 <./figs/control_line_graph.png>]
+Overfull \hbox (0.29713pt too wide) in paragraph at lines 204--209
+\OT1/cmr/m/n/12 gin, i.e., the ini-tial po-si-tion of the op-er-a-tor sys-tem u
+sed for com-mand trans-mis-sion in tele-op-er-a-tion. This 
+ []
+
+
+Overfull \hbox (6.65958pt too wide) in paragraph at lines 204--209
+\OT1/cmr/m/n/12 model is as-sumed to hold in-de-pen-dently for each el-e-ment o
+f the 6-degree-of-freedom wrench. Equa-tion([][]14[][]) 
+ []
+
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 232.
+Package pdftex.def Info: vch-logo.png  used on input line 217.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[5]
+Overfull \hbox (3.49155pt too wide) in paragraph at lines 250--252
+\OT1/cmr/m/n/12 Additionally, the wrench ap-plied by the op-er-a-tor to the de-
+vice can be es-ti-mated from the op-er-a-tor's hand 
+ []
+
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 280.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[6]
+Overfull \hbox (11.8381pt too wide) in paragraph at lines 320--322
+[]\OT1/cmr/m/n/12 To min-i-mize degra-da-tion of con-trol trans-parency, damp-i
+ng is ap-plied per axis. $\OML/cmm/m/it/12 D[] \OT1/cmr/m/n/12 = [](\OML/cmm/m/
+it/12 d[]; [] ; d[]\OT1/cmr/m/n/12 )(\OML/cmm/m/it/12 d[] > 
+ []
+
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 343.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[7] (./main.bbl)
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 404.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -700,41 +773,44 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[4] (./main.aux)
+[8] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 4E64AAFDCD8E07EA2413F45B93492DFD;1596.
+(rerunfilecheck)             Checksum: 6575C216D510442CC5E1F6A370F5D0D4;3006.
  ) 
 Here is how much of TeX's memory you used:
- 15202 strings out of 478287
- 293384 string characters out of 5849289
- 571650 words of memory out of 5000000
- 33179 multiletter control sequences out of 15000+600000
- 477649 words of font info for 56 fonts, out of 8000000 for 9000
+ 15250 strings out of 478287
+ 294045 string characters out of 5849289
+ 573934 words of memory out of 5000000
+ 33188 multiletter control sequences out of 15000+600000
+ 477986 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 86i,16n,93p,335b,773s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (4 pages, 1127710 bytes).
+ 86i,19n,93p,1524b,779s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+mextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm12
+00.pfb>
+Output written on main.pdf (8 pages, 1174465 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 139 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 272 PDF objects out of 1000 (max. 8388607)
+ 215 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 
