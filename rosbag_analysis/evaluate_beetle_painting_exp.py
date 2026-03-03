@@ -12,21 +12,21 @@ import os
 ###########################################################
 #  ユーザー設定
 ###########################################################
-rosbag_path = "/home/kaneko/mthesis/rosbag/beetle_cleaning/fpv/20251222_201757_without_feedback.bag"   # 手入力
-output_dir  = "/home/kaneko/AIS/MSP-Latex-Template/rosbag_analysis/analyzed_images/beetle_painting/20251222_201757_without_feedback"     # 手入力
+rosbag_path = "/home/kaneko/mthesis/rosbag/beetle_cleaning/fpv/20251222_194249_without_energy.bag"   # 手入力
+output_dir  = "/home/kaneko/AIS/MSP-Latex-Template/rosbag_analysis/analyzed_images/beetle_painting/20251222_194249_without_energy"     # 手入力
 use_feedback_flag = False
 use_energy_flag = False
 # lpf_alpha = 0.05
 lpf_alpha_haptics = 0.1
 
-start_time_sec = 61     # 評価開始時間 [s]
-end_time_sec   = 101    # 評価終了時間 [s]
+start_time_sec = 62     # 評価開始時間 [s]
+end_time_sec   = 102    # 評価終了時間 [s]
 
 contact_force_threshold = 0.5   # [N] 接触判定しきい値（Fx）
 qs_epsilon = 0.2 # 準定常帯域の許容幅 [N]（平均値 ± epsilon）
 
-lpf_cutoff_hz = 3.0          # [Hz] 評価用 LPF（操縦者帯域）
-lpf_cutoff_haptics_hz = 3.0  # [Hz] 触覚提示用（必要なら）
+lpf_cutoff_hz = 3.0          # [Hz] 評価用 LPF
+lpf_cutoff_haptics_hz = 3.0  # [Hz] 触覚提示用
 
 # rosbag のファイル名（拡張子除く）
 bag_filename = os.path.splitext(os.path.basename(rosbag_path))[0]
@@ -438,7 +438,7 @@ plt.figure(figsize=(10,6))
 plt.plot(cfs_times, cfs_wrench_torque[:,0], label="Tx")
 plt.plot(cfs_times, cfs_wrench_torque[:,1], label="Ty")
 plt.plot(cfs_times, cfs_wrench_torque[:,2], label="Tz")
-plt.ylim(-0.25,0.10)
+plt.ylim(-0.15,0.10)
 plt.xlabel("Time [s]")
 plt.ylabel("Torque [Nm]")
 plt.legend()
@@ -478,14 +478,17 @@ if use_feedback_flag:
     plt.savefig(os.path.join(output_dir, f"haptics_torque.png"))
 """
 
-fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque, ax_energy) = plt.subplots(
-    5, 1, sharex=True, figsize=(6,18)
+# fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque, ax_energy) = plt.subplots(
+#     5, 1, sharex=True, figsize=(6,18)
+# )
+fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque) = plt.subplots(
+    4, 1, sharex=True, figsize=(6,14)
 )
 
 ax_cfs_force.plot(cfs_times, cfs_wrench_force[:, 0], label="Fx")
 ax_cfs_force.plot(cfs_times, cfs_wrench_force[:, 1], label="Fy")
 ax_cfs_force.plot(cfs_times, cfs_wrench_force[:, 2], label="Fz")
-ax_cfs_force.set_ylim(-4.0, 2.0)
+ax_cfs_force.set_ylim(-6.0, 2.0)
 ax_cfs_force.set_ylabel("Measured Force [N]")
 ax_cfs_force.yaxis.set_label_coords(-0.12, 0.5)
 ax_cfs_force.grid(True)
@@ -495,7 +498,7 @@ if use_feedback_flag:
     ax_haptics_force.plot(haptics_times, -haptics_force[:, 0], label="Fx")
     ax_haptics_force.plot(haptics_times, -haptics_force[:, 1], label="Fy")
     ax_haptics_force.plot(haptics_times, haptics_force[:, 2], label="Fz")
-    ax_haptics_force.set_ylim(-8.0, 3.0)
+    ax_haptics_force.set_ylim(-6.0, 2.0)
     ax_haptics_force.set_ylabel("Feedback Force [N]")
     ax_haptics_force.yaxis.set_label_coords(-0.12, 0.5)
     ax_haptics_force.grid(True)
@@ -504,7 +507,7 @@ else:
     ax_haptics_force.plot(cfs_times, cfs_wrench_force[:, 0], label="Fx")
     ax_haptics_force.plot(cfs_times, cfs_wrench_force[:, 1], label="Fy")
     ax_haptics_force.plot(cfs_times, cfs_wrench_force[:, 2], label="Fz")
-    ax_haptics_force.set_ylim(-4.0, 2.0)
+    ax_haptics_force.set_ylim(-6.0, 2.0)
     ax_haptics_force.set_ylabel("Measured Force [N]")
     ax_haptics_force.yaxis.set_label_coords(-0.12, 0.5)
     ax_haptics_force.grid(True)
@@ -523,7 +526,7 @@ if use_feedback_flag:
     ax_haptics_torque.plot(haptics_times, haptics_torque[:, 0], label="Tx")
     ax_haptics_torque.plot(haptics_times, haptics_torque[:, 1], label="Ty")
     ax_haptics_torque.plot(haptics_times, haptics_torque[:, 2], label="Tz")
-    ax_haptics_torque.set_ylim(-1.2, 1.2)
+    ax_haptics_torque.set_ylim(-0.25, 0.10)
     # ax_haptics_torque.set_xlabel("time [s]")
     ax_haptics_torque.set_ylabel("Feedback Torque [Nm]")
     ax_haptics_torque.yaxis.set_label_coords(-0.12, 0.5)
@@ -540,20 +543,20 @@ else:
     ax_haptics_torque.grid(True)
     ax_haptics_torque.legend()
 
-if use_energy_flag:
-    ax_energy.plot(debug_times, energy, label="Energy")
-    ax_energy.set_xlabel("time [s]")
-    ax_energy.set_ylabel("Energy [J]")
-    ax_energy.yaxis.set_label_coords(-0.12, 0.5)
-    ax_energy.grid(True)
-    ax_energy.legend()
-else:
-    ax_energy.plot(cfs_times, cfs_wrench_torque[:, 0], label="Energy")
-    ax_energy.set_xlabel("time [s]")
-    ax_energy.set_ylabel("Energy [J]")
-    ax_energy.yaxis.set_label_coords(-0.12, 0.5)
-    ax_energy.grid(True)
-    ax_energy.legend()
+# if use_energy_flag:
+#     ax_energy.plot(debug_times, energy, label="Energy")
+#     ax_energy.set_xlabel("time [s]")
+#     ax_energy.set_ylabel("Energy [J]")
+#     ax_energy.yaxis.set_label_coords(-0.12, 0.5)
+#     ax_energy.grid(True)
+#     ax_energy.legend()
+# else:
+#     ax_energy.plot(cfs_times, cfs_wrench_torque[:, 0], label="Energy")
+#     ax_energy.set_xlabel("time [s]")
+#     ax_energy.set_ylabel("Energy [J]")
+#     ax_energy.yaxis.set_label_coords(-0.12, 0.5)
+#     ax_energy.grid(True)
+#     ax_energy.legend()
   
 
 

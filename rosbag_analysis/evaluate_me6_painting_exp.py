@@ -423,14 +423,18 @@ def main():
         plt.savefig(os.path.join(OUTPUT_DIR, f"haptics_torque.png"))
     """
 
-    fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque, ax_energy) = plt.subplots(
-        5, 1, sharex=True, figsize=(6,18)
+    # fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque, ax_energy) = plt.subplots(
+    #     5, 1, sharex=True, figsize=(6,18)
+    # )
+
+    fig, (ax_cfs_force, ax_haptics_force, ax_cfs_torque, ax_haptics_torque) = plt.subplots(
+        4, 1, sharex=True, figsize=(6,14)
     )
 
     ax_cfs_force.plot(cfs_times, cfs_force[:, 0], label="Fx")
     ax_cfs_force.plot(cfs_times, cfs_force[:, 1], label="Fy")
     ax_cfs_force.plot(cfs_times, cfs_force[:, 2], label="Fz")
-    ax_cfs_force.set_ylim(-13.0, 6.0)
+    ax_cfs_force.set_ylim(-11.5, 6.5)
     ax_cfs_force.set_ylabel("Measured Force [N]")
     ax_cfs_force.yaxis.set_label_coords(-0.12, 0.5)
     ax_cfs_force.grid(True)
@@ -440,7 +444,7 @@ def main():
         ax_haptics_force.plot(haptics_times, haptics_force[:, 0], label="Fx")
         ax_haptics_force.plot(haptics_times, haptics_force[:, 1], label="Fy")
         ax_haptics_force.plot(haptics_times, haptics_force[:, 2], label="Fz")
-        ax_haptics_force.set_ylim(-7.0, 3.0)
+        ax_haptics_force.set_ylim(-11.5, 6.5)
         ax_haptics_force.set_ylabel("Feedback Force [N]")
         ax_haptics_force.yaxis.set_label_coords(-0.12, 0.5)
         ax_haptics_force.grid(True)
@@ -449,7 +453,7 @@ def main():
         ax_haptics_force.plot(cfs_times, cfs_force[:, 0], label="Fx")
         ax_haptics_force.plot(cfs_times, cfs_force[:, 1], label="Fy")
         ax_haptics_force.plot(cfs_times, cfs_force[:, 2], label="Fz")
-        ax_haptics_force.set_ylim(-7.0, 3.0)
+        ax_haptics_force.set_ylim(-11.5, 6.5)
         ax_haptics_force.set_ylabel("Measured Force [N]")
         ax_haptics_force.yaxis.set_label_coords(-0.12, 0.5)
         ax_haptics_force.grid(True)
@@ -468,7 +472,7 @@ def main():
         ax_haptics_torque.plot(haptics_times, haptics_torque[:, 0], label="Tx")
         ax_haptics_torque.plot(haptics_times, haptics_torque[:, 1], label="Ty")
         ax_haptics_torque.plot(haptics_times, haptics_torque[:, 2], label="Tz")
-        ax_haptics_torque.set_ylim(-0.55, 0.3)
+        ax_haptics_torque.set_ylim(-1.2, 0.6)
         ax_haptics_torque.set_xlabel("time [s]")
         ax_haptics_torque.set_ylabel("Feedback Torque [Nm]")
         ax_haptics_torque.yaxis.set_label_coords(-0.12, 0.5)
@@ -478,27 +482,27 @@ def main():
         ax_haptics_torque.plot(cfs_times, cfs_torque[:, 0], label="Tx")
         ax_haptics_torque.plot(cfs_times, cfs_torque[:, 1], label="Ty")
         ax_haptics_torque.plot(cfs_times, cfs_torque[:, 2], label="Tz")
-        ax_haptics_torque.set_ylim(-0.55, 0.3)
+        ax_haptics_torque.set_ylim(-1.2, 0.6)
         ax_haptics_torque.set_xlabel("time [s]")
         ax_haptics_torque.set_ylabel("Measured Torque [Nm]")
         ax_haptics_torque.yaxis.set_label_coords(-0.12, 0.5)
         ax_haptics_torque.grid(True)
         ax_haptics_torque.legend()
 
-    if use_energy_flag:
-        ax_energy.plot(debug_times, energy, label="Energy")
-        ax_energy.set_xlabel("time [s]")
-        ax_energy.set_ylabel("Energy [J]")
-        ax_energy.yaxis.set_label_coords(-0.12, 0.5)
-        ax_energy.grid(True)
-        ax_energy.legend()
-    else:
-        ax_energy.plot(cfs_times, cfs_torque[:, 0], label="Energy")
-        ax_energy.set_xlabel("time [s]")
-        ax_energy.set_ylabel("Energy [J]")
-        ax_energy.yaxis.set_label_coords(-0.12, 0.5)
-        ax_energy.grid(True)
-        ax_energy.legend()
+    # if use_energy_flag:
+    #     ax_energy.plot(debug_times, energy, label="Energy")
+    #     ax_energy.set_xlabel("time [s]")
+    #     ax_energy.set_ylabel("Energy [J]")
+    #     ax_energy.yaxis.set_label_coords(-0.12, 0.5)
+    #     ax_energy.grid(True)
+    #     ax_energy.legend()
+    # else:
+    #     ax_energy.plot(cfs_times, cfs_torque[:, 0], label="Energy")
+    #     ax_energy.set_xlabel("time [s]")
+    #     ax_energy.set_ylabel("Energy [J]")
+    #     ax_energy.yaxis.set_label_coords(-0.12, 0.5)
+    #     ax_energy.grid(True)
+    #     ax_energy.legend()
 
     plt.tight_layout()
     plt.savefig(os.path.join(OUTPUT_DIR, "wrench_all_plot.png"))
