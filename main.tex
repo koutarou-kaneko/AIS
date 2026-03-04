@@ -321,7 +321,7 @@ A schematic of the proposed architecture is shown in Fig.~\ref{fig:block_diagram
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/architecture/block_diagram_full_v2}
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/block_diagram_full}
   \caption{Block diagram of the proposed teleoperation architecture.
   Details of the “Operating Command Generator” are described in Sec.~\ref{sec:operating_command_generator}, 
   and details of the “Feedback Wrench Generator” are described in Sec.~\ref{sec:feedback_wrench_generator}.}
@@ -332,7 +332,7 @@ A schematic of the proposed architecture is shown in Fig.~\ref{fig:block_diagram
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/architecture/command_overview}
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/operating_command_generation}
   \caption{Overview of operating command generation.}
   \label{fig:command_overview}
 \end{figure}
@@ -402,12 +402,12 @@ This approach is analogous to velocity-based control using conventional joystick
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/architecture/feedback_overview}
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/feedback_wrench_generation}
   \caption{Overview of feedback wrench generation.}
   \label{fig:feedback_overview}
 \end{figure}
 
-This section describes the method for generating candidate feedback wrenches $\bm{w}_{\text{cand}}$ applied to the device, as illustrated in Fig.~\ref{fig:feedback_overview}.
+This section describes the method for generating candidate feedback wrenches $\bm{w}_{\text{feedback}}$ applied to the device, as illustrated in Fig.~\ref{fig:feedback_overview}.
 
 The target feedback wrench is composed of the following three components:
 \begin{itemize}
@@ -420,7 +420,7 @@ Each feedback component is described in detail below.
 The operator selects which feedback components to activate depending on the operational scenario and required functionality.  
 When multiple feedback components are used simultaneously, their sum is output:
 \begin{equation}
-  \bm{w}_{\text{cand}} = \bm{w}_{\text{ref}} + \bm{w}_{\text{obs}} + \bm{w}_{\text{env}}
+  \bm{w}_{\text{feedback}} = \bm{w}_{\text{ref}} + \bm{w}_{\text{obs}} + \bm{w}_{\text{env}}
 \end{equation}
 
 \subsubsection{Feedback for Origin Recognition During Target Velocity Command Generation}\label{subsec:feedback_in_velmode}
@@ -681,34 +681,34 @@ The following experimental conditions were evaluated:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beetle_obstacle_overview}
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beatle_obstacle_overview}
   \vspace{-10pt}
   \caption{Snapshot of the obstacle avoidance experiment.
   The bottom-left image shows the first-person view from the onboard camera.
   The operator maneuvered the robot based on this view.
   The red lines indicate obstacles, and the robot was guided to the goal position while avoiding them.}
-  \label{fig:beetle_obstacle_overview}
+  \label{fig:beatle_obstacle_overview}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beetle_obstacle_topview}
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beatle_obstacle_topview}
   \vspace{-10pt}
   \caption{Top view of the robot trajectory.
   The blue arrow indicates the direction of motion.}
-  \label{fig:beetle_obstacle_topview}
+  \label{fig:beatle_obstacle_topview}
 \end{figure}
 
-The experimental setup is shown in \ref{fig:beetle_obstacle_overview} and \ref{fig:beetle_obstacle_topview}.  
-The experimental results are presented in \ref{fig:beetle_obstacle_plot} and \ref{tab:beetle_obstacle_trajectory}.
+The experimental setup is shown in \ref{fig:beatle_obstacle_overview} and \ref{fig:beatle_obstacle_topview}.  
+The experimental results are presented in \ref{fig:beatle_obstacle_plot} and \ref{tab:beatle_obstacle_trajectory}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/beatle_obstacle/beetle_obstacle_plot}
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_obstacle/beatle_obstacle_plot}
   \vspace{-10pt}
   \caption{Left: Target and measured robot trajectories. The red line indicates obstacles, and the black dashed line represents the ideal trajectory that maximizes the distance from the wall.
   Right: Feedback wrench presented to the operator during operation.}
-  \label{fig:beetle_obstacle_plot}
+  \label{fig:beatle_obstacle_plot}
 \end{figure}
 
 \begin{table}[H]
@@ -720,11 +720,11 @@ The experimental results are presented in \ref{fig:beetle_obstacle_plot} and \re
     (B) & 0.2035 & 88.91 \\
     (C) & 0.2091 & 33.23 \\ \hline
   \end{tabular}
-  \label{tab:beetle_obstacle_trajectory}
+  \label{tab:beatle_obstacle_trajectory}
 \end{table}
 
-The ideal trajectory shown by the black dashed line in \ref{fig:beetle_obstacle_plot} represents the safest path that maximizes the distance from the obstacle.  
-The coverage rate shown in \ref{tab:beetle_obstacle_trajectory} quantifies the proportion of the ideal trajectory achieved during operation and is defined as follows.
+The ideal trajectory shown by the black dashed line in \ref{fig:beatle_obstacle_plot} represents the safest path that maximizes the distance from the obstacle.  
+The coverage rate shown in \ref{tab:beatle_obstacle_trajectory} quantifies the proportion of the ideal trajectory achieved during operation and is defined as follows.
 
 Let the ideal trajectory be represented by a continuous curve $\bm{P}(s)$ parameterized by arc length $s \in [0, L]$, and let the measured trajectory be $\{\bm{x}_k\}_{k=1}^{n}$.  
 The closest point on the ideal trajectory to each measured point is defined as
@@ -740,17 +740,17 @@ and the coverage rate is calculated as
   C = \frac{s_{\text{max}}}{L}.
 \end{equation}
 
-As indicated by the coverage rates in \ref{tab:beetle_obstacle_trajectory}, conditions (A) and (B) allowed the robot to traverse most of the path, whereas under condition (C), the robot collided with an obstacle midway and the experiment was terminated.
+As indicated by the coverage rates in \ref{tab:beatle_obstacle_trajectory}, conditions (A) and (B) allowed the robot to traverse most of the path, whereas under condition (C), the robot collided with an obstacle midway and the experiment was terminated.
 
 In the velocity-based command generation method described in \ref{subsec:velmode}, the robot’s target velocity is determined based on the displacement from the device origin defined at the start of operation.  
 Under condition (C), without force feedback, the operator could not reliably recognize the device origin.  
 As a result, the robot unintentionally moved in the $-y$ direction and collided with an obstacle.  
 This result demonstrates that force feedback is essential for safe navigation in an effectively unbounded workspace.
 
-Furthermore, the RMSE in \ref{tab:beetle_obstacle_trajectory} is slightly smaller under condition (A) than under condition (B).  
-As shown in \ref{fig:beetle_obstacle_plot}, the trajectory under condition (A) follows the ideal path (black dashed line) with oscillations, whereas under condition (B), noticeable deviations occur near $(x, y) = (0.3, -1.0)$ and during motion in the positive $y$ direction.
+Furthermore, the RMSE in \ref{tab:beatle_obstacle_trajectory} is slightly smaller under condition (A) than under condition (B).  
+As shown in \ref{fig:beatle_obstacle_plot}, the trajectory under condition (A) follows the ideal path (black dashed line) with oscillations, whereas under condition (B), noticeable deviations occur near $(x, y) = (0.3, -1.0)$ and during motion in the positive $y$ direction.
 
-The first-person view provided to the operator has a limited field of view, as shown in the lower-left image of \ref{fig:beetle_obstacle_overview}, making it difficult to perceive lateral distances to obstacles.  
+The first-person view provided to the operator has a limited field of view, as shown in the lower-left image of \ref{fig:beatle_obstacle_overview}, making it difficult to perceive lateral distances to obstacles.  
 Therefore, under condition (A), the operator appears to have relied on the distance-based force feedback described in \ref{subsec:feedback_from_obstacle} to maintain a trajectory close to the ideal path.
 
 However, when the operator attempted to move the robot toward an obstacle, the feedback described in \ref{subsec:feedback_in_velmode} and that described in \ref{subsec:feedback_from_obstacle} were generated in the same direction.  
@@ -783,7 +783,7 @@ The wrench measured by this force/torque sensor is used as the measured wrench i
   \label{fig:wall_overview}
 \end{figure}
 
-\subsection{Experimental Procedure}\label{subsec:beatle_cleaning_procedure}
+\subsection{Experimental Procedure}\label{subsec:beatle_painting_procedure}
 
 A tilted whiteboard, shown in \ref{fig:wall_overview}, was used as the environmental target. 
 The whiteboard has dimensions of \SI{900}{mm} square and is inclined by approximately \SI{15.6}{\degree} from the vertical plane. 
@@ -805,39 +805,39 @@ The experiment was conducted under the following two conditions:
   \item (B) Without haptic feedback provided to the operator
 \end{itemize}
 
-\subsection{Experimental Results and Discussion}\label{subsec:beatle_cleaning_result}
+\subsection{Experimental Results and Discussion}\label{subsec:beatle_painting_result}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beetle_cleaning_overview}
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beatle_painting_overview}
   \vspace{-10pt}
   \caption{Snapshots of the painting experiment using the aerial robot. 
   The image at the lower center shows the view from the camera mounted on the robot, which was used by the operator for control. 
   The red line on the wall surface indicates the target painting path.}
-  \label{fig:beetle_cleaning_overview}
+  \label{fig:beatle_painting_overview}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beetle_cleaning_wallview}
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beatle_painting_wallview}
   \vspace{-10pt}
   \caption{Snapshot of the robot during the experiment. 
   The robot moved in the direction indicated by the blue arrow while performing the painting task.}
-  \label{fig:beetle_cleaning_wallview}
+  \label{fig:beatle_painting_wallview}
 \end{figure}
 
-The experimental setup and procedure are shown in \ref{fig:beetle_cleaning_overview} and \ref{fig:beetle_cleaning_wallview}. 
-The results of the wall painting are presented in \ref{fig:beetle_cleaning_result_wall} and summarized in \ref{tab:beetle_cleaning_result_wall}.
+The experimental setup and procedure are shown in \ref{fig:beatle_painting_overview} and \ref{fig:beatle_painting_wallview}. 
+The results of the wall painting are presented in \ref{fig:beatle_painting_result_wall} and summarized in \ref{tab:beatle_painting_result_wall}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beetle_cleaning_result_wall}
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beatle_painting_result_wall}
   \caption{Images of the wall surface. 
   Top: Wall surface before painting. The area outlined in green indicates the evaluation region. 
   Middle: Wall surface after painting under each experimental condition. 
   Bottom: Binarized image showing the difference before and after painting. 
   The mean lateral distance and angular deviation were calculated from this binarized image.}
-\label{fig:beetle_cleaning_result_wall}
+\label{fig:beatle_painting_result_wall}
 \end{figure}
 
 \begin{table}[H]
@@ -848,10 +848,10 @@ The results of the wall painting are presented in \ref{fig:beetle_cleaning_resul
     (A) & 51.16 & 0.86 & 14.10 \\
     (B) & 66.22 & 1.58 & 15.26 \\ \hline
   \end{tabular}
-  \label{tab:beetle_cleaning_result_wall}
+  \label{tab:beatle_painting_result_wall}
 \end{table}
 
-The evaluation metrics shown in \ref{tab:beetle_cleaning_result_wall} were computed from the binarized images presented in the lower section of \ref{fig:beetle_cleaning_result_wall}.
+The evaluation metrics shown in \ref{tab:beatle_painting_result_wall} were computed from the binarized images presented in the lower section of \ref{fig:beatle_painting_result_wall}.
 
 The mean lateral distance is defined as the average of the shortest distances between each pixel in the painted region and each pixel belonging to the red guide line. 
 This metric indicates the proximity of the painting trajectory to the guide line; a smaller value corresponds to closer alignment.
@@ -862,17 +862,17 @@ This metric evaluates the global alignment of the painting trajectory with the i
 The standard deviation (STD) of the local angular deviation is calculated by dividing the evaluation region into five sections perpendicular to the guide line, computing the angular deviation within each section, and then calculating the standard deviation of these values. 
 This metric represents the degree of local undulation in the painting trajectory; a smaller value indicates smoother and more uniform motion.
 
-The wrench measured at the robot’s end-effector during the experiment and the wrench fed back to the operator are shown in \ref{fig:beetle_cleaning_result_plot}.
+The wrench measured at the robot’s end-effector during the experiment and the wrench fed back to the operator are shown in \ref{fig:beatle_painting_result_plot}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beetle_cleaning_result_plot}
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beatle_painting_result_plot}
   \caption{Time histories of the wrench during the experiment. 
   From top to bottom: measured force at the robot, feedback force to the operator, measured torque at the robot, and feedback torque to the operator.}
-  \label{fig:beetle_cleaning_result_plot}
+  \label{fig:beatle_painting_result_plot}
 \end{figure}
 
-As shown in \ref{fig:beetle_cleaning_result_wall} and \ref{tab:beetle_cleaning_result_wall}, condition (A) achieved more stable painting performance than condition (B). 
+As shown in \ref{fig:beatle_painting_result_wall} and \ref{tab:beatle_painting_result_wall}, condition (A) achieved more stable painting performance than condition (B). 
 In condition (B), the brush intermittently detached from the wall surface during painting, resulting in discontinuities in the painted trajectory. 
 Consistently, the measured contact force $F_x$ in the normal direction intermittently approached zero under condition (B). 
 This behavior is attributed to the difficulty of perceiving the contact state of the robot’s end-effector using only the visual feedback from the onboard camera.
@@ -886,7 +886,7 @@ These results indicate that the proposed haptic feedback system contributed to s
 \section{Wall Painting Experiment Using a Base-Fixed Multi-Link Robot}
 
 This section describes a wall painting experiment conducted using a base-fixed multi-link robot (robotic arm). 
-The experimental procedure follows the same steps as described in \ref{subsec:beatle_cleaning_procedure}.
+The experimental procedure follows the same steps as described in \ref{subsec:beatle_painting_procedure}.
 
 \subsection{Specifications of the Operated Robot}
 
@@ -924,26 +924,26 @@ These joint angles are computed via inverse kinematics on the Ground PC, which t
 
 \subsection{Experimental Results and Discussion}
 
-The experimental setup is shown in \ref{fig:me6_cleaning_overview} and \ref{fig:me6_cleaning_wallview}. 
-The experimental results are presented in \ref{fig:me6_cleaning_result_wall}, \ref{tab:me6_cleaning_result_wall}, and \ref{fig:me6_cleaning_result_plot}.
+The experimental setup is shown in \ref{fig:me6_painting_overview} and \ref{fig:me6_painting_wallview}. 
+The experimental results are presented in \ref{fig:me6_painting_result_wall}, \ref{tab:me6_painting_result_wall}, and \ref{fig:me6_painting_result_plot}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_overview}
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_painting_overview}
   \vspace{-10pt}
   \caption{Snapshot of the painting experiment using the robotic arm.
   The image at the lower center shows the view from the camera mounted on the robot, which was used by the operator for control.
   The red line on the wall surface indicates the target painting path.}
-  \label{fig:me6_cleaning_overview}
+  \label{fig:me6_painting_overview}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_wallview}
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_painting_wallview}
   \vspace{-10pt}
   \caption{Snapshot of the robot during the experiment.
   The robot moved in the direction indicated by the blue arrow while performing the painting task.}
-  \label{fig:me6_cleaning_wallview}
+  \label{fig:me6_painting_wallview}
 \end{figure}
 
 \begin{table}[H]
@@ -954,36 +954,36 @@ The experimental results are presented in \ref{fig:me6_cleaning_result_wall}, \r
     (A) & 65.91 & 1.90 & 5.63 \\
     (B) & 62.80 & 0.61 & 11.51 \\ \hline
   \end{tabular}
-  \label{tab:me6_cleaning_result_wall}
+  \label{tab:me6_painting_result_wall}
 \end{table}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_result_wall}
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_painting_result_wall}
   \caption{Images of the wall surface.
   Top: Wall surface before painting. The area outlined in green indicates the evaluation region.
   Middle: Wall surface after painting under each experimental condition.
   Bottom: Binarized image showing the difference before and after painting.
   The mean lateral distance and angular deviation were calculated from this binarized image.}
-  \label{fig:me6_cleaning_result_wall}
+  \label{fig:me6_painting_result_wall}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_result_plot}
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_painting_result_plot}
   \caption{Time histories of the wrench during the experiment.
   From top to bottom: measured force at the robot, feedback force to the operator, measured torque at the robot, and feedback torque to the operator.}
-  \label{fig:me6_cleaning_result_plot}
+  \label{fig:me6_painting_result_plot}
 \end{figure}
 
-Each evaluation metric is defined in the same manner as described in \ref{subsec:beatle_cleaning_procedure}.
+Each evaluation metric is defined in the same manner as described in \ref{subsec:beatle_painting_procedure}.
 
-According to the results in \ref{tab:me6_cleaning_result_wall}, the mean lateral distance is comparable between conditions (A) and (B). 
+According to the results in \ref{tab:me6_painting_result_wall}, the mean lateral distance is comparable between conditions (A) and (B). 
 The angular deviation is larger in condition (A) than in condition (B), whereas the standard deviation of the local angular deviation is smaller in condition (A) than in condition (B). 
 These results indicate that although condition (A) exhibits lower global tracking accuracy relative to condition (B), the painting trajectory under condition (A) is locally more stable. 
 This suggests that the proposed haptic feedback method contributes to stabilizing remote contact operations even in a base-fixed robotic system.
 
-However, \ref{fig:me6_cleaning_result_plot} shows multiple instances of abrupt wrench variations in both conditions (A) and (B). 
+However, \ref{fig:me6_painting_result_plot} shows multiple instances of abrupt wrench variations in both conditions (A) and (B). 
 These abrupt changes are attributed to the time delay between the operator’s input motion and the moment when the robot’s end-effector reaches the commanded position. 
 Due to this delay, there is also a lag between the occurrence of the reaction force at the wall surface and the moment when the corresponding wrench is fed back to the operator. 
 As a result, a sudden large force can be generated at the end-effector, and the delayed feedback force may push the operator’s hand backward, thereby destabilizing the contact.

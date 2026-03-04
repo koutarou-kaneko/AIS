@@ -14,7 +14,7 @@ import os
 ###########################################################
 rosbag_path = "/home/kaneko/mthesis/rosbag/beetle_cleaning/fpv/20251222_194249_without_energy.bag"   # 手入力
 output_dir  = "/home/kaneko/AIS/MSP-Latex-Template/rosbag_analysis/analyzed_images/beetle_painting/20251222_194249_without_energy"     # 手入力
-use_feedback_flag = False
+use_feedback_flag = True
 use_energy_flag = False
 # lpf_alpha = 0.05
 lpf_alpha_haptics = 0.1
