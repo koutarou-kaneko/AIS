@@ -13,6 +13,7 @@
 
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{bm}
 \usepackage{here}
 \usepackage{multicol}
@@ -20,7 +21,6 @@
 \usepackage[noadjust]{cite}
 \usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
 \usepackage{hypernat}
-
 
 \RaggedRight
 

@@ -57,312 +57,945 @@ Address
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-In recent years, efforts have advanced to use robots to replace human workers in hazardous environments such as chemical plants and disaster sites. Utilizing robots enables enhanced worker safety while improving operational efficiency and continuity. The ideal scenario for task replacement involves robots performing operations completely autonomously, achieving unmanned operation. Research on robotic autonomous control has made remarkable progress. However, in real-world scenarios with unknown operational environments and numerous disturbances, fully replacing humans' advanced cognitive abilities and flexible judgment capabilities remains unachieved. Therefore, remote operation, which incorporates humans into the control loop, is necessary. When performing tasks via remote operation, feedback information enabling the operator to accurately perceive the remote environment is crucial. Feedback information is diverse, including visual and auditory data. However, for manipulations involving contact, haptic feedback that directly conveys force is particularly useful. It is known that enabling operators to directly perceive the forces exerted by robots in the remote environment contributes to improved task execution precision and safety, as well as reduced cognitive load on the operator. Indeed, in medical robots and industrial robots requiring precision manipulation, the introduction of haptic feedback has been reported to increase task success rates and improve operability.
-To implement haptic feedback, a control device equipped with actuators is necessary. Commonly used haptic devices feature a multi-jointed structure mounted on a fixed base. These transmit force to the operator via motors installed at the joints. While such devices can transmit all six degrees of force and torque (wrench), challenges include hindering the operator's smooth hand movements, having a limited workspace, and low portability. To address these issues, thrust-based angled haptics devices are being researched. For example, Heo et al. achieved representation of three degrees of freedom of force in the translational direction by placing propellers on each face of a cuboid device. Sasaki et al. achieved presentation of one degree of freedom of translational force and two-dimensional rotational torque by attaching quadrotors to both ends of a long rod. However, these devices have limited degrees of freedom for force and torque presentation and cannot represent all wrenches applied to a robot's end-effector at a remote location. Therefore, this study proposes a novel anground haptics device capable of independently presenting all six degrees of wrench independently using a thrust deflection mechanism. The proposed device is detailed in Chapter XXX.
-In remote manipulation, where the operator physically interacts with the external environment through the robot, achieving both stability and operational transparency is a critical challenge. As a method to realize this balance, Ferraguti et al. proposed the energy tank approach. This method introduces a virtual energy reservoir within the system. By constraining control inputs based on the energy stored there, it enables flexible force control while maintaining passivity, leading to numerous applied research developments. However, conventional energy tank methods primarily target energy flows within the robot or communication channels. In actual remote operation, changes in the rigidity and viscosity of the operator's hand and arm significantly impact the overall energy exchange. Therefore, it is crucial to model the operator as a single dynamic system, estimate its characteristics, and incorporate them. Shin et al. and Buzzi et al. estimated operator arm impedance using least squares methods. Furthermore, Sheng et al. reported a framework for surgical robots combining RLS-based hand stiffness estimation with energy tank control. These represent important attempts aiming to integrate human model estimation with passivity assurance. This study advances these methods by proposing a teleoperation architecture that integrates online estimation of operator impedance with passivity assurance based on energy tanks. Details of the proposed architecture are described in Chapter XXX.
-The contributions of this study are summarized as follows:
-\begin{itemize}
-\item We propose an angled remote control device that can independently present all six degrees of freedom to the operator using a thrust deflection mechanism.
-\item We propose a remote control architecture integrating online estimation of operator impedance with passivity assurance based on an energy tank.
-\item XXX Experiment
-\end{itemize}
-To the best of our knowledge, this is the first device using thrust to provide all six degrees of freedom of a wrench in an angled-ground configuration.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teleoperation Device}\label{sec:teleop_device}
 
-\subsection{Design of Device}
-The teleoperation device proposed in this research enables operators to perform tasks through remote robots easily.
-Most tasks performed by humans require the use of some kind of tool.
-Humans interact with the external environment through the handles of these tools and obtain information about the reaction forces.
-Therefore, when performing tasks remotely, it is most intuitive to grip and operate the device as if the robot's tools were physically present in the operator's hands.
+\subsection{Design of the Remote Manipulation Device}\label{sec:device_hardware}
+This section describes the design methodology of the proposed remote manipulation device, which achieves both independent presentation of a six-degree-of-freedom (6-DoF) wrench and compatibility with an ungrounded configuration. % as discussed in \secref{sec:related_works_device}%
 
-\begin{figure}[tb]
-        \centering
-        \includegraphics[width=0.9\columnwidth]{figs/device_design}
-        \caption{Hardware design of proposed teleoperation device. Left:Whole view. Right:Thrust vectoring mechanism. The red arrows mean the thrust, and blue arrows is the rotational direction.}
-        \label{fig:device_design}
+\subsubsection{Required Elements for Remote Manipulation Devices}
+
+The remote manipulation device proposed in this study enables an operator to perform contact tasks through a robot located at a distance. 
+Many contact tasks executed by humans involve grasping and manipulating tools. 
+The operator holds the handle of a tool, manipulates it, and receives reaction forces from the target object through the handle. 
+In such tasks, the human and the work object interact via the handle.
+
+To maximize intuitiveness in robotic teleoperation during contact tasks, both motion input and force feedback equivalent to directly grasping a tool are required. 
+Therefore, the teleoperation device should replicate the state of a tool handle. 
+A tool handle is characterized by (i) the presence of a longitudinal axis suitable for grasping and (ii) the absence of fixation to any object other than the human hand. 
+% The latter characteristic corresponds to the ungrounded configuration discussed in \secref{sec:related_works_device}. 
+Accordingly, the proposed device must satisfy these two characteristics.
+
+To realize this concept, the device must generate a wrench without being fixed to the external environment. 
+Methods for wrench generation in an ungrounded manner include inertial forces, electromagnetic forces, and thrust. 
+Devices utilizing inertial forces include the use of flywheel counter-torque generated by rotation \cite{itorqu} and the use of mass transfer mechanisms \cite{shifty}. 
+However, these approaches are limited to presenting forces or torques in only one or two dimensions. 
+It is unclear whether they can independently present all six components of a wrench. 
+
+Electromagnetic force is governed by the inverse square law with respect to distance, which makes it difficult to realize a fully ungrounded configuration. 
+In contrast, thrust can generate force in an ungrounded manner using relatively simple mechanisms such as high-speed gas jets or rotating propellers. 
+Furthermore, in the field of aerial robotics, methods for independently generating six-dimensional wrenches using thrust have been well established. 
+Therefore, the use of thrust is considered appropriate for achieving the objective of this study.
+
+In typical human contact tasks, reaction forces applied to the fingertips range from several newtons to more than ten newtons. 
+Rotating propellers are commonly used to generate forces of this magnitude at the scale of handheld tools (approximately 1\,m). 
+When installing propellers on a handheld device, preventing contact between the operator’s body and the propellers is critically important for safety. 
+Therefore, the propellers must be enclosed.
+
+This study aims to independently generate all six components of a wrench. 
+To achieve independent 6-DoF wrench generation using thrust, at least six control inputs are required. 
+Two general thrust configurations are commonly adopted: (i) arranging six or more tilted rotors, or (ii) deflecting the thrust direction using additional actuators. 
+The former has a simpler structure but is inefficient in generating thrust in the gravitational direction to compensate for the device’s weight. 
+The latter requires a more complex mechanism but allows optimal thrust direction, resulting in higher thrust efficiency. 
+Since contact tasks often require sustained operation, extending operational duration is essential. 
+Improving thrust efficiency is therefore critical, and the thrust deflection mechanism is adopted in this study.
+
+\subsubsection{Airframe Design of the Remote Manipulation Device}\label{subsec:device_design}
+
+An overview of the proposed device that satisfies the above requirements is shown in \ref{fig:device_design}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\columnwidth]{figs/device/device_overview}
+  \caption{Overview of the proposed device design}
+  \label{fig:device_design}
 \end{figure}
 
-As mentioned in Sec. \ref{sec:intro}, in teleoperation using robots, the device must be capable of floating and independently providing 6-dimensional wrench.
-To achieve these functions, we use thrust and a thrust vectoring mechanism.
-The thrust vectoring mechanism is a modified version of the one proposed by Zhao et al \cite{DRAGON}.
-As shown in the right of Fig. \ref{fig:device_design}, this thrust vectoring mechanism can rotate in 2 directions.
-By attaching 2 rotors that generate thrust at both ends, it has a total of 4-DoF.
-By attaching this module to both ends of a long rod modeled like a tool, the device as a whole can obtain 8-DoF for control input.
-Since this is larger than the dimension 6 of the wrench we want to present, it allows us to present all wrenches with redundancy.
+The main body of the device consists of an elongated rod that mimics a tool handle. 
+A thrust deflection mechanism is installed at each end of the rod, as shown on the right side of \ref{fig:device_design}. 
+This mechanism is a modification of the one proposed by Zhao et al.~\cite{DRAGON}. 
 
-\subsection{Control of Device}
+An electric ducted fan (EDF) is mounted at each end of the deflection mechanism, as shown at the bottom of \ref{fig:device_design}. 
+The duct structure physically prevents contact between the operator’s body and the propeller. 
+In addition, the duct provides a rectifying effect that improves thrust efficiency, thereby contributing to longer operational time.
 
-All of the following is considered in a coordinate system fixed to the device.
-The DoF of control of this device are as shown on the top side of Fig. \ref{fig:control_line_graph}, but consider a virtual thrust as shown on the bottom side of Fig. \ref{fig:control_line_graph}.
-The allocation matrix from virtual thrust to desired wrench can be expressed as 
-\begin{equation}
-        Q_1 = \left( \begin{array}{cc} I_3 & I_3 \\ skew(\bm{p}_{f_{{\text{v}}1}}) & skew(\bm{p}_{f_{{\text{v}}2}}) \end{array} \right) ,
-\end{equation}
-where $I_3 \in R^{3\times3}$ is identity matrix, $\bm{p}_{f_{{\text{v}}i}}$ is position vector of the virtual thrust $\bm{f}_{\text{v}i}$ point in the coordinate system of the handle, and $skew(\bm{p})$ is skew-symmetric matrix of $\bm{p}$.
-The virtual thrust $\bm{f}_{\text{v}} = [\bm{f}_{\text{v}1}, \bm{f}_{\text{v}2}]^T$ is calculated from the desired wrench after removing torque around x-axis $\bm{W}_{\text{des}} = [F_{\text{des}x}, F_{\text{des}y}, F_{\text{des}z}, T_{\text{des}y}, T_{\text{des}z}]^T$ as follows.
-\begin{equation}
-        \bm{f}_{\text{v}} = Q_1^\# (\bm{W}_{\text{des}} + \bm{g}) ,
-\end{equation}
-where $\bm{g} = [0, 0, Mg, 0, 0]^T$ is the gravity term, which is the product of the mass of the device $M$ and the gravitational acceleration.
-And $Q_1^\# \in R^{6\times5}$ is the pseudo-inverse of $Q_1$ with excluding the 4th row corresponding to torque around the x-axis.
-The vectoring angles is calculated as follows:
-\begin{equation}
-        \theta_i = \arctan\left(- \frac{f_{\text{v}iy}}{f_{\text{v}iz}} \right) ,
-\end{equation}
-\begin{equation}
-        \phi_i = \arctan\left( \frac{f_{\text{v}ix}}{-f_{\text{v}iy} \cdot \sin(\theta_i) + f_{\text{v}iz} \cdot \cos(\theta_i)} \right) .
-\end{equation}
-When moving the vectoring mechanism, the following counter torque occurs around the x-axis.
-\begin{equation}
-        \tau_{\text{counter}} = \sum I_i \ddot{\theta_i} ,
-\end{equation}
-where $I_i$ is the ineria of the vectoring module around x-axis.
+Each deflection mechanism has two rotational degrees of freedom orthogonal to the longitudinal axis of the device. 
+The EDFs at both ends can independently control their thrust magnitudes. 
+Therefore, each thrust deflection module has four control degrees of freedom: two rotational and two thrust-related. 
+Since two such modules are installed, the entire device has eight control degrees of freedom. 
+Because this exceeds the required six degrees of freedom, the device can redundantly and independently present a six-dimensional wrench.
 
-\begin{figure}[tb]
-        \centering
-        \includegraphics[width=0.7\columnwidth]{figs/control_line_graph}
-        \caption{Top:Control DoF of the proposed device. The black allows shows the hadle coordinate system fixed on the device. Bottom:Virtual thrust considered on a control model.}
-        \label{fig:control_line_graph}
+\subsection{Control of the Remote Manipulation Device}\label{sec:device_control}
+
+This section describes the method for determining each control input to realize a desired wrench with the proposed device. The following variables are defined:
+
+\begin{itemize}
+  \item $\{W\}$ : reference coordinate system  
+  \item $\{C\}$ : handle coordinate system  
+  \item $^{\{W\}}R_{\{C\}}$ : rotation matrix from the reference coordinate system to the handle coordinate system  
+  \item $^{\{C\}}\bm{f}$ : resultant force of the rotor thrusts expressed in the handle coordinate system  
+  \item $^{\{C\}}\bm{\tau}$ : resultant torque of the rotor thrusts expressed in the handle coordinate system  
+  \item $\lambda_i$ : thrust generated by the $i$-th rotor  
+  \item $^{\{C\}}\bm{p}_i$ : position vector of the $i$-th rotor expressed in the handle coordinate system  
+  \item $\theta_i$ : deflection angle of the $i$-th mechanism about the $x$-axis of the handle coordinate system  
+  \item $\phi_i$ : deflection angle of the $i$-th mechanism about the $y$-axis of the handle coordinate system  
+\end{itemize}
+
+As described above, the proposed device has eight control degrees of freedom, as shown in the upper part of \ref{fig:control_line_graph}. 
+A system including thrust deflection is inherently nonlinear. As proposed in \cite{nishio}, both thrust magnitude and deflection angles can be determined by solving a nonlinear optimization problem. 
+However, solving such nonlinear optimization problems is computationally expensive and significantly increases the control cycle time when using compact onboard computers.
+
+To address this issue, Kamel et al.~\cite{kamel} proposed a linearization method for thrust vectoring under the assumption that the deflection angle changes sufficiently rapidly and that the thrust effect during angle transitions can be neglected. 
+This study adopts this linearization approach to determine both thrust magnitudes and deflection angles. 
+In addition, the counter-torque generated by rotor rotation is sufficiently small compared with the torque generated by thrust and is therefore neglected.
+
+\subsubsection{Determination of Thrust Angles Using Virtual Thrust Allocation}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\columnwidth]{figs/device/control_line_graph_v3}
+  \caption{Top: Control degrees of freedom of the proposed device. The black lines indicate the handle coordinate system fixed to the device. Bottom: Virtual thrust model used for control.}
+  \label{fig:control_line_graph}
 \end{figure}
 
-The allocation matrix from virtual thrust and torque around x-axis to the actual thrust can be expressed as
-\begin{equation}
-        Q_2 = \left( \begin{array}{cccc} 1 & 0 & 1 & 0 \\ 0 & 1 & 0 & 1 \\ d_1\cos\psi_1 & -d_2\cos\psi_2 & d_3\cos\psi_1 & -d_4\cos\psi_2 \end{array} \right) ,
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.90\columnwidth]{figs/device/thrust_image}
+  \caption{Left: Thrust vector represented by deflection angles. Right: Decomposition into three-dimensional virtual translational thrust components.}
+  \label{fig:thrust_image}
+\end{figure}
+
+Each thrust deflection module has four control inputs (two thrust magnitudes and two rotational angles), and the entire device has eight control degrees of freedom including the rotations shown in the upper part of \ref{fig:control_line_graph}. 
+
+Assuming equal thrust on the left and right sides of each module ($\lambda_1 = \lambda_2$, $\lambda_3 = \lambda_4$), the reachable space of the resultant thrust vector forms a sphere centered at the module’s rotation center, as shown on the left side of \ref{fig:thrust_image}. 
+This polar-coordinate representation introduces nonlinearity and increases computational cost. 
+Therefore, as shown on the right side of \ref{fig:thrust_image}, the reachable thrust space is decomposed into orthogonal components of a three-dimensional virtual translational thrust. 
+With this treatment, the system including the deflection angles can be handled as a linear system.
+
+By introducing the virtual thrust $\bm{\lambda}_{\mathrm{v}} = \{\bm{\lambda}_{\mathrm{v}1}, \bm{\lambda}_{\mathrm{v}2}\}$, the control inputs are reduced from eight dimensions to six translational degrees of freedom, as shown in the lower part of \ref{fig:control_line_graph}. 
+The reduction of two degrees of freedom results from the constraint of equal left–right thrust within each module. 
+Under this assumption, torque about the $x$-axis of the handle coordinate system $\{C\}$ cannot be generated. 
+The treatment of this constraint is discussed in the next subsection.
+
+The resultant force and torque generated by the virtual thrust in the handle coordinate system are expressed as
+\begin{equation}\label{eq:v_force_total}
+  ^{\{C\}}\bm{f} = \sum_{i=1}^{2} \bm{\lambda}_{\mathrm{v}i},
 \end{equation}
-where $d_1, d_2, d_3, d_4$ is the distance from each rotor to the longitudinal axis of the device.
-Then, the actual thrust $\bm{f} = [f_1, f_2, f_3, f_4]^T$ is calculated as follows:
-\begin{equation}
-        \bm{f} = Q_2^\# \begin{bmatrix} |\bm{f}_{\text{v}1}| \\ |\bm{f}_{\text{v}2}| \\ T_{\text{des}x} + \tau_{\text{counter}} \end{bmatrix} ,
+\begin{equation}\label{eq:v_torque_total}
+  ^{\{C\}}\bm{\tau} = \sum_{i=1}^{2} \bm{\lambda}_{\mathrm{v}i} \times ^{\{C\}}\bm{p}_{\mathrm{v}i}.
 \end{equation}
-where $Q_2^\# \in R^{4\times3}$ is the pseuso-inverse of $Q_2$.
-Since the range of force that can be exerted by the rotor is limited, the solution obtained here is not always feasible.
-If the solution is outside the feasible range, substitute the closest feasible value and recalculate the solution.
+
+Combining these equations,
+\begin{equation}
+  ^{\{C\}}\bm{w}
+  =
+  \begin{pmatrix}
+  ^{\{C\}}\bm{f} \\
+  ^{\{C\}}\bm{\tau}
+  \end{pmatrix}
+  =
+  Q_1 \bm{\lambda}_{\mathrm{v}},
+\end{equation}
+where
+\begin{equation}
+  Q_1 =
+  \begin{pmatrix}
+  E_3 & E_3 \\
+  \mathrm{skew}(\bm{p}_{\mathrm{v}1}) & \mathrm{skew}(\bm{p}_{\mathrm{v}2})
+  \end{pmatrix}
+  \in \mathbb{R}^{6 \times 6}.
+\end{equation}
+Here, $E_3 \in \mathbb{R}^{3 \times 3}$ is the identity matrix, and $\mathrm{skew}(\bm{p})$ denotes the skew-symmetric matrix of $\bm{p}$:
+\begin{equation}
+  \mathrm{skew}(\bm{p}) =
+  \begin{pmatrix}
+  0 & -p_z & p_y \\
+  p_z & 0 & -p_x \\
+  -p_y & p_x & 0
+  \end{pmatrix}.
+\end{equation}
+In this virtual thrust configuration, torque about the $x$-axis of $\{C\}$ cannot be generated, and the fourth row of $Q_1$ consists of zeros.
+
+Given the desired wrench $\bm{w}_{\mathrm{des}}$ in the reference coordinate system, the virtual thrust is determined as
+\begin{equation}
+  \bm{\lambda}_{\mathrm{v}}
+  =
+  Q_1^{\#}
+  \, ^{\{W\}}R_{\{C\}}
+  \left(
+  \bm{w}_{\mathrm{des}} + \bm{g}
+  \right),
+\end{equation}
+where $\bm{g} = (0,\,0,\,Mg,\,0,\,0,\,0)^\top$ is the gravitational wrench due to the device’s weight, and $Q_1^{\#}$ denotes the pseudoinverse of $Q_1$.
+
+The deflection angles are then determined as
+\begin{equation}
+  \theta_i = \tan^{-1}\!\left( -\frac{\lambda_{\mathrm{v}iy}}{\lambda_{\mathrm{v}iz}} \right),
+\end{equation}
+\begin{equation}
+  \phi_i = \tan^{-1}\!\left(
+  \frac{\lambda_{\mathrm{v}ix}}
+  {-\lambda_{\mathrm{v}iy}\sin\theta_i + \lambda_{\mathrm{v}iz}\cos\theta_i}
+  \right).
+\end{equation}
+
+\subsubsection{Determination of Thrust Magnitudes}
+
+The relationship between the virtual thrust magnitudes and the actual rotor thrusts $\bm{\lambda} = \{\lambda_1, \lambda_2, \lambda_3, \lambda_4\}$ is given by
+\begin{equation}\label{eq:thrust_sum_v1}
+  \lvert \bm{\lambda}_{\mathrm{v}1} \rvert = \lambda_1 + \lambda_2,
+\end{equation}
+\begin{equation}\label{eq:thrust_sum_v2}
+  \lvert \bm{\lambda}_{\mathrm{v}2} \rvert = \lambda_3 + \lambda_4.
+\end{equation}
+
+Although torque about the $x$-axis cannot be generated in the virtual thrust model, it can be generated in the actual thrust configuration through the thrust difference between the left and right rotors. 
+The torque about the $x$-axis is expressed as
+\begin{equation}\label{eq:x_torque}
+  \tau_x
+  =
+  \sum_{k=1}^{2}
+  \left(
+  d_{2k-1}\lambda_{2k-1}
+  -
+  d_{2k}\lambda_{2k}
+  \right)
+  \cos\phi_k,
+\end{equation}
+where $d_i$ denotes the perpendicular distance of each rotor from the $x$-axis.
+
+Combining \eqref{eq:thrust_sum_v1}–\eqref{eq:x_torque},
+\begin{equation}
+  \begin{pmatrix}
+  \lvert \bm{\lambda}_{\mathrm{v}1} \rvert \\
+  \lvert \bm{\lambda}_{\mathrm{v}2} \rvert \\
+  \tau_x
+  \end{pmatrix}
+  =
+  Q_2 \bm{\lambda},
+\end{equation}
+where
+\begin{equation}
+  Q_2 =
+  \begin{pmatrix}
+  1 & 0 & 1 & 0 \\
+  0 & 1 & 0 & 1 \\
+  d_1\cos\phi_1 & -d_2\cos\phi_1 & d_3\cos\phi_2 & -d_4\cos\phi_2
+  \end{pmatrix}
+  \in \mathbb{R}^{3 \times 4}
+\end{equation}
+is the thrust allocation matrix.
+
+The target torque about the $x$-axis is defined as
+\begin{equation}
+  \tau_x = \tau_{\mathrm{des}x} + \tau_{\mathrm{counter}},
+\end{equation}
+where $\tau_{\mathrm{counter}}$ is the counter-torque generated by actuation of the deflection mechanism about the $x$-axis. 
+Using the moment of inertia $I_{\mathrm{module}}$ of the thrust deflection module about the $x$-axis,
+\begin{equation}
+  \tau_{\mathrm{counter}} = \sum_{i=1}^{2} I_{\mathrm{module}} \ddot{\theta}_i.
+\end{equation}
+
+Finally, the thrust magnitudes of each rotor are determined as
+\begin{equation}
+  \bm{\lambda}
+  =
+  Q_2^{\#}
+  \begin{pmatrix}
+  \lvert \bm{\lambda}_{\mathrm{v}1} \rvert \\
+  \lvert \bm{\lambda}_{\mathrm{v}2} \rvert \\
+  \tau_{\mathrm{des}x} + \tau_{\mathrm{counter}}
+  \end{pmatrix},
+\end{equation}
+where $Q_2^{\#}$ denotes the pseudoinverse of $Q_2$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teleoperation Architecture}
-This chapter describes a teleoperation system for performing tasks using a remote robot.
-The system consists of generating position and attitude commands from the operator to the robot, and generating wrench feedback from the robot to the operator.
 
-\subsection{Position and Atiitude Operating Command}
-Two main functions are required to control the position and attitude of a remote robot.
-One is long-distance movement, which is the function of quickly moving within the wide area.
-The other is precise movement, which is a function for performing detailed tasks accurately.
-To achieve both of these functions, we developed two operating modes: Position Mapping Mode and Velocity Mapping Mode.
+This chapter describes the proposed remote control architecture, which consists of three main components: generation of control commands for the robot, generation of feedback wrenches based on the wrenches applied to the robot, and intervention using the energy tank method.  
 
-\subsubsection{Position Mappng Mode}
-We propose Position Mapping Mode for precise tasks.
-In this mode, the target position $\bm{p}_{\text{target}}(t)$ and quaternion $\bm{q}_{\text{target}}(t)$ is generated as follows:
-\begin{equation}
-        \bm{p}_{\text{target}}(t) = \bm{p}_{\text{robot}}(t_0) + \bm{k}_1 \odot (\bm{p}_{\text{device}}(t) - \bm{p}_{\text{device}}(t_0)) ,
-\end{equation}
-\begin{equation}
-        \bm{q}_{\text{target}}(t) = \bm{q}_{\text{device}}(t) ,
-\end{equation}
-where $t_0$ refers to the moment of entering this mode, and $\odot$ is the Hadamard product, which is the product of each element of the vector.
-And $\bm{k}_1$ is a scaling parameter that can be adjusted as appropriate depending on the task type.
+First, the method for generating operating commands for the robot is described. Next, the method for generating the feedback wrench is presented.  
+A schematic of the proposed architecture is shown in Fig.~\ref{fig:block_diagram}.
 
-\subsubsection{Velocity Mappng Mode}
-On the other hand, we propose Velocity Mapping Mode for long-distance movement.
-In this mode, the target velocity $\dot{\bm{p}}_{\text{target}}(t)$ and angular velocity $\dot{\bm{q}}_{\text{target}}(i)$ is generated as follows:
-\begin{equation}
-        \dot{\bm{p}}_{\text{target}}(t) = \bm{k}_2 \odot (\bm{p}_{\text{device}}(t) - \bm{p}_{\text{device}}(t_0)) ,
-\end{equation}
-\begin{equation}
-        \dot{\bm{q}}_{\text{target}}(t) = \bm{k}_3 \odot (\bm{q}_{\text{device}}(t) - \bm{q}_{\text{device}}(t_0)) ,
-\end{equation}
-where $\bm{k}_2$ and $\bm{k}_3$ are scaling parameters.
-Adding the amount of change in the device to the robot's position and quaternion at each time point is equivalent to controlling the robot's velocity.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/block_diagram_full_v2}
+  \caption{Block diagram of the proposed teleoperation architecture.
+  Details of the “Operating Command Generator” are described in Sec.~\ref{sec:operating_command_generator}, 
+  and details of the “Feedback Wrench Generator” are described in Sec.~\ref{sec:feedback_wrench_generator}.}
+  \label{fig:block_diagram}
+\end{figure}
 
-In this mode, it is important for the operator to recognize the initial origin of the device, as well as when operating with a joystick. 
-The device proposed in this study enables the operator to recognize the origin by providing a reaction wrench corresponding to the amount of movement from the origin of the device.
-If the magnitude of the feedback wrench is made proportional to the amount of device movement, as with commands and control, the wrench near the origin becomes small, making it easy to lose sight of the origin.
-Therefore, logarithmic conversion is used as follows:
-\begin{equation}
-        \bm{f}_{\text{feedback}} = \log (\bm{k}_4 \odot (\bm{p}_{\text{device}}(t) - \bm{p}_{\text{device}}(t_0))) ,
-\end{equation}
-\begin{equation}
-        \bm{\tau}_{\text{feedback}} = \log (\bm{k}_5 \odot (\bm{q}_{\text{device}}(t) - \bm{q}_{\text{device}}(t_0))) ,
-\end{equation}
-where $\bm{k}_4$ and $\bm{k}_5$ are scaling parameters.
-This conversion increases the feedback wrench near the origin, making it easier to recognize the origin.
-In addition, in order to reduce the difficulty of operation, Stop Zone where no commands are sent to the robot is set near the origin.
+\subsection{Generation of Operating Commands for the Robot}\label{sec:operating_command_generator}
 
-By using these two modes appropriately, it is possible to perform tasks quickly and precisely in a large workspace.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/command_overview}
+  \caption{Overview of operating command generation.}
+  \label{fig:command_overview}
+\end{figure}
 
-\subsection{Wrench feedback from robot}
-This section describes a control method for determining the feedback wrench applied to the operator. (XXX in the figure)
-By estimating the impedance model of the operator's arm, we estimate the energy exchange between the system and the operator.
-Then, based on the energy tank method, we guarantee the passivity of the system by modifying the feedback wrench.
+This section describes the method for controlling the position and orientation of the robot end-effector, as shown in Fig.~\ref{fig:command_overview}.  
 
-\subsubsection{Impedance model of the operator}
-The operator's hand movements can be represented by the following impedance model.
-\begin{equation}\label{operator_model_eq}
-  F(t) = M \ddot{x}(t) + B \dot{x}(t) + K (x(t) - x_{\text{ref}}), 
-\end{equation}
-where $F(t)$ is the force applied to the operator's hand, and $M$, $B$, and $K$ represent equivalent mass, viscous damping, and stiffness, respectively, which are time-dependent.
-$x_{ref}$ is the operator's reference origin, i.e., the initial position of the operator system used for command transmission in teleoperation. 
-This model is assumed to hold independently for each element of the 6-degree-of-freedom wrench. 
-Equation(\ref{operator_model_eq}) can be converted into the following linear regression equation via a discrete-time representation.
-\begin{equation}
-  F_i \approx \bm{\phi}_i^\top \bm{\theta}_i \quad 
-  \bm{\phi}_i = \begin{bmatrix} \ddot{x}_i & \dot{x}_i & x_i - x_{\text{ref}} \end{bmatrix}^\top
-  \quad \bm{\theta}_i = \begin{bmatrix} M_i & B_i & K_i \end{bmatrix}^\top
-\end{equation}
-Since the operator's impedance $\bm{\theta}_i = \begin{bmatrix} M_i & B_i & K_i \end{bmatrix}^\top$ changes over time, it is estimated online using RLS.
-\begin{equation}
-  Q_i = \frac{1}{\lambda} (Q_{i-1} - \frac{Q_{i-1} \bm{\phi}_i \bm{\phi}_i^\top Q_{i-1}}{\lambda + \bm{\phi}_i^\top Q_{i-1} \bm{\phi}_i}) 
-\end{equation}
-\begin{equation}
-  \bm{\theta}_i = \bm{\theta}_{i-1} + Q_i \bm{\phi}_i (y_i - \bm{\phi}_i^\top \bm{\theta}_{i-1})
-\end{equation}
-where $\bm{\phi}_i = \begin{bmatrix} \ddot{x}_i & \dot{x}_i & {x}_i \end{bmatrix}^\top$ and $y_i = f_{\text{feedback}}(i-1)$ is the wrench components presented to the operator in the previous step.
-Also, $\lambda \in (0,1]$ is the forggeting factor, and $Q_0$ is the initial covariance matrix.
+Robots to be controlled can be broadly classified into two types: those with a fixed base and a finite end-effector workspace, and those with a mobile base and an effectively infinite end-effector workspace.  
+Although the operator may be mobile, in practical remote operation scenarios the operator’s motion is constrained, resulting in a finite control space.  
 
-\subsubsection{Passivity guarantee based on the energy tank method}
-To ensure operator safety, it is necessary to guarantee the passivity of the system.
-Consider a system consisting of the teleoperation device and a follower robot.
-The system exchanges energy with the operator through the device and with environmental objects through the robot.
-When the outflow direction from the system is defined as positive, the energy balance between the robot and environmental objects per unit time step is expressed as
-\begin{equation}
-  P_{\text{env}}(i) = \bm{w}_{\text{robot}}^\top(i) \bm{v}_{\text{robot}}(i) - \bm{w}_{\text{env}}^\top(i) \bm{v}_{\text{robot}}(i)
-\end{equation}
-where XXX.
-When the environmental object can be considered stationary during one step, $\bm{w}_{\text{robot}}(i) = \bm{w}_{\text{env}}(i)$ holds, so the following equation is satisfied:
-\begin{equation}
-  P_{\text{env}}(i) = 0 .
-\end{equation}
-The energy balance between the device and the operator can be expressed as
-\begin{equation}
-  P_{\text{op}}(i) = \bm{w}_{\text{feedback}}^\top(i+1) \bm{v}_{\text{hand}}(i+1) - \bm{w}_{\text{hand}}^\top(i) \bm{v}_{\text{hand}}(i) ,
-\end{equation}
-where XXX.
+Therefore, operating command generation requires:
+\begin{itemize}
+  \item Mapping from a finite control space to a finite end-effector workspace  
+  \item Mapping from a finite control space to an infinite end-effector workspace  
+\end{itemize}
 
-Here, we define $\bm{w}_{\text{cand}}$ as the scaled wrench measured from the robot's end effector. 
+By appropriately combining these mappings, various remote end-effector tasks using different types of robots can be realized.
+
+\subsubsection{Mapping from a Finite Control Space to a Finite End-Effector Workspace}\label{subsec:posmode}
+
+When both the control space and the end-effector workspace are finite, a mapping of equal dimensionality can be defined from the device position and orientation to the robot end-effector position and orientation.
+
+The target position $\bm{p}_{\text{target}}$ and target orientation $\bm{\theta}_{\text{target}}$ of the robot end-effector are determined from the device position $\bm{p}_{\text{device}}$ and orientation $\bm{\theta}_{\text{device}}$ as follows:
 \begin{equation}
-  \bm{w}_{\text{cand}}(i+1) = \bm{k}_{\text{scale}} \odot \bm{w}_{\text{robot,measured}}(i)
-\end{equation}
-Assuming this wrench is directly fed back to the operator, the response twist of the operator's hand can be predicted as follows:
-\begin{equation}
-  \dot{x}(i+1) \approx \dot{x}(i) + \ddot{x}(i) \Delta t = \dot{x}(i) + \frac{\Delta t}{M_i} (w_{\text{cand},j}(i) - B_i \dot{x}(i) - K_i x(i))
-\end{equation}
-Additionally, the wrench applied by the operator to the device can be estimated from the operator's hand position, velocity, and acceleration as follows:
-\begin{equation}
-  F_{\text{hand}}(i) = M_i \ddot{x}(i) + B_i \dot{x}(i) + K_i x(i)
-\end{equation}
-Therefore, the system's energy $E_{\text{tank}}$ is updated as follows:
-\begin{equation}
-  E_{\text{tank}}(i+1) = E_{\text{tank}}(i) - \Delta E_{\text{pred}}
+  \Delta \bm{p}_{\text{device}} = \bm{p}_{\text{device}}(t) - \bm{p}_{\text{device}}(t_0)
 \end{equation}
 \begin{equation}
-  \begin{split}
-    \Delta E_{\text{pred}} &= P_{\text{op}}(i) \Delta t \\
-    &= \{ \bm{w}_{\text{cand}}^\top(i+1) \bm{v}_{\text{hand}}(i+1) - \bm{w}_{\text{hand}}^\top(i) \bm{v}_{\text{hand}}(i) \} \Delta t \\
-    &= \{ \bm{w}_{\text{cand}}^\top(i+1) \bm{v}_{\text{hand}}(i+1) - P_{\text{in}} \} \Delta t
-    \label{eq:energy_flow}
-    \end{split}
+  \Delta \bm{\theta}_{\text{device}} = \bm{\theta}_{\text{device}}(t) - \bm{\theta}_{\text{device}}(t_0)
+\end{equation}
+\begin{equation}
+  \bm{p}_{\text{target}} = \bm{p}_{\text{robot}}(t_0) + \bm{k}_1 \odot \Delta \bm{p}_{\text{device}}
+\end{equation}
+\begin{equation}
+  \bm{\theta}_{\text{target}} = \bm{\theta}_{\text{device}}(t)
+\end{equation}
+where $t_0$ denotes the start time of operation.  
+The operator $\odot$ represents the Hadamard product, i.e., element-wise multiplication of vectors with identical dimensions.
+
+During manual task execution, the operator plans the trajectory of hand motion.  
+Accordingly, for position mapping, the displacement vector from the device initial position is mapped to the displacement vector from the robot initial position, enabling intuitive operation.  
+By appropriately setting the scaling factor $\bm{k}_1$, the method can accommodate differences in workspace size among robots.
+
+For orientation mapping, however, no scaling is applied.  
+This is because rotational quantities cannot generally be treated as linear variables in the same manner as translational positions, and simple scaling may significantly degrade operational intuitiveness.
+
+\subsubsection{Mapping from a Finite Control Space to an Infinite End-Effector Workspace}\label{subsec:velmode}
+
+When the end-effector workspace is effectively infinite, direct position mapping as described above is not suitable.  
+Therefore, this study proposes a method that maps the device position and orientation to the target linear velocity and angular velocity of the robot end-effector.
+
+The target linear velocity $\dot{\bm{p}}_{\text{target}}$ and target angular velocity $\dot{\bm{\theta}}_{\text{target}}$ are defined as:
+\begin{equation}\label{eq:velmapping_pos}
+  \dot{\bm{p}}_{\text{target}} = \bm{k}_2 \odot \Delta \bm{p}_{\text{device}}
+\end{equation}
+\begin{equation}\label{eq:velmapping_ang}
+  \dot{\bm{\theta}}_{\text{target}} = \bm{k}_3 \odot \Delta \bm{\theta}_{\text{device}}
+\end{equation}
+where $\bm{k}_2$ and $\bm{k}_3$ are scaling factors.
+
+Because the operator’s angular input variations are confined to a small range, Euler angles can be regarded as locally linear, allowing scaling to be applied.  
+For sufficiently small angular displacements, the differential of Euler angles can be approximated as angular velocity in a first-order sense.
+
+By mapping device displacement to robot velocity as in Eqs.~(\ref{eq:velmapping_pos}) and (\ref{eq:velmapping_ang}), the controllable space is extended from finite to effectively infinite.  
+This enables full utilization of the infinite workspace of base-mobile robots.  
+This approach is analogous to velocity-based control using conventional joystick-type devices.
+
+\subsection{Feedback Wrench Generation}\label{sec:feedback_wrench_generator}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/architecture/feedback_overview}
+  \caption{Overview of feedback wrench generation.}
+  \label{fig:feedback_overview}
+\end{figure}
+
+This section describes the method for generating candidate feedback wrenches $\bm{w}_{\text{cand}}$ applied to the device, as illustrated in Fig.~\ref{fig:feedback_overview}.
+
+The target feedback wrench is composed of the following three components:
+\begin{itemize}
+  \item Feedback $\bm{w}_{\text{ref}}$ for recognition of the device origin during target velocity command generation  
+  \item Feedback $\bm{w}_{\text{obs}}$ for obstacle avoidance  
+  \item Feedback $\bm{w}_{\text{env}}$ for recognition of the wrench acting on the robot end-effector  
+\end{itemize}
+
+Each feedback component is described in detail below.  
+The operator selects which feedback components to activate depending on the operational scenario and required functionality.  
+When multiple feedback components are used simultaneously, their sum is output:
+\begin{equation}
+  \bm{w}_{\text{cand}} = \bm{w}_{\text{ref}} + \bm{w}_{\text{obs}} + \bm{w}_{\text{env}}
 \end{equation}
 
-Let the upper limit of the energy tank be $E_{\text{tank}}^{\text{max}}$ and the lower limit be $0$.
-When $0 < E_{\text{tank}}(i+1) < E_{\text{tank}}^{\text{max}}$, the system's passivity is guaranteed, so no intervention is necessary.
-Thus, the feedback wrench becomes:
+\subsubsection{Feedback for Origin Recognition During Target Velocity Command Generation}\label{subsec:feedback_in_velmode}
+
+In the velocity mapping described in Sec.~\ref{subsec:velmode}, the robot target velocity is determined based on the displacement from the device position at the start of operation (hereafter referred to as the device origin).  
+If the operator cannot accurately perceive the device origin, motion in the intended direction becomes difficult.
+
+In conventional joystick-type devices, a spring attached to the base generates a restoring force toward the origin, which is transmitted to the operator’s fingers.
+
+The proposed device has a six-degree-of-freedom wrench presentation capability using thrust.  
+This capability is utilized to convey information about the device origin to the operator.  
+Since the control command varies according to displacement from the device origin, it is appropriate that the feedback wrench also varies with this displacement.
+
+However, if a purely proportional relationship is used, the presented wrench becomes small near the origin, making it difficult for the operator to recognize the device position at which the robot remains stationary.  
+To address this issue, a logarithmic transformation is applied to each element of the wrench so that the presented wrench increases near the origin.
+
 \begin{equation}
-  \bm{w}_{\text{feedback}} = \bm{w}_{\text{cand}}
+  \begin{cases}
+    \bm{f}_{\text{ref}} = - \bm{k}_4 \odot \log (\Delta \bm{p}_{\text{device}} + \bm{b}) & (\Delta \bm{p}_{\text{device}} \geq 0) \\
+    \bm{f}_{\text{ref}} = \bm{k}_4 \odot \log ((-\Delta \bm{p}_{\text{device}}) + \bm{b}) & (\Delta \bm{p}_{\text{device}} < 0)
+  \end{cases}
+\end{equation}
+\begin{equation}
+  \begin{cases}
+    \bm{\tau}_{\text{ref}} = - \bm{k}_5 \odot \log (\Delta \bm{\theta}_{\text{device}} + \bm{b}) & (\Delta \bm{\theta}_{\text{device}} \geq 0) \\
+    \bm{\tau}_{\text{ref}} = \bm{k}_5 \odot \log (-\Delta \bm{\theta}_{\text{device}} + \bm{b}) & (\Delta \bm{\theta}_{\text{device}} < 0)
+  \end{cases}
+\end{equation}
+where $\bm{k}_4$ and $\bm{k}_5$ are scaling factors, and $\bm{b} = (1, 1, 1)^\top$.
+
+\subsubsection{Feedback for Obstacle Avoidance}\label{subsec:feedback_from_obstacle}
+
+During operation of a mobile robot, unintended contact with obstacles other than the intended work object must be avoided to prevent accidents.  
+Although the operator can avoid obstacles based on visual feedback, obstacles located in blind spots may be overlooked.
+
+To mitigate this risk, we propose a method that provides haptic feedback based on the distance between the robot and nearby obstacles, thereby assisting the operator in reliably avoiding contact.
+
+Let $\bm{p}_{\text{wall}}$ denote the position of the nearest obstacle.  
+The distance between the robot position $\bm{p}$ and the obstacle is given by:
+\begin{equation}
+  d = |\bm{p} - \bm{p}_{\text{wall}}|
 \end{equation}
 
-\subsubsection{Modification of the feedback wrench during energy shortage}
-When $E_{\text{tank}}(i+1) < 0$, the system spontaneously generates new energy, and the passivity of the system is violated.
-To maintain passivity by reducing the energy outflow from the system, the feedback wrench is scaled.
-At this time, to minimize the loss of control transparency as much as possible, $\bm{w}_{\text{feedback}}$ closest to $\bm{w}_{\text{cand}}$ is determined under the condition that the tank's energy does not become negative.
-This can be expressed as the following optimization problem.
-\begin{align}
-  \min_{\bm{w}_{\text{feedback}}} \quad & \frac{1}{2} \left\| \bm{w}_{\text{feedback}} - \bm{w}_{\text{cand}} \right\|^2 \label{eq:qp_obj}\\
-  \mathrm{s.t.} \quad &
-  E_{\text{tank}}(i) - \left( \bm{w}_{\text{feedback}}^\top \bm{v}_{\text{hand}} - P_{\text{in}} \right) \Delta t \ge 0 \label{eq:qp_const}
-\end{align}
-where XXX.
-This is formulated as a convex quadratic programming problem.
-Introducing the Lagrange multiplier $\lambda \ge 0$ yields the Lagrange function:
+A potential function dependent on the distance $d$ is defined as:
 \begin{equation}
-  \mathcal{L} = \frac{1}{2}\|\bm{w}_{\text{feedback}} - \bm{w}_{\text{cand}}\|^2 
-  + \lambda \left[ -E_{\text{tank}}(i) + \Delta t \left( \bm{w}_{\text{feedback}}^{\top} \bm{v}_{\text{hand}} - P_{\text{in}} \right) \right]
+  a = \frac{1}{d_0} \left( \frac{1}{\sqrt{\varepsilon}} - 1 \right)
 \end{equation}
-and the optimal solution is:
 \begin{equation}
-  \bm{w}_{\text{feedback}} = \bm{w}_{\text{cand}} - \lambda^\ast \Delta t \, \bm{v}_{\text{hand}}
+  U(\bm{p}) = \frac{U_{\max}}{1 + a d}
 \end{equation}
-Here, $\lambda^\ast$ is the value where equality holds in Equation XXX, and from the KKT conditions, we obtain:
+where $d_0$ is the distance at which the gradient magnitude becomes sufficiently small (equal to $\varepsilon$), and $U_{\max}$ determines the maximum value of the potential.
+
+The gradient of this potential field at position $\bm{p}$ is:
 \begin{equation}
-  \lambda^\ast = \max\!\left(0,\; \frac{\bm{v}_{\text{hand}}^\top \bm{w}_{\text{cand}} - (\frac{E_{\text{tank}}(i)}{\Delta t} + P_{\text{in}})}{\bm{v}_{\text{hand}}^\top \bm{v}_{\text{hand}}} \right).
-\end{equation}
-And the feedback wrench becomes;
-\begin{equation}
-  \bm{w}_{\text{feedback}} = \bm{w}_{\text{cand}} - \lambda^\ast \bm{v}_{\text{hand}}.
+  \nabla U(\bm{p}) = -\frac{a U_{\max}}{(1 + a d)^2} \frac{\bm{p} - \bm{p}_{\text{wall}}}{d}
 \end{equation}
 
-\subsubsection{Modification of the feedback wrench during energy overflow}
-When $E_{\text{tank}}(i+1) > E_{\text{tank}}^{\text{max}}$, the energy exceeds the system's tolerance, and the passivity of the system is violated.
-To maintain the passivity of the system by diffusing the system's energy, damping is applied to the feedback wrench.
-The feedback wrench with damping applied can be expressed as
+The feedback wrench is then generated as:
 \begin{equation}
-  \bm{w}_{\text{feedback}}(i+1) = \bm{w}_{\text{cand}}(i+1) + D_{\text{add}} \bm{v}_{\text{hand}}(i+1)
+  \bm{w}_{\text{obs}} = \bm{k}_6 \odot \nabla U(\bm{p})
 \end{equation}
-and the energy outflow from the system can be rewritten as follows.
-\begin{equation}
-  \begin{split}
-    \frac {\Delta E_{\text{pred}}}{\Delta t} &= \{(\bm{w}_{\text{cand}}(i+1) + D_{\text{add}} \bm{v}_{\text{hand}}(i+1))^\top \bm{v}_{\text{hand}}(i+1) - P_{\text{in}}\} \\
-    &= \bm{w}_{\text{cand}}^\top(i+1) \bm{v}_{\text{hand}}(i+1) + \bm{v}_{\text{hand}}^\top(i+1) D_{\text{add}} \bm{v}_{\text{hand}}(i+1) - P_{\text{in}}
-  \end{split}
-\end{equation}
+where $\bm{k}_6$ is a scaling factor.
 
-To minimize degradation of control transparency, damping is applied per axis.
-$D_{\text{add}} = \text{diag}(d_1, \ldots, d_6) (d_j > 0)$ needs to satisfy the following equation when allowing energy storage up to the upper limit:
-\begin{equation}
-  \bm{v}_{\text{hand}}^\top(i+1) D_{\text{add}} \bm{v}_{\text{hand}}(i+1) = \frac{E_{\text{tank}}(i) - E_{\text{tank}}^{\text{max}}}{\Delta t} - \bm{w}_{\text{cand}}^\top(i+1) \bm{v}_{\text{hand}}(i+1) + P_{\text{in}} := P_{\text{req}}
-\end{equation}
-Divide into translationalblock ($j=1,2,3$) and rotational block ($j=4,5,6$), and determine the damping factor weights based on each axis's contribution to power.
-\begin{equation}
-  P_{\text{req,trans}} = P_{\text{req}} \cdot \frac{\sum_{j=1}^{3} \text{max}(0,p_j)}{\sum_{j=1}^{6} \text{max}(0,p_j)}
-\end{equation}
-\begin{equation}
-  P_{\text{req,rot}} = P_{\text{req}} - P_{\text{req,trans}}
-\end{equation}
-\begin{equation}
-  \hat{q}_j = \frac{p_j}{\sum_{k \in \text{block}} p_k}
-\end{equation}
-However, when $\sum_{k \in \text{block}} p_k \approx 0$, $\hat{q}_j$ is undefined, use a predetermined fixed damping factor value.
-\begin{equation}
-  d_j = d_{\text{const}}
-\end{equation}
+This feedback wrench increases as the robot approaches the obstacle, thereby guiding the operator to avoid contact.
 
-Based on these weights, let the damping factor write as:
-\begin{equation}
-  d_j = \kappa \frac{\hat{q}_j}{v_j^2 + \epsilon} ,
-\end{equation}
-where $\epsilon$ is a term to prevent the damping factor from becoming excessively large at low velocities.
-\begin{equation}
-  P_{\text{req,block}} = \sum_{j \in \text{block}} d_j v_j^2 = \kappa \sum_{j \in \text{block}} \hat{q}_j \frac{v_j^2}{v_j^2+\epsilon}
-\end{equation}
-\begin{equation}
-  \kappa = \frac{P_{\text{req,block}}}{\sum_{j \in \text{block}} \hat{q}_j \frac{v_j^2}{v_j^2+\epsilon}}
-\end{equation}
-\begin{equation}
-  d_j = \frac{P_{\text{req,block}}}{\sum_{j \in \text{block}} \hat{q}_j \frac{v_j^2}{v_j^2+\epsilon}} \cdot \frac{\hat{q}_j}{v_j^2 + \epsilon}
-\end{equation}
-And the feedback wrench becomes;
-\begin{equation}
-  \bm{w}_{\text{feedback}}(i+1) = \bm{w}_{\text{cand}}(i+1) + D_{\text{add}} \bm{v}_{\text{hand}}(i+1), ~~ D_{\text{add}} = \text{diag}(d_1, \ldots, d_6)
-\end{equation}
+\subsubsection{Feedback for Recognition of the Wrench Acting on the Robot End-Effector}\label{subsec:feedback_from_robot}
 
+As described in Sec.~\ref{chap:introduction}, when performing contact tasks via a remotely operated robot, it is essential for the operator to perceive the wrench acting on the robot end-effector.
+
+When the wrench $\bm{w}_{\text{measured}}$ at the robot end-effector is obtained through measurement or estimation, the feedback wrench is generated as:
+\begin{equation}
+  \bm{w}_{\text{env}} = \bm{k}_7 \odot \bm{w}_{\text{measured}}
+\end{equation}
+where $\bm{k}_7$ is a scaling factor determined according to the maximum wrench that the robot end-effector can exert and the minimum wrench magnitude that the operator can perceive.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Experimental section
-\section{Experimental Section}
-\threesubsection{First part of experimental section}\\
-\threesubsection{Second part of experimental section}\\
+\section{Experimental Validation of proposed teleoperation device}
+This chapter describes the prototype of the remote control device proposed in this research, followed by an explanation of the performance verification experiment and its results.
 
+\subsection{Physical Configuration of the Remote Control Device}
+
+\subsubsection{Hardware Configuration}
+The hardware configuration of the remote control device, constructed based on the method proposed in this research, is shown in \ref{fig:device_picture}.
+Each module is summarized in \ref{tab:device_module}.
+The hardware enclosure was primarily constructed using CFRP and PLA.
+The Spinal flight controller, a custom-built control board, incorporates sensors such as an inertial measurement unit (IMU) and a processor unit (STM32 H7).
+The thrust deflection mechanism is driven by pulleys and timing belts connected to servo motors.
+
+The device weighs \SI{3.1}{kg}, and the total weight with two batteries installed is \SI{4.0}{kg}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/experiment_device/device_picture}
+  \caption{Snapshot of the prototype of the proposed teleoperation device.
+  (a) is the whole view.
+  (b) is the controller unit.
+  (c) is the vectoring thrust module.}
+  \label{fig:device_picture}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Materials of the proposed teleoperation device}
+  \begin{tabular}{ccc} \hline
+    Index & Type & Product Name \\ \hline
+    M1 & Battery & Turningy Heavy Duty 3000mAh 6S 60C LiPo \\
+    M2 & Flight Controller & Spinal \\
+    M3 & Onboard PC & Khadas VIM4 \\
+    M4 & Ducted Fan & Freewing 70mm 6S 12-blade EDF Power System-Standard \\
+    M5 & ESC & T-MOTOR T80A Advanced Speed Controller 400Hz 2-6S \\
+    M6 & Servo Motor & Dynamixel XH430-W350-R \\ \hline
+  \end{tabular}
+  \label{tab:device_module}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/experiment_device/communication_system}
+  \caption{Block diagram of the communication system of the proposed teleoperation system.}
+  \label{fig:device_com}
+\end{figure}
+
+\subsubsection{Communication System Configuration}
+An overview of the communication system in the teleoperation device is shown in \ref{fig:device_com}.
+The determination of the device's control degrees of freedom is computed by the onboard PC and the flight controller.
+Communication between this onboard PC and the flight controller is performed via UART serial communication. Communication between the flight controller and each actuator uses the respective standards for each actuator.
+Furthermore, the generation of control commands and feedback torques is computed by the ground PC.
+Communication between the ground PC and the onboard PC is performed via Wi-Fi wireless communication.
+
+
+\section{Experiment to Verify the Wrench Output of the Remote Control Device}\label{sec:exp_device_wrench}
+
+This section describes the verification experiment conducted to evaluate whether the constructed remote control device can independently generate a six-degree-of-freedom (6-DoF) wrench.
+The experimental setup and results are presented and discussed below.
+
+The experimental setup is shown in Fig.~\ref{fig:device_experiment_overview}.  
+A \textit{Leptorino PFS055YA501U6} six-axis force/torque sensor is mounted in the region outlined in blue in the figure.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/experiment_device/device_experiment_overview}
+  \caption{Snapshot of the wrench verification experiment for the remote control device.
+  The white arrow indicates the coordinate system used in the experiment.
+  The force/torque sensor is mounted in the blue-outlined region.}
+  \label{fig:device_experiment_overview}
+\end{figure}
+
+Figure~\ref{fig:device_wrench_plot_all} shows the target wrench and the measured wrench.  
+Because the raw sensor signals contain measurement noise, the plotted measured values correspond to signals processed using a low-pass filter.  
+Table~\ref{tab:device_wrench_RMSE} summarizes the root mean square error (RMSE) between the target wrench and the measured wrench.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/experiment_device/device_wrench_plot_all}
+  \caption{Results of the wrench output verification experiment.
+  The blue dashed line indicates the target wrench, and the orange solid line indicates the measured wrench after low-pass filtering.}
+  \label{fig:device_wrench_plot_all}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{RMSE between the target wrench and the measured wrench}
+  \begin{tabular}{cccccc} \hline
+    $F_x[\si{N}]$ & $F_y[\si{N}]$ & $F_z[\si{N}]$ & $T_x[\si{Nm}]$ & $T_y[\si{Nm}]$ & $T_z[\si{Nm}]$ \\ \hline
+    1.0285 & 0.9651 & 0.5005 & 0.1706 & 0.3157 & 0.5175 \\ \hline
+  \end{tabular}
+  \label{tab:device_wrench_RMSE}
+\end{table}
+
+As shown in Fig.~\ref{fig:device_wrench_plot_all}, the six-dimensional wrench is generally generated in a decoupled manner.  
+However, for the translational forces in the $x$ and $y$ directions, a consistent offset is observed between the target and measured values.  
+This offset is presumed to be caused by slack in the timing belt of the thrust deflection mechanism.  
+Because the timing belt is made of a flexible material that can stretch, a discrepancy may arise between the commanded servo motor angle driving the deflection mechanism and the actual deflection angle.  
+This effect is also considered to contribute to the fluctuations observed in the translational forces when torques are generated.
+
+In addition, small spikes are observed in each wrench component at the moments when the target wrench command changes.  
+These spikes are attributed to the difference in response time between (i) the thrust variation caused by changes in rotor speed and (ii) the angular motion of the deflection mechanism driven by the servo motor.  
+The time required for the deflection mechanism to complete its angular displacement is longer than the time required for the rotor to reach the commanded speed.  
+Consequently, when the target wrench changes, the thrust variation occurs first, followed by the rotation of the deflection mechanism.  
+The transient wrench generated during this interval appears as spikes in the measured signals.
+
+Although the six-degree-of-freedom wrench generation is not perfectly decoupled, the principal contribution of the proposed force feedback device—namely, the realization of six-dimensional wrench presentation using an angled ground system—has been successfully demonstrated.
+
+
+\section{Obstacle Avoidance Experiments Using a Flying Robot}
+
+This section describes obstacle avoidance experiments conducted using a flying robot.  
+In practical remote operation scenarios, the robot must often be maneuvered to a designated worksite.  
+During such maneuvers, safe navigation while avoiding obstacles is critical.  
+% This experiment verifies whether the force feedback based on the distance to obstacles, described in \subsecref{subsec:feedback_from_obstacle}, is effective in such situations.
+
+\subsection{Specifications of the Target Robot}\label{subsec:beatle}
+
+The flying robot used in this experiment is shown in \ref{fig:beatle_picture}.  
+It is a modified version of the fully actuated aerial robot BEATLE proposed by Sugihara et al.~\cite{beatle}, with the docking mechanism and housing removed and a USB camera added.  
+Because the robot is fully actuated, horizontal translation and roll/pitch orientation can be controlled independently.  
+An onboard PC communicates with a ground PC via Wi-Fi.  
+The main specifications of the robot used in this experiment are summarized in \ref{tab:beatle_properties}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\columnwidth]{figs/beatle_obstacle/beatle_picture}
+  \caption{Snapshot of the aerial robot used in the experiment.
+  (a) Overall view.
+  (b) Controller unit.
+  (c) Rotor module.}
+  \label{fig:beatle_picture}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Components of the aerial robot}
+  \begin{tabular}{ccc} \hline
+    Index & Type & Product Name \\ \hline
+    M1 & Onboard Camera & ELP 720P USB camera \\
+    M2 & Onboard PC & Khadas VIM4 \\
+    M3 & Flight Controller & Spinal \\
+    M4 & ESC & T-MOTORHOBBY F55A Pro2 55A 3--6S AM32 4-in-1 ESC \\
+    M5 & Servo Motor & Dynamixel XC330-T181-T \\
+    M6 & Propeller & GEMFAN 9045S-3 \\
+    M7 & Brushless Motor & T-MOTOR AT2814 KV900 \\ \hline
+  \end{tabular}
+  \label{tab:beatle_module}
+\end{table}
+
+\begin{table}[H]
+  \centering
+  \caption{Main specifications of the aerial robot}
+  \begin{tabular}{cc} \hline
+    Property & Value \\ \hline
+    Weight & \SI{2.5}{kg} \\
+    Payload & \SI{5.5}{kg} \\ \hline
+  \end{tabular}
+  \label{tab:beatle_properties}
+\end{table}
+
+\subsection{Experimental Procedure}
+
+The operator maneuvered the robot within an area delineated by red tape representing obstacles, ensuring that the robot did not contact them.  
+A ground PC executing the remote control architecture was placed near the operator.  
+The ground PC displayed real-time video captured by the USB camera mounted on the robot, and the operator controlled the robot using this first-person view.  
+This setup replicates a realistic remote operation scenario in which the operator is physically separated from the robot’s workspace.
+
+For safety, a supervisor monitored the experiment.  
+If the robot contacted an obstacle, the supervisor immediately stopped the robot and terminated the trial.
+
+Because the flying robot is a mobile robot without a fixed base, the velocity-based command generation method described in \ref{subsec:velmode} was used.  
+The following experimental conditions were evaluated:
+
+\begin{itemize}
+  \item (A) Using the feedback described in \ref{subsec:feedback_from_obstacle} and \ref{subsec:feedback_in_velmode}
+  \item (B) Using only the feedback described in \ref{subsec:feedback_in_velmode}
+  \item (C) Without any force feedback
+\end{itemize}
+
+\subsection{Experimental Results and Discussion}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beetle_obstacle_overview}
+  \vspace{-10pt}
+  \caption{Snapshot of the obstacle avoidance experiment.
+  The bottom-left image shows the first-person view from the onboard camera.
+  The operator maneuvered the robot based on this view.
+  The red lines indicate obstacles, and the robot was guided to the goal position while avoiding them.}
+  \label{fig:beetle_obstacle_overview}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_obstacle/beetle_obstacle_topview}
+  \vspace{-10pt}
+  \caption{Top view of the robot trajectory.
+  The blue arrow indicates the direction of motion.}
+  \label{fig:beetle_obstacle_topview}
+\end{figure}
+
+The experimental setup is shown in \ref{fig:beetle_obstacle_overview} and \ref{fig:beetle_obstacle_topview}.  
+The experimental results are presented in \ref{fig:beetle_obstacle_plot} and \ref{tab:beetle_obstacle_trajectory}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_obstacle/beetle_obstacle_plot}
+  \vspace{-10pt}
+  \caption{Left: Target and measured robot trajectories. The red line indicates obstacles, and the black dashed line represents the ideal trajectory that maximizes the distance from the wall.
+  Right: Feedback wrench presented to the operator during operation.}
+  \label{fig:beetle_obstacle_plot}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{RMSE and coverage rate between the ideal and measured trajectories in the $x$--$y$ plane}
+  \begin{tabular}{c|cc} \hline
+    Condition & RMSE [\si{m}] & Coverage Rate [\%] \\ \hline
+    (A) & 0.1719 & 90.81 \\
+    (B) & 0.2035 & 88.91 \\
+    (C) & 0.2091 & 33.23 \\ \hline
+  \end{tabular}
+  \label{tab:beetle_obstacle_trajectory}
+\end{table}
+
+The ideal trajectory shown by the black dashed line in \ref{fig:beetle_obstacle_plot} represents the safest path that maximizes the distance from the obstacle.  
+The coverage rate shown in \ref{tab:beetle_obstacle_trajectory} quantifies the proportion of the ideal trajectory achieved during operation and is defined as follows.
+
+Let the ideal trajectory be represented by a continuous curve $\bm{P}(s)$ parameterized by arc length $s \in [0, L]$, and let the measured trajectory be $\{\bm{x}_k\}_{k=1}^{n}$.  
+The closest point on the ideal trajectory to each measured point is defined as
+\begin{equation}
+  s_k^* = \arg \min_{s \in [0,L]} \left\| \bm{x}_k - \bm{P}(s) \right\|.
+\end{equation}
+The maximum arc length reached during operation is then
+\begin{equation}
+  s_{\text{max}} = \max_{k} s_k^*,
+\end{equation}
+and the coverage rate is calculated as
+\begin{equation}
+  C = \frac{s_{\text{max}}}{L}.
+\end{equation}
+
+As indicated by the coverage rates in \ref{tab:beetle_obstacle_trajectory}, conditions (A) and (B) allowed the robot to traverse most of the path, whereas under condition (C), the robot collided with an obstacle midway and the experiment was terminated.
+
+In the velocity-based command generation method described in \ref{subsec:velmode}, the robot’s target velocity is determined based on the displacement from the device origin defined at the start of operation.  
+Under condition (C), without force feedback, the operator could not reliably recognize the device origin.  
+As a result, the robot unintentionally moved in the $-y$ direction and collided with an obstacle.  
+This result demonstrates that force feedback is essential for safe navigation in an effectively unbounded workspace.
+
+Furthermore, the RMSE in \ref{tab:beetle_obstacle_trajectory} is slightly smaller under condition (A) than under condition (B).  
+As shown in \ref{fig:beetle_obstacle_plot}, the trajectory under condition (A) follows the ideal path (black dashed line) with oscillations, whereas under condition (B), noticeable deviations occur near $(x, y) = (0.3, -1.0)$ and during motion in the positive $y$ direction.
+
+The first-person view provided to the operator has a limited field of view, as shown in the lower-left image of \ref{fig:beetle_obstacle_overview}, making it difficult to perceive lateral distances to obstacles.  
+Therefore, under condition (A), the operator appears to have relied on the distance-based force feedback described in \ref{subsec:feedback_from_obstacle} to maintain a trajectory close to the ideal path.
+
+However, when the operator attempted to move the robot toward an obstacle, the feedback described in \ref{subsec:feedback_in_velmode} and that described in \ref{subsec:feedback_from_obstacle} were generated in the same direction.  
+Consequently, the operator could not distinguish whether the presented force resulted from issuing a motion command or from approaching an obstacle.  
+Although the operator’s reaction—moving away from the obstacle—ensures collision avoidance, improving control transparency requires an additional mechanism to distinguish between these types of feedback.
+
+\section{Wall Painting Experiment Using a Flying Robot}
+
+This section describes a wall painting experiment conducted using a flying robot to evaluate the effectiveness of the proposed haptic feedback system during contact-based remote operation.
+
+\subsection{Specifications of the Target Robot}
+
+The target platform is a modified version of BEATLE, described in \ref{subsec:beatle}, identical to that used in the previous experiment. 
+For the painting task, the robot was additionally equipped with a brush as the painting end-effector, as shown in \ref{fig:beatle_with_brush}, and a six-axis force/torque sensor (CFS018CA201U, Leptorino). 
+The wrench measured by this force/torque sensor is used as the measured wrench in \ref{subsec:feedback_from_robot}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.80\columnwidth]{figs/beatle_painting/beatle_with_brush}
+  \vspace{-10pt}
+  \caption{Snapshot of the aerial robot equipped with a brush and a force/torque sensor for painting tasks.}
+  \label{fig:beatle_with_brush}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\columnwidth]{figs/beatle_painting/wall_overview}
+  \vspace{-10pt}
+  \caption{Tilted wall surface used as the painting target.}
+  \label{fig:wall_overview}
+\end{figure}
+
+\subsection{Experimental Procedure}\label{subsec:beatle_cleaning_procedure}
+
+A tilted whiteboard, shown in \ref{fig:wall_overview}, was used as the environmental target. 
+The whiteboard has dimensions of \SI{900}{mm} square and is inclined by approximately \SI{15.6}{\degree} from the vertical plane. 
+A \SI{750}{mm} $\times$ \SI{500}{mm} sheet of paper that turns black when wet was fixed to the whiteboard. 
+When contacted by the wet brush attached to the robot, the sheet discolors, thereby simulating a painting task without using conventional paint.
+
+The operator performed the painting task by moving the robot’s end-effector horizontally in a single stroke. 
+The objective was to paint directly beneath a red line fixed on the sheet, which served as a guide for the desired painting trajectory.
+
+As in the previous experiments, a Ground PC was placed near the operator and displayed real-time video captured by the robot’s USB camera. 
+The operator controlled the robot while observing this video feed. 
+Although the flying robot is a mobile platform with an unfixed base, the target painting area was spatially limited. 
+Therefore, the position control method described in \ref{subsec:posmode} was used to generate the control commands.
+
+The experiment was conducted under the following two conditions:
+
+\begin{itemize}
+  \item (A) With haptic feedback provided to the operator
+  \item (B) Without haptic feedback provided to the operator
+\end{itemize}
+
+\subsection{Experimental Results and Discussion}\label{subsec:beatle_cleaning_result}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beetle_cleaning_overview}
+  \vspace{-10pt}
+  \caption{Snapshots of the painting experiment using the aerial robot. 
+  The image at the lower center shows the view from the camera mounted on the robot, which was used by the operator for control. 
+  The red line on the wall surface indicates the target painting path.}
+  \label{fig:beetle_cleaning_overview}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{figs/beatle_painting/beetle_cleaning_wallview}
+  \vspace{-10pt}
+  \caption{Snapshot of the robot during the experiment. 
+  The robot moved in the direction indicated by the blue arrow while performing the painting task.}
+  \label{fig:beetle_cleaning_wallview}
+\end{figure}
+
+The experimental setup and procedure are shown in \ref{fig:beetle_cleaning_overview} and \ref{fig:beetle_cleaning_wallview}. 
+The results of the wall painting are presented in \ref{fig:beetle_cleaning_result_wall} and summarized in \ref{tab:beetle_cleaning_result_wall}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beetle_cleaning_result_wall}
+  \caption{Images of the wall surface. 
+  Top: Wall surface before painting. The area outlined in green indicates the evaluation region. 
+  Middle: Wall surface after painting under each experimental condition. 
+  Bottom: Binarized image showing the difference before and after painting. 
+  The mean lateral distance and angular deviation were calculated from this binarized image.}
+\label{fig:beetle_cleaning_result_wall}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Evaluation metrics for the wall painting results.}
+  \begin{tabular}{c|ccc} \hline
+    ~ & Mean lateral distance [px] & Angular deviation [deg] & STD of local angular deviation [deg] \\ \hline
+    (A) & 51.16 & 0.86 & 14.10 \\
+    (B) & 66.22 & 1.58 & 15.26 \\ \hline
+  \end{tabular}
+  \label{tab:beetle_cleaning_result_wall}
+\end{table}
+
+The evaluation metrics shown in \ref{tab:beetle_cleaning_result_wall} were computed from the binarized images presented in the lower section of \ref{fig:beetle_cleaning_result_wall}.
+
+The mean lateral distance is defined as the average of the shortest distances between each pixel in the painted region and each pixel belonging to the red guide line. 
+This metric indicates the proximity of the painting trajectory to the guide line; a smaller value corresponds to closer alignment.
+
+The angular deviation is defined as the angle between the principal direction vector of the painted region, obtained via principal component analysis (PCA), and the guide line. 
+This metric evaluates the global alignment of the painting trajectory with the intended direction; a smaller value indicates better directional consistency.
+
+The standard deviation (STD) of the local angular deviation is calculated by dividing the evaluation region into five sections perpendicular to the guide line, computing the angular deviation within each section, and then calculating the standard deviation of these values. 
+This metric represents the degree of local undulation in the painting trajectory; a smaller value indicates smoother and more uniform motion.
+
+The wrench measured at the robot’s end-effector during the experiment and the wrench fed back to the operator are shown in \ref{fig:beetle_cleaning_result_plot}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/beatle_painting/beetle_cleaning_result_plot}
+  \caption{Time histories of the wrench during the experiment. 
+  From top to bottom: measured force at the robot, feedback force to the operator, measured torque at the robot, and feedback torque to the operator.}
+  \label{fig:beetle_cleaning_result_plot}
+\end{figure}
+
+As shown in \ref{fig:beetle_cleaning_result_wall} and \ref{tab:beetle_cleaning_result_wall}, condition (A) achieved more stable painting performance than condition (B). 
+In condition (B), the brush intermittently detached from the wall surface during painting, resulting in discontinuities in the painted trajectory. 
+Consistently, the measured contact force $F_x$ in the normal direction intermittently approached zero under condition (B). 
+This behavior is attributed to the difficulty of perceiving the contact state of the robot’s end-effector using only the visual feedback from the onboard camera.
+
+In contrast, under condition (A), the painting trajectory remained continuous, and the contact force $F_x$ did not drop to zero. 
+Although oscillations in $F_x$ were observed, these are considered to reflect the operator’s intentional modulation of the applied force, i.e., decreasing the force in response to increased reaction force and increasing it when the reaction force decreased.
+
+These results indicate that the proposed haptic feedback system contributed to stabilizing contact-based manipulation during the remote operation of the flying robot.
+
+
+\section{Wall Painting Experiment Using a Base-Fixed Multi-Link Robot}
+
+This section describes a wall painting experiment conducted using a base-fixed multi-link robot (robotic arm). 
+The experimental procedure follows the same steps as described in \ref{subsec:beatle_cleaning_procedure}.
+
+\subsection{Specifications of the Operated Robot}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\columnwidth]{figs/me6_painting/me6_picture}
+  \caption{Snapshot of the base-fixed multi-link robot used in the experiment.
+  A force/torque sensor and a brush are attached to the end-effector for painting operations.}
+  \label{fig:me6_picture}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Main specifications of the base-fixed multi-link robot}
+  \begin{tabular}{cc} \hline
+    Property & Value \\ \hline
+    Weight & \SI{7.2}{kg} \\
+    Maximum payload & \SI{750}{g} \\
+    Maximum working radius & \SI{450}{mm} \\
+    Maximum tool speed & \SI{0.5}{m/s} \\ \hline
+  \end{tabular}
+  \label{tab:me6_properties}
+\end{table}
+
+The base-fixed multi-link robot used in this experiment is shown in \ref{fig:me6_picture}. 
+The robot is a Magician E6 manufactured by Dobot Robotics and has six rotational joints. 
+For the painting task, it is equipped with a brush as the end-effector and a six-axis force/torque sensor (PFS055YA501U6, Leptorino). 
+The wrench measured by this sensor is used as the measured wrench described in \ref{subsec:feedback_from_robot}. 
+The main specifications of the robot are summarized in \ref{tab:me6_properties}.
+
+Because the base of this robot is fixed, the workspace of the end-effector is finite. 
+Accordingly, the position control method described in \ref{subsec:posmode} is also used in this experiment to generate control commands. 
+To achieve the commanded end-effector position and orientation, the corresponding joint angles must be determined. 
+These joint angles are computed via inverse kinematics on the Ground PC, which then transmits the target joint trajectories to the robot.
+
+\subsection{Experimental Results and Discussion}
+
+The experimental setup is shown in \ref{fig:me6_cleaning_overview} and \ref{fig:me6_cleaning_wallview}. 
+The experimental results are presented in \ref{fig:me6_cleaning_result_wall}, \ref{tab:me6_cleaning_result_wall}, and \ref{fig:me6_cleaning_result_plot}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_overview}
+  \vspace{-10pt}
+  \caption{Snapshot of the painting experiment using the robotic arm.
+  The image at the lower center shows the view from the camera mounted on the robot, which was used by the operator for control.
+  The red line on the wall surface indicates the target painting path.}
+  \label{fig:me6_cleaning_overview}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_wallview}
+  \vspace{-10pt}
+  \caption{Snapshot of the robot during the experiment.
+  The robot moved in the direction indicated by the blue arrow while performing the painting task.}
+  \label{fig:me6_cleaning_wallview}
+\end{figure}
+
+\begin{table}[H]
+  \centering
+  \caption{Evaluation metrics for the wall painting results}
+  \begin{tabular}{c|ccc} \hline
+    ~ & Mean lateral distance [px] & Angular deviation [deg] & STD of local angular deviation [deg] \\ \hline
+    (A) & 65.91 & 1.90 & 5.63 \\
+    (B) & 62.80 & 0.61 & 11.51 \\ \hline
+  \end{tabular}
+  \label{tab:me6_cleaning_result_wall}
+\end{table}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_result_wall}
+  \caption{Images of the wall surface.
+  Top: Wall surface before painting. The area outlined in green indicates the evaluation region.
+  Middle: Wall surface after painting under each experimental condition.
+  Bottom: Binarized image showing the difference before and after painting.
+  The mean lateral distance and angular deviation were calculated from this binarized image.}
+  \label{fig:me6_cleaning_result_wall}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\columnwidth]{figs/me6_painting/me6_cleaning_result_plot}
+  \caption{Time histories of the wrench during the experiment.
+  From top to bottom: measured force at the robot, feedback force to the operator, measured torque at the robot, and feedback torque to the operator.}
+  \label{fig:me6_cleaning_result_plot}
+\end{figure}
+
+Each evaluation metric is defined in the same manner as described in \ref{subsec:beatle_cleaning_procedure}.
+
+According to the results in \ref{tab:me6_cleaning_result_wall}, the mean lateral distance is comparable between conditions (A) and (B). 
+The angular deviation is larger in condition (A) than in condition (B), whereas the standard deviation of the local angular deviation is smaller in condition (A) than in condition (B). 
+These results indicate that although condition (A) exhibits lower global tracking accuracy relative to condition (B), the painting trajectory under condition (A) is locally more stable. 
+This suggests that the proposed haptic feedback method contributes to stabilizing remote contact operations even in a base-fixed robotic system.
+
+However, \ref{fig:me6_cleaning_result_plot} shows multiple instances of abrupt wrench variations in both conditions (A) and (B). 
+These abrupt changes are attributed to the time delay between the operator’s input motion and the moment when the robot’s end-effector reaches the commanded position. 
+Due to this delay, there is also a lag between the occurrence of the reaction force at the wall surface and the moment when the corresponding wrench is fed back to the operator. 
+As a result, a sudden large force can be generated at the end-effector, and the delayed feedback force may push the operator’s hand backward, thereby destabilizing the contact.
+
+This phenomenon was not observed in the previous experiment using the flying robot. 
+The difference is considered to arise from the manner in which reaction forces are compensated. 
+In the flying robot with an unfixed base, the reaction force corresponding to the end-effector force must be compensated through thrust control, making abrupt changes in end-effector force physically difficult. 
+In contrast, the base-fixed robot used in this experiment is rigidly connected to the ground. 
+If the joints possess sufficient stiffness, the reaction force at the base can statically compensate for the reaction generated at the end-effector. 
+This static compensation enables rapid variations in end-effector force.
+
+These results suggest that compensation strategies that explicitly account for time delays are necessary to achieve more stable contact-based manipulation.
 
 \medskip
 \textbf{Supporting Information} \par %Please delete the Suppporting Information statement if it is not applicable. Please supply Supporting Information in another file. Supporting information should not be provided in .tex format

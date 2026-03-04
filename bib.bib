@@ -1,18 +1,21 @@
-% autonomous servey
-@INPROCEEDINGS{auto_servey,
-  author={Shi, Liping and Marcano, Nestor J. Hernandez and Jacobsen, Rune Hylsberg},
-  booktitle={2019 22nd Euromicro Conference on Digital System Design (DSD)}, 
-  title={A Survey on Multi-unmanned Aerial Vehicle Communications for Autonomous Inspections}, 
-  year={2019},
-  volume={},
-  number={},
-  pages={580-587},
-  keywords={Wireless communication;Unmanned aerial vehicles;Inspection;Throughput;Long Term Evolution;Measurement;Wireless communication;Cooperation;Inspection;Unmanned Aerial Vehicle},
-  doi={10.1109/DSD.2019.00088}
+# intro
+@book{murphy,
+  title={Disaster robotics},
+  author={Murphy, Robin R},
+  year={2017},
+  publisher={MIT press}
 }
+# 災害ロボットの体系的研究
 
-% human needs in operation
-@ARTICLE{human_needs,
+@book{sheridan,
+  title={Telerobotics, automation, and human supervisory control},
+  author={Sheridan, Thomas B},
+  year={1992},
+  publisher={MIT press}
+}
+# 遠隔操縦の必要性
+
+@ARTICLE{darvish,
   author={Darvish, Kourosh and Penco, Luigi and Ramos, Joao and Cisneros, Rafael and Pratt, Jerry and Yoshida, Eiichi and Ivaldi, Serena and Pucci, Daniele},
   journal={IEEE Transactions on Robotics}, 
   title={Teleoperation of Humanoid Robots: A Survey}, 
@@ -23,148 +26,403 @@
   keywords={Robots;Robot sensing systems;Humanoid robots;Task analysis;Optical sensors;Muscles;Electromyography;Humanoid robot;teleoperation},
   doi={10.1109/TRO.2023.3236952}
 }
+# 遠隔操縦の必要性２
 
-% quadrotor teleop survey
-@ARTICLE{quad_teleop_1,
-  author={Nourmohammadi, Amin and Jafari, Mohammad and Zander, Thorsten O.},
-  journal={IEEE Transactions on Human-Machine Systems}, 
-  title={A Survey on Unmanned Aerial Vehicle Remote Control Using Brain-Computer Interface}, 
+@article{tang,
+  title={Deep reinforcement learning for robotics: A survey of real-world successes},
+  author={Tang, Chen and Abbatematteo, Ben and Hu, Jiaheng and Chandra, Rohan and Mart{\'\i}n-Mart{\'\i}n, Roberto and Stone, Peter},
+  journal={Annual Review of Control, Robotics, and Autonomous Systems},
+  volume={8},
+  number={1},
+  pages={153--188},
+  year={2025},
+  publisher={Annual Reviews}
+}
+# 自律制御の最新サーベイ
+
+@ARTICLE{kunze,
+  author={Kunze, Lars and Hawes, Nick and Duckett, Tom and Hanheide, Marc and Krajník, Tomáš},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Artificial Intelligence for Long-Term Robot Autonomy: A Survey}, 
   year={2018},
-  volume={48},
+  volume={3},
   number={4},
-  pages={337-348},
-  keywords={Drones;Aircraft;Robots;Aerospace control;Brain-computer interface (BCI);brain-controlled robots;drone;electroencephalography (EEG);remote control;teleoperation;unmanned aerial vehicle (UAV)},
-  doi={10.1109/THMS.2018.2830647}
-}
+  pages={4023-4030},
+  keywords={Navigation;Planning;Task analysis;Roads;Autonomous robots;Autonomous agents;AI-based methods;long-term autonomy},
+  doi={10.1109/LRA.2018.2860628}}
+# 自律制御の最新サーベイ２
 
-% quadrotor teleop 2
-@ARTICLE{quad_teleop_2,
-  author={Aggravi, Marco and Pacchierotti, Claudio and Giordano, Paolo Robuffo},
-  journal={IEEE Transactions on Automation Science and Engineering}, 
-  title={Connectivity-Maintenance Teleoperation of a UAV Fleet With Wearable Haptic Feedback}, 
-  year={2021},
-  volume={18},
-  number={3},
-  pages={1243-1262},
-  keywords={Drones;Haptic interfaces;Robot sensing systems;Multi-robot systems;Surveillance;Human-centered robotics;multirobot systems},
-  doi={10.1109/TASE.2020.3000060}
+@article{okamura,
+  title={Haptic feedback in robot-assisted minimally invasive surgery},
+  author={Okamura, Allison M},
+  journal={Current opinion in urology},
+  volume={19},
+  number={1},
+  pages={102--107},
+  year={2009},
+  publisher={LWW}
 }
+# 手術でのハプティクスフィードバックの利用
 
-% quadrotor teleop 3
-@INPROCEEDINGS{quad_teleop_3,
-  author={Yashin, Grigoriy A. and Trinitatova, Daria and Agishev, Ruslan T. and Ibrahimov, Roman and Tsetserukou, Dzmitry},
-  booktitle={2019 19th International Conference on Advanced Robotics (ICAR)}, 
-  title={AeroVr: Virtual Reality-based Teleoperation with Tactile Feedback for Aerial Manipulation}, 
-  year={2019},
-  volume={},
-  number={},
-  pages={767-772},
-  keywords={},
-  doi={10.1109/ICAR46387.2019.8981574}
-}
-
-% quadrotor teleop 4
-@INPROCEEDINGS{quad_teleop_4,
-  author={Kim, Dongbin and Oh, Paul Y.},
-  booktitle={2020 American Control Conference (ACC)}, 
-  title={Testing-and-Evaluation Platform for Haptics-based Aerial Manipulation with Drones}, 
-  year={2020},
-  volume={},
-  number={},
-  pages={1453-1458},
-  keywords={Springs;Haptic interfaces;Drones;Manipulators;Force;Force measurement;Task analysis},
-  doi={10.23919/ACC45564.2020.9147799}
-}
-
-% full actuated 1
-@ARTICLE{full_actuated_1,
-  author={Ryll, Markus and Bülthoff, Heinrich H. and Giordano, Paolo Robuffo},
-  journal={IEEE Transactions on Control Systems Technology}, 
-  title={A Novel Overactuated Quadrotor Unmanned Aerial Vehicle: Modeling, Control, and Experimental Validation}, 
-  year={2015},
-  volume={23},
-  number={2},
-  pages={540-556},
-  keywords={Propellers;Aerodynamics;Spinning;Prototypes;Trajectory;Aerospace electronics;Rotors;Aerial robotics;aerodynamical modeling;dynamical modeling;flight control;overactuation;quadrotor unmanned aerial vehicles (UAVs);redundancy resolution;Aerial robotics;aerodynamical modeling;dynamical modeling;flight control;overactuation;quadrotor unmanned aerial vehicles (UAVs);redundancy resolution},
-  doi={10.1109/TCST.2014.2330999}
-}
-
-% full actuated 2
-@INPROCEEDINGS{full_actuated_2,
-  author={Park, Sangyul and Her, Jongbeom and Kim, Juhyeok and Lee, Dongjun},
-  booktitle={2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, 
-  title={Design, modeling and control of omni-directional aerial robot}, 
-  year={2016},
-  volume={},
-  number={},
-  pages={1570-1575},
-  keywords={Rotors;Drones;Force;Torque;Shape;Design optimization},
-  doi={10.1109/IROS.2016.7759254}
-}
-
-% full actuated 3
-@ARTICLE{full_actuated_3,
-  author={Kamel, Mina and Verling, Sebastian and Elkhatib, Omar and Sprecher, Christian and Wulkop, Paula and Taylor, Zachary and Siegwart, Roland and Gilitschenski, Igor},
-  journal={IEEE Robotics \& Automation Magazine}, 
-  title={The Voliro Omniorientational Hexacopter: An Agile and Maneuverable Tiltable-Rotor Aerial Vehicle}, 
-  year={2018},
-  volume={25},
-  number={4},
-  pages={34-44},
-  keywords={Rotors;Brushless DC motors;Robot sensing systems;Maintenance engineering;Inspection;Unmanned aerial vehicles;Inspection;Predicitive maintenance;Drones},
-  doi={10.1109/MRA.2018.2866758}
-}
-
-@INPROCEEDINGS{6DoF_teleop_from_fixed_arm,
-  author={Allenspach, Mike and Lawrance, Nicholas and Tognon, Marco and Siegwart, Roland},
-  booktitle={2022 International Conference on Robotics and Automation (ICRA)}, 
-  title={Towards 6DoF Bilateral Teleoperation of an Omnidirectional Aerial Vehicle for Aerial Physical Interaction}, 
+@article{lee,
+  title={Challenges, tasks, and opportunities in teleoperation of excavator toward human-in-the-loop construction automation},
+  author={Lee, Jin Sol and Ham, Youngjib and Park, Hangue and Kim, Jeonghee},
+  journal={Automation in Construction},
+  volume={135},
+  pages={104119},
   year={2022},
+  publisher={Elsevier}
+}
+# 建設でのテレオペのサーベイ
+
+@article{hashimoto,
+  title={Experimental evaluation of manipulator teleoperation system based on trajectory planning for obstacle removal task in nuclear plant decommissioning},
+  author={Hashimoto, Tatsuya and Tazaki, Yuichi and Matsuda, Fumiya and Kitajima, Katsumasa and Nagano, Hikaru and Yokokohji, Yasuyoshi},
+  journal={Journal of Robotics and Mechatronics},
+  volume={36},
+  number={1},
+  pages={49--62},
+  year={2024},
+  publisher={Fuji Technology Press Ltd.}
+}
+# プラントでの利用例
+
+@article{si,
+  title={A review on manipulation skill acquisition through teleoperation-based learning from demonstration},
+  author={Si, Weiyong and Wang, Ning and Yang, Chenguang},
+  journal={Cognitive Computation and Systems},
+  volume={3},
+  number={1},
+  pages={1--16},
+  year={2021},
+  publisher={Wiley Online Library}
+}
+# 接触込み遠隔操縦１
+
+@INPROCEEDINGS{zhu,
+  author={Zhu, Yaonan and Nazirjonov, Shukrullo and Jiang, Bingheng and Colan, Jacinto and Aoyama, Tadayoshi and Hasegawa, Y. and Belousov, Boris and Hansel, Kay and Peters, Jan},
+  booktitle={2022 IEEE International Conference on Cyborg and Bionic Systems (CBS)}, 
+  title={Visual Tactile Sensor Based Force Estimation for Position-Force Teleoperation}, 
+  year={2023},
   volume={},
   number={},
-  pages={9302-9308},
-  keywords={Performance evaluation;Couplings;Automation;Friction;Force feedback;Inspection;Autonomous aerial vehicles},
-  doi={10.1109/ICRA46639.2022.9812346}
-}
+  pages={49-52},
+  keywords={Performance evaluation;Visualization;Parallel robots;Force;Force feedback;Tactile sensors;Estimation},
+  doi={10.1109/CBS55922.2023.10115342}}
+# 接触込み遠隔操縦２
 
-@INPROCEEDINGS{drone_hand_haptics,
-  author={Macchini, Matteo and Havy, Thomas and Weber, Antoine and Schiano, Fabrizio and Floreano, Dario},
-  booktitle={2020 IEEE International Conference on Robotics and Automation (ICRA)}, 
-  title={Hand-worn Haptic Interface for Drone Teleoperation}, 
-  year={2020},
-  volume={},
-  number={},
-  pages={10212-10218},
-  doi={10.1109/ICRA40945.2020.9196664}
+@article{su,
+  title={Mixed-reality-enhanced human--robot interaction with an imitation-based mapping approach for intuitive teleoperation of a robotic arm-hand system},
+  author={Su, Yun-Peng and Chen, Xiao-Qi and Zhou, Tony and Pretty, Christopher and Chase, Geoffrey},
+  journal={Applied Sciences},
+  volume={12},
+  number={9},
+  pages={4740},
+  year={2022},
+  publisher={MDPI}
 }
+# 接触込み遠隔操縦３
 
-@inproceedings{leviopole,
-  author = {Sasaki, Tomoya and Hartanto, Richard Sahala and Liu, Kao-Hua and Tsuchiya, Keitarou and Hiyama, Atsushi and Inami, Masahiko},
-  title = {Leviopole: mid-air haptic interactions using multirotor},
-  year = {2018},
-  isbn = {9781450358101},
-  publisher = {Association for Computing Machinery},
-  address = {New York, NY, USA},
-  doi = {10.1145/3214907.3214913},
-  abstract = {We present LevioPole, a rod-like device that provides mid-air haptic feedback for full-body interaction in virtual reality, augmented reality, or other daily activities. The device is constructed from two rotor units, which are designed using propellers, motors, speed controllers, batteries, and sensors, allowing portability and ease of use. Having each group of rotor units on both ends of the pole, these rotors generate both rotational and linear forces that can be driven according to the target application. In this paper, we introduce example applications in both VR and physical environment; embodied gaming with haptic feedback and walking navigation in a specific direction.},
-  booktitle = {ACM SIGGRAPH 2018 Emerging Technologies},
-  articleno = {12},
-  numpages = {2},
-  keywords = {full-body interaction, human augmentation, mid-air haptic},
-  location = {Vancouver, British Columbia, Canada},
-  series = {SIGGRAPH '18}
+
+
+
+##################
+# related works
+
+# device
+
+@article{magnetic,
+author = {Peter J. Berkelman and Ralph L. Hollis},
+title ={Lorentz Magnetic Levitation for Haptic Interaction: Device Design, Performance, and Integration with Physical Simulations},
+journal = {The International Journal of Robotics Research},
+volume = {19},
+number = {7},
+pages = {644-667},
+year = {2000},
+doi = {10.1177/027836490001900703},
+eprint = {https://doi.org/10.1177/027836490001900703}
 }
+# 磁気式6次元提示
+
+@incollection{spidar_8,
+  title={Two-handed multi-finger string-based haptic interface SPIDAR-8},
+  author={Akahane, Katsuhito and Hyun, Jungwoo and Kumazawa, Itsuo and Sato, Makoto},
+  booktitle={Multi-finger Haptic Interaction},
+  pages={109--147},
+  year={2013},
+  publisher={Springer}
+}
+# 糸式提示
+
+@article{parallel_vulliez,
+  title={Design strategy and issues of the Delthaptic, a new 6-DOF parallel haptic device},
+  author={Vulliez, Margot and Zeghloul, Said and Khatib, Oussama},
+  journal={Mechanism and Machine Theory},
+  volume={128},
+  pages={395--411},
+  year={2018},
+  publisher={Elsevier}
+}
+# パラレルリンク1
+
+@Article{parallel_qin,
+AUTHOR = {Qin, Huanhuan and Song, Aiguo and Liu, Yuqing and Jiang, Guohua and Zhou, Bohe},
+TITLE = {Design and Calibration of a New 6 DOF Haptic Device},
+JOURNAL = {Sensors},
+VOLUME = {15},
+YEAR = {2015},
+NUMBER = {12},
+PAGES = {31293--31313},
+URL = {https://www.mdpi.com/1424-8220/15/12/29857},
+PubMedID = {26690449},
+ISSN = {1424-8220},
+DOI = {10.3390/s151229857}
+}
+# パラレルリンク2
 
 @inproceedings{thor_hammer,
-  title={Thor's hammer: An ungrounded force feedback device utilizing propeller-induced propulsive force},
-  author={Heo, Seongkook and Chung, Christina and Lee, Geehyuk and Wigdor, Daniel},
-  booktitle={Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems},
-  pages={1--11},
-  year={2018}
+author = {Heo, Seongkook and Chung, Christina and Lee, Geehyuk and Wigdor, Daniel},
+title = {Thor's Hammer: An Ungrounded Force Feedback Device Utilizing Propeller-Induced Propulsive Force},
+year = {2018},
+isbn = {9781450356213},
+booktitle={Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3170427.3186544},
+doi = {10.1145/3170427.3186544},
+pages = {1-4},
+numpages = {4},
+keywords = {haptic feedback, propeller-based feedback, ungrounded force feedback, virtual reality},
+location = {Montreal QC, Canada},
+series = {CHI EA '18}
+}
+# thor hammer
+
+@inproceedings{leviopole,
+author = {Sasaki, Tomoya and Hartanto, Richard Sahala and Liu, Kao-Hua and Tsuchiya, Keitarou and Hiyama, Atsushi and Inami, Masahiko},
+title = {Leviopole: mid-air haptic interactions using multirotor},
+year = {2018},
+isbn = {9781450358101},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3214907.3214913},
+doi = {10.1145/3214907.3214913},
+booktitle = {ACM SIGGRAPH 2018 Emerging Technologies},
+articleno = {12},
+numpages = {2},
+keywords = {mid-air haptic, human augmentation, full-body interaction},
+location = {Vancouver, British Columbia, Canada},
+series = {SIGGRAPH '18}
+}
+# levio pole
+
+@INPROCEEDINGS{itorqu,
+  author={Winfree, Kyle N. and Gewirtz, Jamie and Mather, Thomas and Fiene, Jonathan and Kuchenbecker, Katherine J.},
+  booktitle={World Haptics 2009 - Third Joint EuroHaptics conference and Symposium on Haptic Interfaces for Virtual Environment and Teleoperator Systems}, 
+  title={A high fidelity ungrounded torque feedback device: The iTorqU 2.0}, 
+  year={2009},
+  volume={},
+  number={},
+  pages={261-266},
+  keywords={Torque;Feedback;Haptic interfaces;Grounding;Angular velocity;Vibrations;Virtual environment;Teleoperators;Cities and towns;Flywheels},
+  doi={10.1109/WHC.2009.4810866}}
+# iTorqu
+
+@ARTICLE{shifty,
+  author={Zenner, André and Krüger, Antonio},
+  journal={IEEE Transactions on Visualization and Computer Graphics}, 
+  title={Shifty: A Weight-Shifting Dynamic Passive Haptic Proxy to Enhance Object Perception in Virtual Reality}, 
+  year={2017},
+  volume={23},
+  number={4},
+  pages={1285-1294},
+  keywords={Haptic interfaces;Visualization;Actuators;Shape;Augmented reality;Augmented virtuality;Dynamic passive haptic feedback;input devices;virtual reality;haptics;perception},
+  doi={10.1109/TVCG.2017.2656978}}
+# Shifty
+
+@inproceedings{spidar_w,
+author = {Nagai, Kazuki and Tanoue, Soma and Akahane, Katsuhito and Sato, Makoto},
+title = {Wearable 6-DoF wrist haptic device "SPIDAR-W"},
+year = {2015},
+isbn = {9781450339322},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2818384.2818403},
+doi = {10.1145/2818384.2818403},
+booktitle = {SIGGRAPH Asia 2015 Haptic Media And Contents Design},
+articleno = {19},
+numpages = {2},
+location = {Kobe, Japan},
+series = {SA '15}
+}
+# SpidarW
+
+# architecture
+
+@article{nuno,
+title = {Passivity-based control for bilateral teleoperation: A tutorial},
+journal = {Automatica},
+volume = {47},
+number = {3},
+pages = {485-495},
+year = {2011},
+issn = {0005-1098},
+doi = {https://doi.org/10.1016/j.automatica.2011.01.004},
+url = {https://www.sciencedirect.com/science/article/pii/S0005109811000197},
+author = {Emmanuel Nuño and Luis Basañez and Romeo Ortega},
+keywords = {Telerobotics, Robot control, Time delay, Passivity control},
+abstract = {This tutorial revisits several of the most recent passivity-based controllers for nonlinear bilateral teleoperators with guaranteed stability properties. These schemes, which include scattering–based, damping injection and adaptive controllers, ensure asymptotic stability in multiple situations that range from constant to variable time-delays, with or without scattering transformation and with or without position tracking capabilities. Although all controllers exploit the basic property of passivity of the teleoperators, they have been developed invoking various analysis and design tools, which complicates their comparison and relative performance assessment. The objective of this paper is to present a unified theoretical framework—based on a general Lyapunov–like function—that, upon slight modification, allows to analyze the stability of all the schemes.}
 }
 
+@inproceedings{wave_niemeyer,
+  title={Transient shaping in force-reflecting teleoperation},
+  author={Niemeyer, Gunter and Slotine, J-JE},
+  booktitle={Fifth International Conference on Advanced Robotics' Robots in Unstructured Environments},
+  pages={261--266},
+  year={1991},
+  organization={IEEE}
+}
+# 波変数1
 
-% Vectoring mechanism
+@article{wave_nuno,
+  title={Passivity-based control for bilateral teleoperation: A tutorial},
+  author={Nu{\~n}o, Emmanuel and Basa{\~n}ez, Luis and Ortega, Romeo},
+  journal={Automatica},
+  volume={47},
+  number={3},
+  pages={485--495},
+  year={2011},
+  publisher={Elsevier}
+}
+# 波変数２
+
+@article{wave_boukhnifer,
+  title={Wave-based passive control for transparent micro-teleoperation system},
+  author={Boukhnifer, Moussa and Ferreira, Antoine},
+  journal={Robotics and Autonomous Systems},
+  volume={54},
+  number={7},
+  pages={601--615},
+  year={2006},
+  publisher={Elsevier}
+}
+# 波変数３
+
+@article{gain_polushin,
+  title={Control schemes for stable teleoperation with communication delay based on IOS small gain theorem},
+  author={Polushin, Ilia G and Tayebi, Abdelhamid and Marquez, Horacio J},
+  journal={Automatica},
+  volume={42},
+  number={6},
+  pages={905--915},
+  year={2006},
+  publisher={Elsevier}
+}
+# 小ゲイン適応１
+
+@inproceedings{gain_notomista,
+  title={A safety and passivity filter for robot teleoperation systems},
+  author={Notomista, Gennaro and Cai, Xiaoyi},
+  booktitle={International Workshop on Human-Friendly Robotics},
+  pages={101--115},
+  year={2020},
+  organization={Springer}
+}
+# 小ゲイン適応２
+
+@article{TDPA_ryu,
+  title={Stable teleoperation with time-domain passivity control},
+  author={Ryu, Jee-Hwan and Kwon, Dong-Soo and Hannaford, Blake},
+  journal={IEEE Transactions on robotics and automation},
+  volume={20},
+  number={2},
+  pages={365--373},
+  year={2004},
+  publisher={IEEE}
+}
+# TDPA1
+
+@article{TDPA_rebelo,
+  title={Time domain passivity controller for 4-channel time-delay bilateral teleoperation},
+  author={Rebelo, Joao and Schiele, Andre},
+  journal={IEEE transactions on haptics},
+  volume={8},
+  number={1},
+  pages={79--89},
+  year={2014},
+  publisher={IEEE}
+}
+# TDPA2
+
+@inproceedings{TDPA_coelho,
+  title={Smoother position-drift compensation for time domain passivity approach based teleoperation},
+  author={Coelho, Andre and Singh, Harsimran and Muskardin, Tin and Balachandran, Ribin and Kondak, Konstantin},
+  booktitle={2018 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={5525--5532},
+  year={2018},
+  organization={IEEE}
+}
+# TDPA3
+
+@article{tank_ferraguti,
+  title={An energy tank-based interactive control architecture for autonomous and teleoperated robotic surgery},
+  author={Ferraguti, Federica and Preda, Nicola and Manurung, Auralius and Bonfe, Marcello and Lambercy, Olivier and Gassert, Roger and Muradore, Riccardo and Fiorini, Paolo and Secchi, Cristian},
+  journal={IEEE Transactions on Robotics},
+  volume={31},
+  number={5},
+  pages={1073--1088},
+  year={2015},
+  publisher={IEEE}
+}
+# energy tank 1
+
+@article{tank_piccinelli,
+  title={Linearized Virtual Energy Tank for Passivity-Based Bilateral Teleoperation Using Linear MPC},
+  author={Piccinelli, Nicola and Muradore, Riccardo},
+  journal={IEEE Transactions on Robotics},
+  year={2025},
+  publisher={IEEE}
+}
+# energy tank 2
+
+@inproceedings{tank_de,
+  title={Time-delay compensation using energy tank for satellite dynamics robotic simulators},
+  author={De Stefano, Marco and Vezzadini, Luca and Secchi, Cristian},
+  booktitle={2019 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  pages={521--528},
+  year={2019},
+  organization={IEEE}
+}
+# energy tank 3
+
+@article{laghi,
+  title={Unifying bilateral teleoperation and tele-impedance for enhanced user experience},
+  author={Laghi, Marco and Ajoudani, Arash and Catalano, Manuel G and Bicchi, Antonio},
+  journal={The International Journal of Robotics Research},
+  volume={39},
+  number={4},
+  pages={514--539},
+  year={2020},
+  publisher={SAGE Publications Sage UK: London, England}
+}
+# operator model 
+
+@article{sheng,
+  title={Teleoperated surgical robot with adaptive interactive control architecture for tissue identification},
+  author={Sheng, Yubo and Cheng, Haoyuan and Wang, Yiwei and Zhao, Huan and Ding, Han},
+  journal={Bioengineering},
+  volume={10},
+  number={10},
+  pages={1157},
+  year={2023},
+  publisher={MDPI}
+}
+operator model with energy tank
+
+
+
+##################
+# device
 @ARTICLE{DRAGON,
   author={Zhao, Moju and Anzai, Tomoki and Shi, Fan and Chen, Xiangyu and Okada, Kei and Inaba, Masayuki},
   journal={IEEE Robotics and Automation Letters}, 
@@ -176,27 +434,48 @@
   keywords={Rotors;Unmanned aerial vehicles;Robots;Servomotors;Gravity;Attitude control;Aerial systems: mechanics and control;motion control},
   doi={10.1109/LRA.2018.2793344}}
 
-% fechner law
-  @book{fechner,
-  author    = {Gustav Theodor Fechner},
-  title     = {Elemente der Psychophysik},
-  year      = {1860},
-  publisher = {Breitkopf und Härtel},
-  address   = {Leipzig},
-  language  = {German}
+@ARTICLE{nishio,
+  author={Nishio, Takuzumi and Zhao, Moju},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Singularity-Free Flight using Rotor-Distributed Aerial Manipulator}, 
+  year={2024},
+  volume={9},
+  number={2},
+  pages={1460-1467},
+  keywords={Rotors;Planning;End effectors;Controllability;6-DOF;Three-dimensional displays;Stability analysis;Aerial manipulator;aerial systems;flight control;motion planning},
+  doi={10.1109/LRA.2023.3346797}}
+# 最適化での偏向角決定
+
+@ARTICLE{kamel,
+  author={Kamel, Mina and Verling, Sebastian and Elkhatib, Omar and Sprecher, Christian and Wulkop, Paula and Taylor, Zachary and Siegwart, Roland and Gilitschenski, Igor},
+  journal={IEEE Robotics \& Automation Magazine}, 
+  title={The Voliro Omniorientational Hexacopter: An Agile and Maneuverable Tiltable-Rotor Aerial Vehicle}, 
+  year={2018},
+  volume={25},
+  number={4},
+  pages={34-44},
+  keywords={Rotors;Brushless DC motors;Robot sensing systems;Maintenance engineering;Inspection;Unmanned aerial vehicles;Inspection;Predicitive maintenance;Drones},
+  doi={10.1109/MRA.2018.2866758}}
+# 偏向角の線形化
+
+
+##################
+# architecture
+@article{burdet,
+  author  = {Burdet, Etienne and Osu, Rieko and Franklin, David W. and Milner, Theodore E. and Kawato, Mitsuo},
+  title   = {The central nervous system stabilizes unstable dynamics by learning optimal impedance},
+  journal = {Nature},
+  volume  = {414},
+  number  = {6862},
+  pages   = {446--449},
+  year    = {2001},
+  doi     = {10.1038/35106566},
+  url     = {https://doi.org/10.1038/35106566}
 }
 
-% stevens law
-@article{stevens,
-  author  = {Stanley Smith Stevens},
-  title   = {The psychophysics of sensory function},
-  journal = {Scientific American},
-  year    = {1957},
-  volume  = {226},
-  number  = {6},
-  pages   = {377--386}
-}
 
+##################
+# experiment
 @ARTICLE{beatle,
   author={Sugihara, Junichiro and Zhao, Moju and Nishio, Takuzumi and Okada, Kei and Inaba, Masayuki},
   journal={IEEE/ASME Transactions on Mechatronics}, 
@@ -208,3 +487,26 @@
   keywords={Rotors;Vectors;Torque;Switches;Couplings;Autonomous aerial vehicles;Servomotors;Scalability;Mobile robots;Wheels;Aerial robots;contact wrench control;distributed systems;reconfigurable robots},
   doi={10.1109/TMECH.2024.3470256}
 }
+
+
+@ARTICLE{hydrus_xi,
+  author={Zhao, Moju and Anzai, Tomoki and Okada, Kei and Kawasaki, Koji and Inaba, Masayuki},
+  journal={IEEE Robotics and Automation Letters}, 
+  title={Singularity-Free Aerial Deformation by Two-Dimensional Multilinked Aerial Robot With 1-DoF Vectorable Propeller}, 
+  year={2021},
+  volume={6},
+  number={2},
+  pages={1367-1374},
+  doi={10.1109/LRA.2021.3056027}
+}
+
+@ARTICLE{mobile_manipulator,
+  author={Vatavuk, Ivo and Polic, Marsela and Hrabar, Ivan and Petric, Frano and Orsag, Matko and Bogdan, Stjepan},
+  journal={Field Robotics}, 
+  title={Autonomous, Mobile Manipulation in a Wall-Building Scenario: Team LARICS at MBZIRC 2020}, 
+  year={2022},
+  volume={2},
+  number={},
+  pages={201-221},
+  keywords={Robots;Robot kinematics;Navigation;Manipulators;Cameras;Buildings;Grippers;Automation;Service robots;Laser radar;mobile manipulation;perception;SLAM;visual servoing},
+  doi={10.55417/fr.2022008}}

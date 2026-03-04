@@ -1,10 +1,43 @@
 \begin{thebibliography}{1}
 
+\bibitem{itorqu}
+Kyle~N. Winfree, Jamie Gewirtz, Thomas Mather, Jonathan Fiene, and Katherine~J.
+  Kuchenbecker.
+\newblock A high fidelity ungrounded torque feedback device: The itorqu 2.0.
+\newblock In {\em World Haptics 2009 - Third Joint EuroHaptics conference and
+  Symposium on Haptic Interfaces for Virtual Environment and Teleoperator
+  Systems}, pages 261--266, 2009.
+
+\bibitem{shifty}
+André Zenner and Antonio Krüger.
+\newblock Shifty: A weight-shifting dynamic passive haptic proxy to enhance
+  object perception in virtual reality.
+\newblock {\em IEEE Transactions on Visualization and Computer Graphics},
+  23(4):1285--1294, 2017.
+
 \bibitem{DRAGON}
 Moju Zhao, Tomoki Anzai, Fan Shi, Xiangyu Chen, Kei Okada, and Masayuki Inaba.
 \newblock Design, modeling, and control of an aerial robot dragon: A
   dual-rotor-embedded multilink robot with the ability of
   multi-degree-of-freedom aerial transformation.
 \newblock {\em IEEE Robotics and Automation Letters}, 3(2):1176--1183, 2018.
+
+\bibitem{nishio}
+Takuzumi Nishio and Moju Zhao.
+\newblock Singularity-free flight using rotor-distributed aerial manipulator.
+\newblock {\em IEEE Robotics and Automation Letters}, 9(2):1460--1467, 2024.
+
+\bibitem{kamel}
+Mina Kamel, Sebastian Verling, Omar Elkhatib, Christian Sprecher, Paula Wulkop,
+  Zachary Taylor, Roland Siegwart, and Igor Gilitschenski.
+\newblock The voliro omniorientational hexacopter: An agile and maneuverable
+  tiltable-rotor aerial vehicle.
+\newblock {\em IEEE Robotics \& Automation Magazine}, 25(4):34--44, 2018.
+
+\bibitem{beatle}
+Junichiro Sugihara, Moju Zhao, Takuzumi Nishio, Kei Okada, and Masayuki Inaba.
+\newblock Beatle—self-reconfigurable aerial robot: Design, control and
+  experimental validation.
+\newblock {\em IEEE/ASME Transactions on Mechatronics}, pages 1--11, 2024.
 
 \end{thebibliography}
