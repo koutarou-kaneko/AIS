@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.2.10)  4 MAR 2026 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.2.10)  6 MAR 2026 20:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -601,28 +601,34 @@ LaTeX Info: Redefining \nameref on input line 3.
 \openout3 = `main.out'.
 
 
-Overfull \hbox (8.89417pt too wide) in paragraph at lines 39--49
-[]\OT1/cmr/m/n/9 Aerial ma-nip-u-la-tions us-ing aerial robots are gain-ing at-
-ten-tion for their work in high places and haz-ardous lo-ca-tions. While au-ton
-omous 
+Overfull \hbox (15.14842pt too wide) in paragraph at lines 10--11
+[]\OT1/cmr/m/n/20.74 Design of a Robot-Independent Tele-op-er-a-tion Sys-tem wi
+th a Novel 
  []
 
 
-Overfull \hbox (8.71788pt too wide) in paragraph at lines 66--67
-\OT1/cmr/m/n/12 This sec-tion de-scribes the de-sign method-ol-ogy of the pro-p
-osed re-mote ma-nip-u-la-tion de-vice, which achieves 
+Overfull \hbox (2.9768pt too wide) in paragraph at lines 44--48
+\OT1/cmr/m/n/9 knowl-edge, this work presents the first re-al-iza-tion of an un
+-grounded hap-tic de-vice ca-pa-ble of in-de-pen-dently pre-sent-ing six-dimens
+ional 
  []
 
+<figs/introduction/research_overview.png, id=158, 533.484pt x 615.171pt>
+File: figs/introduction/research_overview.png Graphic file (type png)
+<use figs/introduction/research_overview.png>
+Package pdftex.def Info: figs/introduction/research_overview.png  used on input
+ line 83.
+(pdftex.def)             Requested size: 536.60773pt x 618.82094pt.
 
-Overfull \hbox (2.186pt too wide) in paragraph at lines 87--91
-\OT1/cmr/m/n/12 fi-cult to re-al-ize a fully un-grounded con-fig-u-ra-tion. In 
-con-trast, thrust can gen-er-ate force in an un-grounded 
+Overfull \hbox (4.14848pt too wide) in paragraph at lines 74--86
+[]\OT1/cmr/m/n/12 Therefore, this study aims to de-velop a re-mote ma-nip-u-la-
+tion sys-tem us-ing force feed-back to en-able robots 
  []
 
-<vch-logo.png, id=134, 71.0655pt x 21.1992pt>
+<vch-logo.png, id=160, 71.0655pt x 21.1992pt>
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 91.
+Package pdftex.def Info: vch-logo.png  used on input line 86.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -635,15 +641,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./VCH-logo.png>]
-<figs/device/device_overview.png, id=152, 536.112pt x 429.021pt>
-File: figs/device/device_overview.png Graphic file (type png)
-<use figs/device/device_overview.png>
-Package pdftex.def Info: figs/device/device_overview.png  used on input line 11
-1.
-(pdftex.def)             Requested size: 487.8192pt x 390.38353pt.
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 115.
+Package pdftex.def Info: vch-logo.png  used on input line 87.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -655,20 +655,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [2]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 135
-.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 135
-.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 138.
+Package pdftex.def Info: vch-logo.png  used on input line 93.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -679,22 +668,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[3 <./figs/device/device_overview.png>]
-<figs/device/control_line_graph_v3.png, id=174, 371.643pt x 383.031pt>
-File: figs/device/control_line_graph_v3.png Graphic file (type png)
-<use figs/device/control_line_graph_v3.png>
-Package pdftex.def Info: figs/device/control_line_graph_v3.png  used on input l
-ine 158.
-(pdftex.def)             Requested size: 487.8192pt x 502.78539pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 159--159
-[]\OT1/cmr/m/n/10 Figure 2: |Top: Con-trol de-grees of free-dom of the pro-pose
-d de-vice. The black lines in-di-cate the han-dle co-or-di-nate sys-tem
+[3 <./figs/introduction/research_overview.png>]
+Overfull \hbox (18.57472pt too wide) in paragraph at lines 114--117
+\OT1/cmr/m/n/12 quire the de-vice base to be grounded dur-ing op-er-a-tion. Suc
+h de-vices have a lim-ited ma-nip-u-la-tion workspace, 
  []
 
+<figs/introduction/devices_grounded.png, id=198, 215.715pt x 502.824pt>
+File: figs/introduction/devices_grounded.png Graphic file (type png)
+<use figs/introduction/devices_grounded.png>
+Package pdftex.def Info: figs/introduction/devices_grounded.png  used on input 
+line 120.
+(pdftex.def)             Requested size: 325.2183pt x 758.16248pt.
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 162.
+Package pdftex.def Info: vch-logo.png  used on input line 124.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -705,49 +693,51 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [4]
-<figs/device/thrust_image.png, id=185, 596.337pt x 287.766pt>
-File: figs/device/thrust_image.png Graphic file (type png)
-<use figs/device/thrust_image.png>
-Package pdftex.def Info: figs/device/thrust_image.png  used on input line 165.
-(pdftex.def)             Requested size: 487.8192pt x 235.4076pt.
+Overfull \vbox (57.46248pt too high) has occurred while \output is active []
 
-Underfull \hbox (badness 10000) in paragraph at lines 166--166
-[]\OT1/cmr/m/n/10 Figure 3: |Left: Thrust vec-tor rep-re-sented by de-flec-tion
- an-gles. Right: De-com-po-si-tion into three-dimensional vir-tual trans-
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 124.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[5 <./figs/introduction/devices_grounded.png>]
+<figs/introduction/devices_ungrounded.png, id=223, 593.928pt x 443.694pt>
+File: figs/introduction/devices_ungrounded.png Graphic file (type png)
+<use figs/introduction/devices_ungrounded.png>
+Package pdftex.def Info: figs/introduction/devices_ungrounded.png  used on inpu
+t line 140.
+(pdftex.def)             Requested size: 536.60773pt x 400.90512pt.
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 151.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[6 <./figs/introduction/devices_ungrounded.png>]
+Overfull \hbox (8.71788pt too wide) in paragraph at lines 191--192
+\OT1/cmr/m/n/12 This sec-tion de-scribes the de-sign method-ol-ogy of the pro-p
+osed re-mote ma-nip-u-la-tion de-vice, which achieves 
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 169.
+Package pdftex.def Info: vch-logo.png  used on input line 192.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[5 <./figs/device/control_line_graph_v3.png>]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 218.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[6 <./figs/device/thrust_image.png>]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 311.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.81955pt, for example:
@@ -757,53 +747,44 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [7]
-Overfull \hbox (19.35805pt too wide) in paragraph at lines 317--318
-\OT1/cmr/m/n/12 nents: gen-er-a-tion of con-trol com-mands for the robot, gen-e
-r-a-tion of feed-back wrenches based on the wrenches 
+Overfull \hbox (2.186pt too wide) in paragraph at lines 212--216
+\OT1/cmr/m/n/12 fi-cult to re-al-ize a fully un-grounded con-fig-u-ra-tion. In 
+con-trast, thrust can gen-er-ate force in an un-grounded 
  []
 
+<figs/device/device_overview.png, id=258, 536.112pt x 429.021pt>
+File: figs/device/device_overview.png Graphic file (type png)
+<use figs/device/device_overview.png>
+Package pdftex.def Info: figs/device/device_overview.png  used on input line 23
+6.
+(pdftex.def)             Requested size: 487.8192pt x 390.38353pt.
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 240.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
-Overfull \hbox (2.28185pt too wide) in paragraph at lines 319--321
-\OT1/cmr/m/n/12 gen-er-at-ing the feed-back wrench is pre-sented. A schematic o
-f the pro-posed ar-chi-tec-ture is shown in Fig. [][]4[][].  
- []
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-<figs/architecture/block_diagram_full.png, id=228, 647.583pt x 324.777pt>
-File: figs/architecture/block_diagram_full.png Graphic file (type png)
-<use figs/architecture/block_diagram_full.png>
-Package pdftex.def Info: figs/architecture/block_diagram_full.png  used on inpu
-t line 324.
-(pdftex.def)             Requested size: 542.02501pt x 271.84444pt.
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-Underfull \hbox (badness 10000) in paragraph at lines 327--327
-[]\OT1/cmr/m/n/10 Figure 4: |Block di-a-gram of the pro-posed tele-op-er-a-tion
- ar-chi-tec-ture. De-tails of the \Op-er-at-ing Com-mand Gen-er-a-tor" are
- []
-
-<figs/architecture/operating_command_generation.png, id=233, 709.779pt x 571.80
-9pt>
-File: figs/architecture/operating_command_generation.png Graphic file (type png
+[8]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 260
+.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-<use figs/architecture/operating_command_generation.png>
-Package pdftex.def Info: figs/architecture/operating_command_generation.png  us
-ed on input line 335.
-(pdftex.def)             Requested size: 542.02501pt x 436.67337pt.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 260
+.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 339.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[8 <./figs/architecture/block_diagram_full.png>]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 356.
+Package pdftex.def Info: vch-logo.png  used on input line 263.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -814,19 +795,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[9 <./figs/architecture/operating_command_generation.png>]
-<figs/architecture/feedback_wrench_generation.png, id=250, 709.779pt x 686.784p
-t>
-File: figs/architecture/feedback_wrench_generation.png Graphic file (type png)
-<use figs/architecture/feedback_wrench_generation.png>
-Package pdftex.def Info: figs/architecture/feedback_wrench_generation.png  used
- on input line 405.
-(pdftex.def)             Requested size: 542.02501pt x 524.47633pt.
+[9 <./figs/device/device_overview.png>]
+<figs/device/control_line_graph_v3.png, id=279, 371.643pt x 383.031pt>
+File: figs/device/control_line_graph_v3.png Graphic file (type png)
+<use figs/device/control_line_graph_v3.png>
+Package pdftex.def Info: figs/device/control_line_graph_v3.png  used on input l
+ine 283.
+(pdftex.def)             Requested size: 487.8192pt x 502.78539pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--284
+[]\OT1/cmr/m/n/10 Figure 5: |Top: Con-trol de-grees of free-dom of the pro-pose
+d de-vice. The black lines in-di-cate the han-dle co-or-di-nate sys-tem
+ []
+
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 409.
+Package pdftex.def Info: vch-logo.png  used on input line 287.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.81955pt, for example:
@@ -836,54 +821,49 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [10]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 424.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+<figs/device/thrust_image.png, id=290, 596.337pt x 287.766pt>
+File: figs/device/thrust_image.png Graphic file (type png)
+<use figs/device/thrust_image.png>
+Package pdftex.def Info: figs/device/thrust_image.png  used on input line 290.
+(pdftex.def)             Requested size: 487.8192pt x 235.4076pt.
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[11 <./figs/architecture/feedback_wrench_generation.png>]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 487.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[12]
-
-LaTeX Warning: Reference `chap:introduction' on page 13 undefined on input line
- 491.
-
-<figs/experiment_device/device_picture.png, id=282, 712.626pt x 578.598pt>
-File: figs/experiment_device/device_picture.png Graphic file (type png)
-<use figs/experiment_device/device_picture.png>
-Package pdftex.def Info: figs/experiment_device/device_picture.png  used on inp
-ut line 517.
-(pdftex.def)             Requested size: 542.02501pt x 440.11868pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 521--521
-[]\OT1/cmr/m/n/10 Figure 7: |Snap-shot of the pro-to-type of the pro-posed tele
--op-er-a-tion de-vice. (a) is the whole view. (b) is the con-troller unit.
+Underfull \hbox (badness 10000) in paragraph at lines 291--291
+[]\OT1/cmr/m/n/10 Figure 6: |Left: Thrust vec-tor rep-re-sented by de-flec-tion
+ an-gles. Right: De-com-po-si-tion into three-dimensional vir-tual trans-
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 524.
+Package pdftex.def Info: vch-logo.png  used on input line 294.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[11 <./figs/device/control_line_graph_v3.png>]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 343.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[12 <./figs/device/thrust_image.png>]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 436.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.81955pt, for example:
@@ -893,16 +873,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [13]
-<figs/experiment_device/communication_system.png, id=292, 436.686pt x 457.272pt
->
-File: figs/experiment_device/communication_system.png Graphic file (type png)
-<use figs/experiment_device/communication_system.png>
-Package pdftex.def Info: figs/experiment_device/communication_system.png  used 
-on input line 542.
-(pdftex.def)             Requested size: 542.02501pt x 567.65335pt.
+Overfull \hbox (19.35805pt too wide) in paragraph at lines 442--443
+\OT1/cmr/m/n/12 nents: gen-er-a-tion of con-trol com-mands for the robot, gen-e
+r-a-tion of feed-back wrenches based on the wrenches 
+ []
+
+
+Overfull \hbox (2.28185pt too wide) in paragraph at lines 444--446
+\OT1/cmr/m/n/12 gen-er-at-ing the feed-back wrench is pre-sented. A schematic o
+f the pro-posed ar-chi-tec-ture is shown in Fig. [][]7[][].  
+ []
+
+<figs/architecture/block_diagram_full.png, id=332, 647.583pt x 324.777pt>
+File: figs/architecture/block_diagram_full.png Graphic file (type png)
+<use figs/architecture/block_diagram_full.png>
+Package pdftex.def Info: figs/architecture/block_diagram_full.png  used on inpu
+t line 449.
+(pdftex.def)             Requested size: 542.02501pt x 271.84444pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 452--452
+[]\OT1/cmr/m/n/10 Figure 7: |Block di-a-gram of the pro-posed tele-op-er-a-tion
+ ar-chi-tec-ture. De-tails of the \Op-er-at-ing Com-mand Gen-er-a-tor" are
+ []
+
+<figs/architecture/operating_command_generation.png, id=337, 709.779pt x 571.80
+9pt>
+File: figs/architecture/operating_command_generation.png Graphic file (type png
+)
+<use figs/architecture/operating_command_generation.png>
+Package pdftex.def Info: figs/architecture/operating_command_generation.png  us
+ed on input line 460.
+(pdftex.def)             Requested size: 542.02501pt x 436.67337pt.
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 546.
+Package pdftex.def Info: vch-logo.png  used on input line 464.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[14 <./figs/architecture/block_diagram_full.png>]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 481.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -913,10 +930,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[14 <./figs/experiment_device/device_picture.png>]
+[15 <./figs/architecture/operating_command_generation.png>]
+<figs/architecture/feedback_wrench_generation.png, id=355, 709.779pt x 686.784p
+t>
+File: figs/architecture/feedback_wrench_generation.png Graphic file (type png)
+<use figs/architecture/feedback_wrench_generation.png>
+Package pdftex.def Info: figs/architecture/feedback_wrench_generation.png  used
+ on input line 530.
+(pdftex.def)             Requested size: 542.02501pt x 524.47633pt.
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 555.
+Package pdftex.def Info: vch-logo.png  used on input line 534.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -927,51 +951,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[15 <./figs/experiment_device/communication_system.png>]
-<figs/experiment_device/device_experiment_overview.png, id=306, 628.53pt x 349.
-743pt>
-File: figs/experiment_device/device_experiment_overview.png Graphic file (type 
-png)
-<use figs/experiment_device/device_experiment_overview.png>
-Package pdftex.def Info: figs/experiment_device/device_experiment_overview.png 
- used on input line 565.
-(pdftex.def)             Requested size: 542.02501pt x 301.61629pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 568--568
-[]\OT1/cmr/m/n/10 Figure 9: |Snap-shot of the wrench ver-i-fi-ca-tion ex-per-i-
-ment for the re-mote con-trol de-vice. The white ar-row in-di-cates the co-
- []
-
-<figs/experiment_device/device_wrench_plot_all.png, id=309, 451.9284pt x 487.58
-16pt>
-File: figs/experiment_device/device_wrench_plot_all.png Graphic file (type png)
-
-<use figs/experiment_device/device_wrench_plot_all.png>
-Package pdftex.def Info: figs/experiment_device/device_wrench_plot_all.png  use
-d on input line 578.
-(pdftex.def)             Requested size: 542.02501pt x 584.84949pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 580--580
-[]\OT1/cmr/m/n/10 Figure 10: |Re-sults of the wrench out-put ver-i-fi-ca-tion e
-x-per-i-ment. The blue dashed line in-di-cates the tar-get wrench, and the
- []
-
+[16]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 583.
-(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 24.81955pt, for example:
-(fancyhdr)                \setlength{\headheight}{24.81955pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
-
-[16 <./figs/experiment_device/device_experiment_overview.png>]
-File: vch-logo.png Graphic file (type png)
-<use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 599.
+Package pdftex.def Info: vch-logo.png  used on input line 549.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -982,28 +965,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[17 <./figs/experiment_device/device_wrench_plot_all.png>]
-Overfull \hbox (1.72906pt too wide) in paragraph at lines 600--605
-[]\OT1/cmr/m/n/12 In ad-di-tion, small spikes are ob-served in each wrench com-
-po-nent at the mo-ments when the tar-get wrench 
- []
-
-
-Overfull \hbox (4.27904pt too wide) in paragraph at lines 600--605
-\OT1/cmr/m/n/12 vari-a-tion caused by changes in ro-tor speed and (ii) the an-g
-u-lar mo-tion of the de-flec-tion mech-a-nism driven 
- []
-
-<figs/beatle_obstacle/beatle_picture.png, id=330, 439.314pt x 550.785pt>
-File: figs/beatle_obstacle/beatle_picture.png Graphic file (type png)
-<use figs/beatle_obstacle/beatle_picture.png>
-Package pdftex.def Info: figs/beatle_obstacle/beatle_picture.png  used on input
- line 626.
-(pdftex.def)             Requested size: 487.8192pt x 611.59709pt.
+[17 <./figs/architecture/feedback_wrench_generation.png>]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 633.
+Package pdftex.def Info: vch-logo.png  used on input line 612.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.81955pt, for example:
@@ -1013,9 +980,45 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
 [18]
+
+LaTeX Warning: Reference `chap:introduction' on page 19 undefined on input line
+ 616.
+
+<figs/experiment_device/device_picture.png, id=387, 712.626pt x 578.598pt>
+File: figs/experiment_device/device_picture.png Graphic file (type png)
+<use figs/experiment_device/device_picture.png>
+Package pdftex.def Info: figs/experiment_device/device_picture.png  used on inp
+ut line 642.
+(pdftex.def)             Requested size: 542.02501pt x 440.11868pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 646--646
+[]\OT1/cmr/m/n/10 Figure 10: |Snap-shot of the pro-to-type of the pro-posed tel
+e-op-er-a-tion de-vice. (a) is the whole view. (b) is the con-troller unit.
+ []
+
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
 Package pdftex.def Info: vch-logo.png  used on input line 649.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[19]
+<figs/experiment_device/communication_system.png, id=397, 436.686pt x 457.272pt
+>
+File: figs/experiment_device/communication_system.png Graphic file (type png)
+<use figs/experiment_device/communication_system.png>
+Package pdftex.def Info: figs/experiment_device/communication_system.png  used 
+on input line 667.
+(pdftex.def)             Requested size: 542.02501pt x 567.65335pt.
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 671.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1026,41 +1029,160 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[19 <./figs/beatle_obstacle/beatle_picture.png>]
-Overfull \hbox (7.33875pt too wide) in paragraph at lines 663--667
+[20 <./figs/experiment_device/device_picture.png>]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 680.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[21 <./figs/experiment_device/communication_system.png>]
+<figs/experiment_device/device_experiment_overview.png, id=411, 628.53pt x 349.
+743pt>
+File: figs/experiment_device/device_experiment_overview.png Graphic file (type 
+png)
+<use figs/experiment_device/device_experiment_overview.png>
+Package pdftex.def Info: figs/experiment_device/device_experiment_overview.png 
+ used on input line 690.
+(pdftex.def)             Requested size: 542.02501pt x 301.61629pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 693--693
+[]\OT1/cmr/m/n/10 Figure 12: |Snap-shot of the wrench ver-i-fi-ca-tion ex-per-i
+-ment for the re-mote con-trol de-vice. The white ar-row in-di-cates the
+ []
+
+<figs/experiment_device/device_wrench_plot_all.png, id=414, 451.9284pt x 487.58
+16pt>
+File: figs/experiment_device/device_wrench_plot_all.png Graphic file (type png)
+
+<use figs/experiment_device/device_wrench_plot_all.png>
+Package pdftex.def Info: figs/experiment_device/device_wrench_plot_all.png  use
+d on input line 703.
+(pdftex.def)             Requested size: 542.02501pt x 584.84949pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 705--705
+[]\OT1/cmr/m/n/10 Figure 13: |Re-sults of the wrench out-put ver-i-fi-ca-tion e
+x-per-i-ment. The blue dashed line in-di-cates the tar-get wrench, and the
+ []
+
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 708.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[22 <./figs/experiment_device/device_experiment_overview.png>]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 724.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[23 <./figs/experiment_device/device_wrench_plot_all.png>]
+Overfull \hbox (1.72906pt too wide) in paragraph at lines 725--730
+[]\OT1/cmr/m/n/12 In ad-di-tion, small spikes are ob-served in each wrench com-
+po-nent at the mo-ments when the tar-get wrench 
+ []
+
+
+Overfull \hbox (4.27904pt too wide) in paragraph at lines 725--730
+\OT1/cmr/m/n/12 vari-a-tion caused by changes in ro-tor speed and (ii) the an-g
+u-lar mo-tion of the de-flec-tion mech-a-nism driven 
+ []
+
+
+Overfull \hbox (7.79568pt too wide) in paragraph at lines 743--748
+\OT1/cmr/m/n/12 moved and a USB cam-era added. Be-cause the robot is fully ac-t
+u-ated, hor-i-zon-tal trans-la-tion and roll/pitch 
+ []
+
+<figs/beatle_obstacle/beatle_picture.png, id=434, 439.314pt x 550.785pt>
+File: figs/beatle_obstacle/beatle_picture.png Graphic file (type png)
+<use figs/beatle_obstacle/beatle_picture.png>
+Package pdftex.def Info: figs/beatle_obstacle/beatle_picture.png  used on input
+ line 751.
+(pdftex.def)             Requested size: 487.8192pt x 611.59709pt.
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 758.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[24]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 774.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[25 <./figs/beatle_obstacle/beatle_picture.png>]
+Overfull \hbox (7.33875pt too wide) in paragraph at lines 788--792
 \OT1/cmr/m/n/12 placed near the op-er-a-tor. The ground PC dis-played real-time
  video cap-tured by the USB cam-era mounted 
  []
 
 
-Overfull \hbox (15.89836pt too wide) in paragraph at lines 663--667
+Overfull \hbox (15.89836pt too wide) in paragraph at lines 788--792
 \OT1/cmr/m/n/12 re-al-is-tic re-mote op-er-a-tion sce-nario in which the op-er-
 a-tor is phys-i-cally sep-a-rated from the robot's workspace.  
  []
 
-<figs/beatle_obstacle/beatle_obstacle_overview.png, id=348, 884.322pt x 487.494
+<figs/beatle_obstacle/beatle_obstacle_overview.png, id=452, 884.322pt x 487.494
 pt>
 File: figs/beatle_obstacle/beatle_obstacle_overview.png Graphic file (type png)
 
 <use figs/beatle_obstacle/beatle_obstacle_overview.png>
 Package pdftex.def Info: figs/beatle_obstacle/beatle_obstacle_overview.png  use
-d on input line 684.
+d on input line 809.
 (pdftex.def)             Requested size: 514.9221pt x 283.85506pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
-[]\OT1/cmr/m/n/10 Figure 12: |Snap-shot of the ob-sta-cle avoid-ance ex-per-i-m
+Underfull \hbox (badness 10000) in paragraph at lines 814--814
+[]\OT1/cmr/m/n/10 Figure 15: |Snap-shot of the ob-sta-cle avoid-ance ex-per-i-m
 ent. The bottom-left im-age shows the first-person view from the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 689--689
+Underfull \hbox (badness 10000) in paragraph at lines 814--814
 \OT1/cmr/m/n/10 on-board cam-era. The op-er-a-tor ma-neu-vered the robot based 
 on this view. The red lines in-di-cate ob-sta-cles, and the robot
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 692.
+Package pdftex.def Info: vch-logo.png  used on input line 817.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1070,35 +1192,35 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[20]
-<figs/beatle_obstacle/beatle_obstacle_topview.png, id=354, 957.03pt x 502.167pt
+[26]
+<figs/beatle_obstacle/beatle_obstacle_topview.png, id=458, 957.03pt x 502.167pt
 >
 File: figs/beatle_obstacle/beatle_obstacle_topview.png Graphic file (type png)
 <use figs/beatle_obstacle/beatle_obstacle_topview.png>
 Package pdftex.def Info: figs/beatle_obstacle/beatle_obstacle_topview.png  used
- on input line 695.
+ on input line 820.
 (pdftex.def)             Requested size: 514.9221pt x 270.19301pt.
-<figs/beatle_obstacle/beatle_obstacle_plot.png, id=359, 503.481pt x 557.136pt>
+<figs/beatle_obstacle/beatle_obstacle_plot.png, id=463, 503.481pt x 557.136pt>
 File: figs/beatle_obstacle/beatle_obstacle_plot.png Graphic file (type png)
 <use figs/beatle_obstacle/beatle_obstacle_plot.png>
 Package pdftex.def Info: figs/beatle_obstacle/beatle_obstacle_plot.png  used on
- input line 707.
+ input line 832.
 (pdftex.def)             Requested size: 542.02501pt x 599.83615pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 710--710
-[]\OT1/cmr/m/n/10 Figure 14: |Left: Tar-get and mea-sured robot tra-jec-to-ries
+Underfull \hbox (badness 10000) in paragraph at lines 835--835
+[]\OT1/cmr/m/n/10 Figure 17: |Left: Tar-get and mea-sured robot tra-jec-to-ries
 . The red line in-di-cates ob-sta-cles, and the black dashed line rep-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 710--710
+Underfull \hbox (badness 10000) in paragraph at lines 835--835
 \OT1/cmr/m/n/10 re-sents the ideal tra-jec-tory that max-i-mizes the dis-tance 
 from the wall. Right: Feed-back wrench pre-sented to the op-er-a-tor
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 713.
+Package pdftex.def Info: vch-logo.png  used on input line 838.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1108,11 +1230,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[21 <./figs/beatle_obstacle/beatle_obstacle_overview.png> <./figs/beatle_obstac
+[27 <./figs/beatle_obstacle/beatle_obstacle_overview.png> <./figs/beatle_obstac
 le/beatle_obstacle_topview.png>]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 725.
+Package pdftex.def Info: vch-logo.png  used on input line 850.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1123,22 +1245,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[22 <./figs/beatle_obstacle/beatle_obstacle_plot.png>]
-Overfull \hbox (0.74924pt too wide) in paragraph at lines 729--731
+[28 <./figs/beatle_obstacle/beatle_obstacle_plot.png>]
+Overfull \hbox (0.74924pt too wide) in paragraph at lines 854--856
 \OT1/cmr/m/n/12 [0\OML/cmm/m/it/12 ; L\OT1/cmr/m/n/12 ]$, and let the mea-sured
  tra-jec-tory be $\OMS/cmsy/m/n/12 f\OML/cmm/b/it/12 x[]\OMS/cmsy/m/n/12 g[]$\O
 T1/cmr/m/n/12 . The clos-est point on the ideal tra-jec-tory to each mea- 
  []
 
 
-Overfull \hbox (18.70111pt too wide) in paragraph at lines 750--752
-\OT1/cmr/m/n/12 in [][]14[][], the tra-jec-tory un-der con-di-tion (A) fol-lows
+Overfull \hbox (18.70111pt too wide) in paragraph at lines 875--877
+\OT1/cmr/m/n/12 in [][]17[][], the tra-jec-tory un-der con-di-tion (A) fol-lows
  the ideal path (black dashed line) with os-cil-la-tions, whereas 
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 769.
+Package pdftex.def Info: vch-logo.png  used on input line 895.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1148,22 +1270,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[23]
-<figs/beatle_painting/beatle_with_brush.png, id=395, 634.443pt x 414.129pt>
+[29]
+<figs/beatle_painting/beatle_with_brush.png, id=500, 634.443pt x 414.129pt>
 File: figs/beatle_painting/beatle_with_brush.png Graphic file (type png)
 <use figs/beatle_painting/beatle_with_brush.png>
 Package pdftex.def Info: figs/beatle_painting/beatle_with_brush.png  used on in
-put line 772.
+put line 898.
 (pdftex.def)             Requested size: 433.62166pt x 283.04474pt.
-<figs/beatle_painting/wall_overview.png, id=396, 330.252pt x 411.063pt>
+<figs/beatle_painting/wall_overview.png, id=501, 330.252pt x 411.063pt>
 File: figs/beatle_painting/wall_overview.png Graphic file (type png)
 <use figs/beatle_painting/wall_overview.png>
 Package pdftex.def Info: figs/beatle_painting/wall_overview.png  used on input 
-line 780.
+line 906.
 (pdftex.def)             Requested size: 298.1154pt x 371.06348pt.
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 785.
+Package pdftex.def Info: vch-logo.png  used on input line 911.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1174,41 +1296,41 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[24 <./figs/beatle_painting/beatle_with_brush.png>]
-Overfull \hbox (0.35825pt too wide) in paragraph at lines 788--792
+[30 <./figs/beatle_painting/beatle_with_brush.png>]
+Overfull \hbox (0.35825pt too wide) in paragraph at lines 914--918
 \OT1/cmr/m/n/12 sheet of pa-per that turns black when wet was fixed to the whit
 e-board. When con-tacted by the wet brush 
  []
 
 
-Overfull \hbox (1.97075pt too wide) in paragraph at lines 796--800
+Overfull \hbox (1.97075pt too wide) in paragraph at lines 922--926
 []\OT1/cmr/m/n/12 As in the pre-vi-ous ex-per-i-ments, a Ground PC was placed n
 ear the op-er-a-tor and dis-played real-time video 
  []
 
-<figs/beatle_painting/beatle_painting_overview.png, id=405, 935.568pt x 448.95p
+<figs/beatle_painting/beatle_painting_overview.png, id=510, 935.568pt x 448.95p
 t>
 File: figs/beatle_painting/beatle_painting_overview.png Graphic file (type png)
 
 <use figs/beatle_painting/beatle_painting_overview.png>
 Package pdftex.def Info: figs/beatle_painting/beatle_painting_overview.png  use
-d on input line 812.
+d on input line 938.
 (pdftex.def)             Requested size: 514.9221pt x 247.09451pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 816--816
-[]\OT1/cmr/m/n/10 Figure 17: |Snap-shots of the paint-ing ex-per-i-ment us-ing 
+Underfull \hbox (badness 10000) in paragraph at lines 942--942
+[]\OT1/cmr/m/n/10 Figure 20: |Snap-shots of the paint-ing ex-per-i-ment us-ing 
 the aerial robot. The im-age at the lower cen-ter shows the view from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 816--816
+Underfull \hbox (badness 10000) in paragraph at lines 942--942
 \OT1/cmr/m/n/10 the cam-era mounted on the robot, which was used by the op-er-a
 -tor for con-trol. The red line on the wall sur-face in-di-cates
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 819.
+Package pdftex.def Info: vch-logo.png  used on input line 945.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1218,50 +1340,50 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[25 <./figs/beatle_painting/wall_overview.png>]
-<figs/beatle_painting/beatle_painting_wallview.png, id=413, 692.259pt x 391.134
+[31 <./figs/beatle_painting/wall_overview.png>]
+<figs/beatle_painting/beatle_painting_wallview.png, id=518, 692.259pt x 391.134
 pt>
 File: figs/beatle_painting/beatle_painting_wallview.png Graphic file (type png)
 
 <use figs/beatle_painting/beatle_painting_wallview.png>
 Package pdftex.def Info: figs/beatle_painting/beatle_painting_wallview.png  use
-d on input line 822.
+d on input line 948.
 (pdftex.def)             Requested size: 514.9221pt x 290.93861pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 825--825
-[]\OT1/cmr/m/n/10 Figure 18: |Snap-shot of the robot dur-ing the ex-per-i-ment.
+Underfull \hbox (badness 10000) in paragraph at lines 951--951
+[]\OT1/cmr/m/n/10 Figure 21: |Snap-shot of the robot dur-ing the ex-per-i-ment.
  The robot moved in the di-rec-tion in-di-cated by the blue ar-row
  []
 
-<figs/beatle_painting/beatle_painting_result_wall.png, id=418, 337.917pt x 356.
+<figs/beatle_painting/beatle_painting_result_wall.png, id=523, 337.917pt x 356.
 97pt>
 File: figs/beatle_painting/beatle_painting_result_wall.png Graphic file (type p
 ng)
 <use figs/beatle_painting/beatle_painting_result_wall.png>
 Package pdftex.def Info: figs/beatle_painting/beatle_painting_result_wall.png  
-used on input line 834.
+used on input line 960.
 (pdftex.def)             Requested size: 542.02501pt x 572.65611pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
-[]\OT1/cmr/m/n/10 Figure 19: |Im-ages of the wall sur-face. Top: Wall sur-face 
+Underfull \hbox (badness 10000) in paragraph at lines 965--965
+[]\OT1/cmr/m/n/10 Figure 22: |Im-ages of the wall sur-face. Top: Wall sur-face 
 be-fore paint-ing. The area out-lined in green in-di-cates the eval-u-a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
+Underfull \hbox (badness 10000) in paragraph at lines 965--965
 \OT1/cmr/m/n/10 tion re-gion. Mid-dle: Wall sur-face af-ter paint-ing un-der ea
 ch ex-per-i-men-tal con-di-tion. Bot-tom: Bi-na-rized im-age show-ing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--839
+Underfull \hbox (badness 10000) in paragraph at lines 965--965
 \OT1/cmr/m/n/10 dif-fer-ence be-fore and af-ter paint-ing. The mean lat-eral di
 s-tance and an-gu-lar de-vi-a-tion were cal-cu-lated from this bi-na-rized
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 842.
+Package pdftex.def Info: vch-logo.png  used on input line 968.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1271,11 +1393,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[26 <./figs/beatle_painting/beatle_painting_overview.png> <./figs/beatle_painti
+[32 <./figs/beatle_painting/beatle_painting_overview.png> <./figs/beatle_painti
 ng/beatle_painting_wallview.png>]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 855.
+Package pdftex.def Info: vch-logo.png  used on input line 981.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1286,24 +1408,24 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[27 <./figs/beatle_painting/beatle_painting_result_wall.png>]
-<figs/beatle_painting/beatle_painting_result_plot.png, id=437, 426.174pt x 519.
+[33 <./figs/beatle_painting/beatle_painting_result_wall.png>]
+<figs/beatle_painting/beatle_painting_result_plot.png, id=542, 426.174pt x 519.
 249pt>
 File: figs/beatle_painting/beatle_painting_result_plot.png Graphic file (type p
 ng)
 <use figs/beatle_painting/beatle_painting_result_plot.png>
 Package pdftex.def Info: figs/beatle_painting/beatle_painting_result_plot.png  
-used on input line 869.
+used on input line 995.
 (pdftex.def)             Requested size: 542.02501pt x 660.46889pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 871--871
-[]\OT1/cmr/m/n/10 Figure 20: |Time his-to-ries of the wrench dur-ing the ex-per
+Underfull \hbox (badness 10000) in paragraph at lines 997--997
+[]\OT1/cmr/m/n/10 Figure 23: |Time his-to-ries of the wrench dur-ing the ex-per
 -i-ment. From top to bot-tom: mea-sured force at the robot, feed-
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 874.
+Package pdftex.def Info: vch-logo.png  used on input line 1000.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1313,10 +1435,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[28]
+[34]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 879.
+Package pdftex.def Info: vch-logo.png  used on input line 1005.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1327,22 +1449,22 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[29 <./figs/beatle_painting/beatle_painting_result_plot.png>]
-<figs/me6_painting/me6_picture.png, id=452, 246.813pt x 405.369pt>
+[35 <./figs/beatle_painting/beatle_painting_result_plot.png>]
+<figs/me6_painting/me6_picture.png, id=556, 246.813pt x 405.369pt>
 File: figs/me6_painting/me6_picture.png Graphic file (type png)
 <use figs/me6_painting/me6_picture.png>
 Package pdftex.def Info: figs/me6_painting/me6_picture.png  used on input line 
-895.
+1021.
 (pdftex.def)             Requested size: 216.80669pt x 356.10728pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 897--897
-[]\OT1/cmr/m/n/10 Figure 21: |Snap-shot of the base-fixed multi-link robot used
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1023
+[]\OT1/cmr/m/n/10 Figure 24: |Snap-shot of the base-fixed multi-link robot used
  in the ex-per-i-ment. A force/torque sen-sor and a brush are at-
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 913.
+Package pdftex.def Info: vch-logo.png  used on input line 1039.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1352,45 +1474,45 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[30 <./figs/me6_painting/me6_picture.png>]
-Overfull \hbox (0.32353pt too wide) in paragraph at lines 914--919
+[36 <./figs/me6_painting/me6_picture.png>]
+Overfull \hbox (0.32353pt too wide) in paragraph at lines 1040--1045
 \OT1/cmr/m/n/12 The base-fixed multi-link robot used in this ex-per-i-ment is s
-hown in [][]21[][]. The robot is a Ma-gi-cian E6 man- 
+hown in [][]24[][]. The robot is a Ma-gi-cian E6 man- 
  []
 
-<figs/me6_painting/me6_painting_overview.png, id=468, 738.03pt x 476.763pt>
+<figs/me6_painting/me6_painting_overview.png, id=572, 738.03pt x 476.763pt>
 File: figs/me6_painting/me6_painting_overview.png Graphic file (type png)
 <use figs/me6_painting/me6_painting_overview.png>
 Package pdftex.def Info: figs/me6_painting/me6_painting_overview.png  used on i
-nput line 932.
+nput line 1058.
 (pdftex.def)             Requested size: 542.02501pt x 350.15106pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 936--936
-[]\OT1/cmr/m/n/10 Figure 22: |Snap-shot of the paint-ing ex-per-i-ment us-ing t
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
+[]\OT1/cmr/m/n/10 Figure 25: |Snap-shot of the paint-ing ex-per-i-ment us-ing t
 he robotic arm. The im-age at the lower cen-ter shows the view from
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 936--936
+Underfull \hbox (badness 10000) in paragraph at lines 1062--1062
 \OT1/cmr/m/n/10 the cam-era mounted on the robot, which was used by the op-er-a
 -tor for con-trol. The red line on the wall sur-face in-di-cates
  []
 
-<figs/me6_painting/me6_painting_wallview.png, id=469, 608.601pt x 457.053pt>
+<figs/me6_painting/me6_painting_wallview.png, id=573, 608.601pt x 457.053pt>
 File: figs/me6_painting/me6_painting_wallview.png Graphic file (type png)
 <use figs/me6_painting/me6_painting_wallview.png>
 Package pdftex.def Info: figs/me6_painting/me6_painting_wallview.png  used on i
-nput line 942.
+nput line 1068.
 (pdftex.def)             Requested size: 542.02501pt x 407.07578pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 945--945
-[]\OT1/cmr/m/n/10 Figure 23: |Snap-shot of the robot dur-ing the ex-per-i-ment.
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1071
+[]\OT1/cmr/m/n/10 Figure 26: |Snap-shot of the robot dur-ing the ex-per-i-ment.
  The robot moved in the di-rec-tion in-di-cated by the blue ar-row
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 948.
+Package pdftex.def Info: vch-logo.png  used on input line 1074.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1400,34 +1522,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[31 <./figs/me6_painting/me6_painting_overview.png>]
-<figs/me6_painting/me6_painting_result_wall.png, id=482, 337.26pt x 361.788pt>
+[37 <./figs/me6_painting/me6_painting_overview.png>]
+<figs/me6_painting/me6_painting_result_wall.png, id=586, 337.26pt x 361.788pt>
 File: figs/me6_painting/me6_painting_result_wall.png Graphic file (type png)
 <use figs/me6_painting/me6_painting_result_wall.png>
 Package pdftex.def Info: figs/me6_painting/me6_painting_result_wall.png  used o
-n input line 962.
+n input line 1088.
 (pdftex.def)             Requested size: 542.02501pt x 581.45616pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 967--967
-[]\OT1/cmr/m/n/10 Figure 24: |Im-ages of the wall sur-face. Top: Wall sur-face 
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1093
+[]\OT1/cmr/m/n/10 Figure 27: |Im-ages of the wall sur-face. Top: Wall sur-face 
 be-fore paint-ing. The area out-lined in green in-di-cates the eval-u-a-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 967--967
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1093
 \OT1/cmr/m/n/10 tion re-gion. Mid-dle: Wall sur-face af-ter paint-ing un-der ea
 ch ex-per-i-men-tal con-di-tion. Bot-tom: Bi-na-rized im-age show-ing the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 967--967
+Underfull \hbox (badness 10000) in paragraph at lines 1093--1093
 \OT1/cmr/m/n/10 dif-fer-ence be-fore and af-ter paint-ing. The mean lat-eral di
 s-tance and an-gu-lar de-vi-a-tion were cal-cu-lated from this bi-na-rized
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 970.
+Package pdftex.def Info: vch-logo.png  used on input line 1096.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1437,23 +1559,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[32 <./figs/me6_painting/me6_painting_wallview.png>]
-<figs/me6_painting/me6_painting_result_plot.png, id=488, 441.066pt x 536.988pt>
+[38 <./figs/me6_painting/me6_painting_wallview.png>]
+<figs/me6_painting/me6_painting_result_plot.png, id=592, 441.066pt x 536.988pt>
 
 File: figs/me6_painting/me6_painting_result_plot.png Graphic file (type png)
 <use figs/me6_painting/me6_painting_result_plot.png>
 Package pdftex.def Info: figs/me6_painting/me6_painting_result_plot.png  used o
-n input line 973.
+n input line 1099.
 (pdftex.def)             Requested size: 542.02501pt x 659.90137pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 975--975
-[]\OT1/cmr/m/n/10 Figure 25: |Time his-to-ries of the wrench dur-ing the ex-per
+Underfull \hbox (badness 10000) in paragraph at lines 1101--1101
+[]\OT1/cmr/m/n/10 Figure 28: |Time his-to-ries of the wrench dur-ing the ex-per
 -i-ment. From top to bot-tom: mea-sured force at the robot, feed-
  []
 
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 978.
+Package pdftex.def Info: vch-logo.png  used on input line 1104.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1463,10 +1585,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[33 <./figs/me6_painting/me6_painting_result_wall.png>]
+[39 <./figs/me6_painting/me6_painting_result_wall.png>]
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 985.
+Package pdftex.def Info: vch-logo.png  used on input line 1111.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1477,12 +1599,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[34 <./figs/me6_painting/me6_painting_result_plot.png>] (./main.bbl
+[40 <./figs/me6_painting/me6_painting_result_plot.png>]
+Overfull \hbox (1.20685pt too wide) in paragraph at lines 1132--1136
+\OT1/cmr/m/n/12 aerial robot and a multi-joint ground robot. In the obstacle-av
+oidance ex-per-i-ment, the use of hap-tic feed- 
+ []
+
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 43.
+Package pdftex.def Info: vch-logo.png  used on input line 1146.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 24.81955pt, for example:
@@ -1491,10 +1617,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[35])
+[41] (./main.bbl
+Underfull \hbox (badness 3942) in paragraph at lines 58--64
+[]\OT1/cmr/m/n/12 Yaonan Zhu, Shukrullo Nazir-jonov, Bingheng Jiang, Jac-into C
+olan, Ta-dayoshi Aoyama, 
+ []
+
 File: vch-logo.png Graphic file (type png)
 <use vch-logo.png>
-Package pdftex.def Info: vch-logo.png  used on input line 1037.
+Package pdftex.def Info: vch-logo.png  used on input line 95.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[42]
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 185.
 (pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
 
 
@@ -1505,18 +1649,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
 
-[36] (./main.aux)
+[43])
+File: vch-logo.png Graphic file (type png)
+<use vch-logo.png>
+Package pdftex.def Info: vch-logo.png  used on input line 1181.
+(pdftex.def)             Requested size: 71.13188pt x 21.21951pt.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 24.81955pt, for example:
+(fancyhdr)                \setlength{\headheight}{24.81955pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-12.81955pt}.
+
+[44] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 893A8E40C9C62D2A0CD30B9ACA65AB9F;9099.
+(rerunfilecheck)             Checksum: 4B2A3145B99F56343EFD02FD6BCF7E46;9996.
  ) 
 Here is how much of TeX's memory you used:
- 15788 strings out of 478287
- 310825 string characters out of 5849289
- 577285 words of memory out of 5000000
- 33604 multiletter control sequences out of 15000+600000
+ 15898 strings out of 478287
+ 313065 string characters out of 5849289
+ 582417 words of memory out of 5000000
+ 33670 multiletter control sequences out of 15000+600000
  483369 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  86i,16n,93p,519b,880s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1539,10 +1697,10 @@ f-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist
 public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1200.pfb>
-Output written on main.pdf (36 pages, 82865874 bytes).
+Output written on main.pdf (44 pages, 90668299 bytes).
 PDF statistics:
- 623 PDF objects out of 1000 (max. 8388607)
- 488 compressed objects within 5 object streams
- 143 named destinations out of 1000 (max. 500000)
- 387 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 750 PDF objects out of 1000 (max. 8388607)
+ 600 compressed objects within 6 object streams
+ 183 named destinations out of 1000 (max. 500000)
+ 434 words of extra memory for PDF output out of 10000 (max. 10000000)
 

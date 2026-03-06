@@ -5,7 +5,7 @@
 \pagestyle{fancy}
 \rhead{\includegraphics[width=2.5cm]{vch-logo.png}}
 
-\title{Teleoperation System with 6-DoF Haptic Feedback for Manipulation}
+\title{Design of a Robot-Independent Teleoperation System with a Novel Ungrounded 6-DoF Haptic Device for Independent Wrench Presentation}
 
 \maketitle
 
@@ -31,22 +31,25 @@ Address
 \end{affiliations}
 
 % Keywords: Please provide a minimum of three and a maximum of seven keywords, separated by commas
-\keywords{Teleperation, Haptic Feedback, Manipulation}
+\keywords{Teleoperation, Haptic Interface, 6-DoF Wrench Feedback, Ungrouded Haptic Device, Robot-Independent Architecture}
 
 % Abstract should be written in the present tense and impersonal style (i.e., avoid we), and be at most 200 words long
 \begin{abstract}
+  Teleoperation with haptic feedback is essential for performing contact-rich tasks in remote or hazardous environments, as it enables operators to perceive interaction forces between the robot and the environment. 
+  However, existing haptic interfaces suffer from two fundamental limitations. 
+  Devices capable of independently presenting six-dimensional (6-DoF) forces and torques typically require grounding to the environment, which restricts operator mobility and limits natural body motion. 
+  In contrast, ungrounded haptic interfaces allow free movement but cannot independently generate full 6-DoF wrenches due to physical constraints. 
+  In addition, most teleoperation architectures are designed for specific robot models or specific tasks, which limits their applicability to different robotic platforms and operational scenarios.
 
-  Aerial manipulations using aerial robots are gaining attention for their work in high places and hazardous locations. 
-  While autonomous control of robots has advanced, teleoperation by human operators is still necessary for tasks in complex and unknown environments. 
-  In such teleoperation, haptic feedback that allows the operator to perceive the forces exerted on the robot is important. 
-  In many cases, underactuated multirotors are used for teleoperation, but the use of fully actuated multirotors is advancing for more complex tasks. 
-  Conventional teleoperation methods cannot achieve both intuitive control corresponding to the increased degrees of freedom and feedback of all 6-dimensional force and torque. 
-  Therefore, in this study, we propose an operating device capable of expressing 6-dimensional force and torque, and a teleoperation system that makes it easy to perform work remotely using a fully actuated multi-rotor. 
-  The operating device has a floating base with a thrust and vectoring mechanism, enabling independent control of position and attitude and independent presentation of forces and torques. 
-  The teleoperation system has Position Mapping Mode and Velocity Mapping Mode settings, enabling both rapid movement in a wide area and precise movement for work. 
-  We verified the effectiveness of the proposed method for aerial telemanipulations through experiments cleaning tilted walls. 
-  Our new framework contributes to the realization of more complex aerial tasks using aerial robots.
+  To address these challenges, this paper proposes a teleoperation system that integrates an ungrounded 6-DoF haptic interface with a robot- and task-independent teleoperation architecture. 
+  The proposed device employs two thrust modules with thrust-vectoring mechanisms, enabling independent generation of 6-DoF wrenches while maintaining an ungrounded structure. 
+  To the best of our knowledge, this work presents the first realization of an ungrounded haptic device capable of independently presenting six-dimensional forces and torques. 
+  Furthermore, the proposed teleoperation architecture separates command generation from haptic feedback generation, enabling the same framework to be applied to robots with different kinematic structures and to a wide range of tasks.
   
+  The effectiveness of the proposed system is validated through teleoperation experiments using both an omnidirectional aerial robot and a multi-joint ground robot. 
+  In an obstacle-avoidance task, haptic feedback reduced the trajectory error by approximately 18\% and increased the successful coverage of the desired path from 33.23\% to 90.81\%, representing a 2.7-fold improvement. 
+  In a wall-painting task requiring stable contact with the environment, the average lateral deviation was reduced by 23\% and the orientation error decreased by 46\%. 
+  These results demonstrate that the proposed system enables intuitive teleoperation with 6-DoF haptic feedback and can be applied to multiple robotic platforms without redesigning the teleoperation architecture.  
 \end{abstract}
 
 % Text: Please use section headings and subheadings as specified below. For communications, all section headings apart from Experimental Section should be removed
@@ -57,7 +60,129 @@ Address
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+In recent years, the use of robots to perform tasks in locations where human access is difficult or dangerous, such as plants and disaster sites, has been advancing.
+The utilization of robots not only ensures worker safety but also enables operations in conditions where human workers were previously unable to perform tasks\cite{murphy}.
+In task substitution, the ideal is for robots to operate completely autonomously and unmanned. Research on robotic autonomous control has made remarkable progress\cite{tang, kunze}.
+However, in real-world environments, factors such as sensor errors, disturbances, and uncertainties in objects and terrain make it still difficult for robots to complete all tasks fully autonomously.
+Therefore, remote operation is necessary to incorporate the advanced cognitive abilities and flexible judgment capabilities possessed by humans into the system\cite{sheridan, darvish}.
 
+Remote operation of robots is utilized in various fields, such as plant maintenance, construction machinery operation, situation monitoring at disaster sites, and surgical procedures using medical robots\cite{hashimoto, lee, okamura}.
+Research on remote operation for contact tasks, where robots physically interact with environmental objects, is particularly active\cite{si, zhu, su}.
+In remote operation systems involving contact tasks, accurately conveying the interaction forces between the robot and the environment to the operator is critically important.
+While methods for force transmission to the operator utilize visual and auditory information, the most intuitive approach employs haptic feedback.
+
+Therefore, this study aims to develop a remote manipulation system using force feedback to enable robots to perform contact tasks.
+Such a system requires a control device capable of presenting force feedback to the operator and an architecture that appropriately converts information exchanged between the operator and the robot.
+While numerous prior studies exist on force-feedback capable control devices, challenges remain: the need to fix the device to the ground can hinder intuitive operator control, and the dimensions of force and torque that can be presented are limited.
+Similarly, many prior studies exist on architectures, but most systems are optimized for specific robots or specific tasks. However, executing tasks via remote operation in real-world scenarios requires a more general-purpose remote operation architecture.
+Therefore, this study proposes a remote operation system composed of an ungrounded remote operation device capable of independently presenting 6 degrees of freedom of force and torque, and a general-purpose remote operation architecture independent of the physical models of robots and tasks.
+Furthermore, using the proposed system, contact tasks are performed on multiple types of real robots via teleoperation to verify the system's effectiveness.
+\ref{fig:teleop_system} shows a schematic diagram of the teleoperation system proposed in this study.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\columnwidth]{figs/introduction/research_overview}
+  \caption{The concept of the teleoperation system proposed in this study}
+  \label{fig:teleop_system}
+\end{figure}
+
+\subsection{Prior Research on Remote-Controlled Devices} \label{sec:related_works_device}
+
+When a robot performs contact tasks, forces and torques are generated at its end-effector.
+For example, in tasks such as peg-in-hole insertion, translational reaction forces primarily arise from the contact surface, whereas tasks such as screw tightening generate rotational reaction torques.
+In general, the reaction forces generated during tasks are represented by a six-dimensional wrench consisting of three translational forces and three torques in three dimensions.
+
+This six-dimensional wrench consists of linearly independent components, and the reaction force generated during a task is the resultant of these components.
+Because each component is linearly independent, it is difficult to express one component in terms of the others.
+
+In addition to directly representing the wrench applied to the robot end-effector, it is also important to appropriately convey the position and orientation state of the robot end-effector to the operator.
+During contact tasks, the position and orientation of the robot end-effector do not necessarily match the commanded values.
+While recognizing this discrepancy is easy under direct line-of-sight conditions, actual remote operation scenarios may not always provide sufficient visibility.
+Therefore, using force feedback to convey this discrepancy information is beneficial.
+
+Similar to the wrench representation, position and orientation are represented by a six-dimensional vector composed of three translational and three rotational components, which are also linearly independent.
+In this representation as well, it is difficult to substitute one component for another.
+Therefore, for force feedback in remote operation devices, it is important to independently represent each component of the six-dimensional wrench.
+
+Research on remote manipulation devices capable of independently presenting a six-degree-of-freedom (6-DoF) wrench has been conducted for a long time.
+These devices can be primarily classified into three types according to the force source used for haptic feedback: magnetic devices, parallel-link devices, and wire-based devices.
+
+\ref{fig:devices_grounded} shows an overview of devices proposed in representative prior studies.
+Magnetic devices \cite{magnetic} generate a wrench in the user's hand using the Lorentz force generated between permanent magnets and coils mounted inside the device.
+Parallel-link devices \cite{parallel_vulliez,parallel_qin} generate a wrench in the user's hand by actuating the joints of the links that compose the device.
+Wire-based devices \cite{spidar_8} generate a wrench in the user's hand by controlling the tension of wires attached between the operator's finger and the device base.
+
+While these devices achieve independent presentation of a six-degree-of-freedom wrench, all of them require the device base to be grounded during operation.
+Such devices have a limited manipulation workspace, which may create directions in which the device handle is difficult to move.
+Consequently, the operator's hand movement differs from that of directly manipulating an object with one's own hands, resulting in reduced consistency with natural human motion.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\columnwidth]{figs/introduction/devices_grounded}
+  \caption{Haptic devices capable of independently presenting a 6-DoF wrench proposed in previous studies}
+  \label{fig:devices_grounded}
+\end{figure}
+
+On the other hand, many ungrounded devices have been proposed to enhance consistency with bodily motion by achieving force feedback without grounding the device to the environment.
+These devices can be primarily classified into four types according to their force feedback source: gyroscopic devices, mass-shifting devices, thrust-type devices, and wire-based devices.
+
+\ref{fig:devices_ungrounded} shows an overview of representative devices proposed in previous studies.
+Gyroscopic devices \cite{itorqu} generate torque in the handle using the moment produced when rotating a flywheel mounted inside the device.
+Mass-shifting devices \cite{shifty} generate a wrench in the handle by moving a movable weight within the device.
+Thrust-type devices \cite{leviopole,thor_hammer} generate thrust in the handle when rotating a propeller attached to the device.
+Wire-based devices \cite{spidar_w} generate thrust in the handle by winding a wire attached between the operator's hand and a base fixed to the operator's shoulder.
+
+The devices proposed in \cite{itorqu,shifty,leviopole,thor_hammer} provide high consistency with body motion because the operator can hold them directly in the hand.
+However, the number of presentable wrench components is limited.
+Furthermore, although the device proposed in \cite{spidar_w} achieves presentation of all six degrees of freedom, it exhibits lower consistency with body motion compared with other ungrounded devices, similar to devices that require a base mounted on the ground.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\columnwidth]{figs/introduction/devices_ungrounded}
+  \caption{Ungrounded haptic devices proposed in previous studies}
+  \label{fig:devices_ungrounded}
+\end{figure}
+
+As described above, to the best of our knowledge, a remote manipulation device that simultaneously achieves independent presentation of a six-degree-of-freedom (6-DoF) wrench and an ungrounded structure has not yet been realized.
+
+\subsection{Prior Research on Remote Control Architectures}
+
+Research on bilateral remote control architectures, which bidirectionally transmit motion and force information between the operator and the robot in teleoperation systems, has been conducted for many years.
+Representative foundational studies include \cite{hokayem} and \cite{anderson}.
+
+Building upon these studies, extensive research has been conducted to replace tasks traditionally performed directly by humans with remote operation.
+In the medical field, numerous studies have focused on the teleoperation of surgical assistance robots.
+Some systems, such as the da Vinci Surgical System \cite{freschi}, are even used in actual surgical procedures.
+
+In the industrial sector, research such as that of Imaida et al. \cite{imaida} has achieved tasks including peg-in-hole manipulation, in which a ground operator controls a robotic arm deployed in space.
+Furthermore, in recent years, research has been conducted on teleoperation systems targeting flying robots for inspection and manipulation in high-altitude environments \cite{hou}.
+
+Although these studies have achieved high performance levels approaching practical application, they share the characteristic of being dependent on specific robot physical models and specific task types.
+Consequently, a challenge remains: when the type of robot or the task content changes, the remote control architecture must be redesigned.
+
+To address this challenge, research has been conducted with the aim of constructing remote control architectures that are independent of specific robots and tasks.
+For example, Alvarez et al. decomposed the remote control architecture into multiple subsystems and constructed a reusable reference architecture that enabled the teleoperation of different robots, such as a Remote-Operated Service Arm and an Inspection Retrieving Vehicle \cite{alvarez}.
+However, this proposed method focuses on the reusability of the software structure, leaving unresolved the challenge that the mapping from operator input to robot motion and the design of haptic feedback still depend on the individual robot.
+
+Additionally, Duan et al. proposed a method for applying a unified operation interface to robots with different degrees-of-freedom configurations by using the operator’s hand gestures as control inputs \cite{duan}.
+Although this study enables the control of high-degree-of-freedom articulated robots intended for manipulation, the performed tasks are limited to manipulation.
+Generalization to robots with different motion forms, such as mobile robots, has not been sufficiently verified.
+
+As described above, a systematic framework for designing the entire remote control architecture independently of both the robot’s physical model and the task being performed has not yet been sufficiently established.
+
+\subsection{Proposed Method in This Study}
+
+Based on the challenges identified in the previous section, this study proposes a remote manipulation system consisting of an ungrounded remote manipulation device capable of independently presenting a six-degree-of-freedom (6-DoF) wrench and a remote manipulation architecture that is independent of robot type and task.
+The overall system architecture is shown in Fig.~XXX.
+
+The contributions of this study are threefold:
+
+\begin{itemize}
+\item We propose a remote manipulation device that achieves independent presentation of a six-degree-of-freedom wrench despite its ungrounded structure by incorporating a thrust vectoring mechanism.
+
+\item By separating the mapping from operator input to control commands and the generation of force feedback information into distinct modules, we propose a universal remote control architecture that is independent of the robot’s degree-of-freedom configuration, motion mode, and the task being performed.
+
+\item We demonstrate the effectiveness of the proposed remote control system through multiple tasks performed on different real robot platforms, including a fully-actuated flying robot and a multi-joint ground robot.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Teleoperation Device}\label{sec:teleop_device}
@@ -757,6 +882,7 @@ However, when the operator attempted to move the robot toward an obstacle, the f
 Consequently, the operator could not distinguish whether the presented force resulted from issuing a motion command or from approaching an obstacle.  
 Although the operator’s reaction—moving away from the obstacle—ensures collision avoidance, improving control transparency requires an additional mechanism to distinguish between these types of feedback.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Wall Painting Experiment Using a Flying Robot}
 
 This section describes a wall painting experiment conducted using a flying robot to evaluate the effectiveness of the proposed haptic feedback system during contact-based remote operation.
@@ -882,7 +1008,7 @@ Although oscillations in $F_x$ were observed, these are considered to reflect th
 
 These results indicate that the proposed haptic feedback system contributed to stabilizing contact-based manipulation during the remote operation of the flying robot.
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Wall Painting Experiment Using a Base-Fixed Multi-Link Robot}
 
 This section describes a wall painting experiment conducted using a base-fixed multi-link robot (robotic arm). 
@@ -996,6 +1122,24 @@ If the joints possess sufficient stiffness, the reaction force at the base can s
 This static compensation enables rapid variations in end-effector force.
 
 These results suggest that compensation strategies that explicitly account for time delays are necessary to achieve more stable contact-based manipulation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusion}
+This paper presented a teleoperation system for contact-rich robotic tasks that combines an ungrounded 6-DoF haptic interface with a robot- and task-independent teleoperation architecture. 
+The proposed device employs thrust-vectoring mechanisms to generate six-dimensional wrenches using two thrust modules, enabling independent presentation of forces and torques while maintaining an ungrounded structure. 
+In addition, the proposed architecture separates the generation of operator commands and haptic feedback, allowing the same teleoperation framework to be applied to robots with different kinematic structures and dynamic characteristics.
+
+The proposed system was validated through teleoperation experiments using both an omnidirectional aerial robot and a multi-joint ground robot. 
+In the obstacle-avoidance experiment, the use of haptic feedback reduced the trajectory root-mean-square error by approximately 18\% and increased the path coverage rate from 33.23\% to 90.81\%, corresponding to a 2.7-fold improvement. 
+In the wall-painting experiment, which required stable contact with a surface, the average lateral deviation was reduced by 23\% and the orientation error decreased by 46\%. 
+These results demonstrate that the proposed system significantly improves teleoperation performance in contact tasks while maintaining applicability across different robotic platforms.
+
+Future work will focus on three directions. First, larger-scale user studies will be conducted to statistically evaluate the effectiveness of the proposed system. 
+Experiments involving multiple operators with different levels of experience will enable quantitative analysis of how haptic feedback affects task performance, learning efficiency, and operational workload. 
+Second, further improvements to the haptic device will be pursued through miniaturization and weight reduction of the mechanical structure, as well as mitigation of actuator response delays observed in the current hardware implementation. 
+Improving the responsiveness and fidelity of the presented forces is expected to enhance the realism and usability of the interface. 
+Third, the robustness of the teleoperation architecture will be enhanced by explicitly considering communication delays in remote environments. 
+Incorporating delay-tolerant control strategies will enable stable and intuitive operation even under network latency, thereby improving the practicality of the system for real-world remote operations.
 
 \medskip
 \textbf{Supporting Information} \par %Please delete the Suppporting Information statement if it is not applicable. Please supply Supporting Information in another file. Supporting information should not be provided in .tex format

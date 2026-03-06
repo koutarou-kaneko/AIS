@@ -1,4 +1,97 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{murphy}
+Robin~R Murphy.
+\newblock {\em Disaster robotics}.
+\newblock MIT press, 2017.
+
+\bibitem{tang}
+Chen Tang, Ben Abbatematteo, Jiaheng Hu, Rohan Chandra, Roberto
+  Mart{\'\i}n-Mart{\'\i}n, and Peter Stone.
+\newblock Deep reinforcement learning for robotics: A survey of real-world
+  successes.
+\newblock {\em Annual Review of Control, Robotics, and Autonomous Systems},
+  8(1):153--188, 2025.
+
+\bibitem{kunze}
+Lars Kunze, Nick Hawes, Tom Duckett, Marc Hanheide, and Tomáš Krajník.
+\newblock Artificial intelligence for long-term robot autonomy: A survey.
+\newblock {\em IEEE Robotics and Automation Letters}, 3(4):4023--4030, 2018.
+
+\bibitem{sheridan}
+Thomas~B Sheridan.
+\newblock {\em Telerobotics, automation, and human supervisory control}.
+\newblock MIT press, 1992.
+
+\bibitem{darvish}
+Kourosh Darvish, Luigi Penco, Joao Ramos, Rafael Cisneros, Jerry Pratt, Eiichi
+  Yoshida, Serena Ivaldi, and Daniele Pucci.
+\newblock Teleoperation of humanoid robots: A survey.
+\newblock {\em IEEE Transactions on Robotics}, 39(3):1706--1727, 2023.
+
+\bibitem{hashimoto}
+Tatsuya Hashimoto, Yuichi Tazaki, Fumiya Matsuda, Katsumasa Kitajima, Hikaru
+  Nagano, and Yasuyoshi Yokokohji.
+\newblock Experimental evaluation of manipulator teleoperation system based on
+  trajectory planning for obstacle removal task in nuclear plant
+  decommissioning.
+\newblock {\em Journal of Robotics and Mechatronics}, 36(1):49--62, 2024.
+
+\bibitem{lee}
+Jin~Sol Lee, Youngjib Ham, Hangue Park, and Jeonghee Kim.
+\newblock Challenges, tasks, and opportunities in teleoperation of excavator
+  toward human-in-the-loop construction automation.
+\newblock {\em Automation in Construction}, 135:104119, 2022.
+
+\bibitem{okamura}
+Allison~M Okamura.
+\newblock Haptic feedback in robot-assisted minimally invasive surgery.
+\newblock {\em Current opinion in urology}, 19(1):102--107, 2009.
+
+\bibitem{si}
+Weiyong Si, Ning Wang, and Chenguang Yang.
+\newblock A review on manipulation skill acquisition through
+  teleoperation-based learning from demonstration.
+\newblock {\em Cognitive Computation and Systems}, 3(1):1--16, 2021.
+
+\bibitem{zhu}
+Yaonan Zhu, Shukrullo Nazirjonov, Bingheng Jiang, Jacinto Colan, Tadayoshi
+  Aoyama, Y.~Hasegawa, Boris Belousov, Kay Hansel, and Jan Peters.
+\newblock Visual tactile sensor based force estimation for position-force
+  teleoperation.
+\newblock In {\em 2022 IEEE International Conference on Cyborg and Bionic
+  Systems (CBS)}, pages 49--52, 2023.
+
+\bibitem{su}
+Yun-Peng Su, Xiao-Qi Chen, Tony Zhou, Christopher Pretty, and Geoffrey Chase.
+\newblock Mixed-reality-enhanced human--robot interaction with an
+  imitation-based mapping approach for intuitive teleoperation of a robotic
+  arm-hand system.
+\newblock {\em Applied Sciences}, 12(9):4740, 2022.
+
+\bibitem{magnetic}
+Peter~J. Berkelman and Ralph~L. Hollis.
+\newblock Lorentz magnetic levitation for haptic interaction: Device design,
+  performance, and integration with physical simulations.
+\newblock {\em The International Journal of Robotics Research}, 19(7):644--667,
+  2000.
+
+\bibitem{parallel_vulliez}
+Margot Vulliez, Said Zeghloul, and Oussama Khatib.
+\newblock Design strategy and issues of the delthaptic, a new 6-dof parallel
+  haptic device.
+\newblock {\em Mechanism and Machine Theory}, 128:395--411, 2018.
+
+\bibitem{parallel_qin}
+Huanhuan Qin, Aiguo Song, Yuqing Liu, Guohua Jiang, and Bohe Zhou.
+\newblock Design and calibration of a new 6 dof haptic device.
+\newblock {\em Sensors}, 15(12):31293--31313, 2015.
+
+\bibitem{spidar_8}
+Katsuhito Akahane, Jungwoo Hyun, Itsuo Kumazawa, and Makoto Sato.
+\newblock Two-handed multi-finger string-based haptic interface spidar-8.
+\newblock In {\em Multi-finger Haptic Interaction}, pages 109--147. Springer,
+  2013.
 
 \bibitem{itorqu}
 Kyle~N. Winfree, Jamie Gewirtz, Thomas Mather, Jonathan Fiene, and Katherine~J.
@@ -14,6 +107,73 @@ André Zenner and Antonio Krüger.
   object perception in virtual reality.
 \newblock {\em IEEE Transactions on Visualization and Computer Graphics},
   23(4):1285--1294, 2017.
+
+\bibitem{leviopole}
+Tomoya Sasaki, Richard~Sahala Hartanto, Kao-Hua Liu, Keitarou Tsuchiya, Atsushi
+  Hiyama, and Masahiko Inami.
+\newblock Leviopole: mid-air haptic interactions using multirotor.
+\newblock In {\em ACM SIGGRAPH 2018 Emerging Technologies}, SIGGRAPH '18, New
+  York, NY, USA, 2018. Association for Computing Machinery.
+
+\bibitem{thor_hammer}
+Seongkook Heo, Christina Chung, Geehyuk Lee, and Daniel Wigdor.
+\newblock Thor's hammer: An ungrounded force feedback device utilizing
+  propeller-induced propulsive force.
+\newblock In {\em Proceedings of the 2018 CHI Conference on Human Factors in
+  Computing Systems}, CHI EA '18, pages 1--4, New York, NY, USA, 2018.
+  Association for Computing Machinery.
+
+\bibitem{spidar_w}
+Kazuki Nagai, Soma Tanoue, Katsuhito Akahane, and Makoto Sato.
+\newblock Wearable 6-dof wrist haptic device "spidar-w".
+\newblock In {\em SIGGRAPH Asia 2015 Haptic Media And Contents Design}, SA '15,
+  New York, NY, USA, 2015. Association for Computing Machinery.
+
+\bibitem{hokayem}
+Peter~F Hokayem and Mark~W Spong.
+\newblock Bilateral teleoperation: An historical survey.
+\newblock {\em Automatica}, 42(12):2035--2057, 2006.
+
+\bibitem{anderson}
+Robert~J Anderson and Mark~W Spong.
+\newblock Bilateral control of teleoperators with time delay.
+\newblock In {\em Proceedings of the 1988 IEEE International Conference on
+  Systems, Man, and Cybernetics}, volume~1, pages 131--138. IEEE, 1988.
+
+\bibitem{freschi}
+Cinzia Freschi, Vincenzo Ferrari, Franca Melfi, Mauro Ferrari, Franco Mosca,
+  and Alfred Cuschieri.
+\newblock Technical review of the da vinci surgical telemanipulator.
+\newblock {\em The International Journal of Medical Robotics and Computer
+  Assisted Surgery}, 9(4):396--406, 2013.
+
+\bibitem{imaida}
+Takashi Imaida, Yasuyoshi Yokokohji, Toshitsugu Doi, Mitsushige Oda, and Tsuneo
+  Yoshikawa.
+\newblock Ground-space bilateral teleoperation of ets-vii robot arm by direct
+  bilateral coupling under 7-s time delay condition.
+\newblock {\em IEEE Transactions on Robotics and Automation}, 20(3):499--511,
+  2004.
+
+\bibitem{hou}
+Xiaolei Hou, Robert Mahony, and Felix Schill.
+\newblock Comparative study of haptic interfaces for bilateral teleoperation of
+  vtol aerial robots.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics: Systems},
+  46(10):1352--1363, 2015.
+
+\bibitem{alvarez}
+B{\'a}rbara {\'A}lvarez, Andr{\'e}s Iborra, Alejandro Alonso, and Juan~Antonio
+  De~la Puente.
+\newblock Reference architecture for robot teleoperation:: development details
+  and practical use.
+\newblock {\em Control Engineering Practice}, 9(4):395--402, 2001.
+
+\bibitem{duan}
+Kangkang Duan and Zhengbo Zou.
+\newblock Morphology agnostic gesture mapping for intuitive teleoperation of
+  construction robots.
+\newblock {\em Advanced Engineering Informatics}, 62:102600, 2024.
 
 \bibitem{DRAGON}
 Moju Zhao, Tomoki Anzai, Fan Shi, Xiangyu Chen, Kei Okada, and Masayuki Inaba.
